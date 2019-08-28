@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core";
 import PokemonData from "../../assets/pokemon";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -40,9 +39,18 @@ const initialPokemon = selectedTypes => {
   return pokemonArray;
 };
 
-const generateBubble = (selectedPokemon, showNumbers, showNames, pokemon) => {
+const generateBubble = (
+  selectedPokemon,
+  setSelectedPokemon,
+  showNumbers,
+  showNames,
+  pokemon
+) => {
+  const pokemonIsSelected = selectedPokemon.includes(pokemon);
+  const pokemonIsAlolan = pokemon.generation === 7;
   return (
     <li
+      onClick={() => setSelectedPokemon("selectedPokemon", pokemon)}
       key={pokemon.name_eng}
       className={classNames(
         "dex-pokemon-list-item",
@@ -54,14 +62,17 @@ const generateBubble = (selectedPokemon, showNumbers, showNames, pokemon) => {
     >
       <div>
         {showNames && <p className="name-eng">{pokemon.name_eng}</p>}
-        {/* {showNames && <p className="name-jap">{pokemon.name_jap}</p>} */}
+        {showNames && <p className="name-jap">{pokemon.name_jap}</p>}
         {showNumbers && <p className="pokemon-number">#{pokemon.number} </p>}
       </div>
 
       <div
         className={classNames(
-          `pokemon-bubble ${pokemon.type1} ${pokemon.type2}-border`,
-          { "alolan-line-height": pokemon.generation === 7 }
+          `pokemon-bubble `,
+          { "alolan-line-height": pokemonIsAlolan },
+          { selected: pokemonIsSelected },
+          { [pokemon.type1]: !pokemonIsSelected },
+          { [`${pokemon.type2}-border`]: !pokemonIsSelected }
         )}
       >
         <img
@@ -96,7 +107,13 @@ const DexPokemon = ({
     <div id="dex-pokemon-container">
       <ul className="dex-pokemon-list">
         {filteredPokemon.map(pokemon =>
-          generateBubble(selectedPokemon, showNumbers, showNames, pokemon)
+          generateBubble(
+            selectedPokemon,
+            setSelectedPokemon,
+            showNumbers,
+            showNames,
+            pokemon
+          )
         )}
       </ul>
 
