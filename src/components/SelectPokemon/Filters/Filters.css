@@ -44,3 +44,17 @@
 .active {
   opacity: 1;
 }
+
+.search-bar-container {
+  margin: 0 10px;
+}
+
+.search-bar {
+  margin: 2px 0;
+  background-color: transparent;
+  color: ghostwhite;
+}
+
+.search-bar::placeholder {
+  color: ghostwhite;
+}

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import "./DexPokemon.css";
 
-const initialPokemon = selectedTypes => {
+const initialPokemon = () => {
   let pokemonArray = [];
 
   Object.keys(PokemonData).forEach(number => {
@@ -13,30 +13,43 @@ const initialPokemon = selectedTypes => {
     pokemon.variations.map(variation =>
       pokemonArray.push({
         ...pokemon,
+        variations: [
+          ...pokemon.variations.filter(
+            pokemon => pokemon.name_eng !== variation.name_eng
+          ),
+          {
+            generation: pokemon.generation,
+            name_eng: pokemon.name_eng,
+            region: pokemon.region,
+            spriteExtension: pokemon.spriteExtension || "",
+            type1: pokemon.type1,
+            type2: pokemon.type2
+          }
+        ],
         ...variation
       })
     );
   });
-  if (selectedTypes.length) {
-    pokemonArray = [
-      ...pokemonArray.filter(pokemon => {
-        if (selectedTypes.length === 1) {
-          return (
-            selectedTypes.includes(pokemon.type1) ||
-            selectedTypes.includes(pokemon.type2)
-          );
-        }
-        if (selectedTypes.length === 2) {
-          return (
-            selectedTypes.includes(pokemon.type1) &&
-            selectedTypes.includes(pokemon.type2)
-          );
-        }
-        return pokemon;
-      })
-    ];
-  }
   return pokemonArray;
+};
+
+const filterByTypes = (filteredPokemon, types) => {
+  return filteredPokemon.filter(pokemon => {
+    if (types.length === 1) {
+      return types.includes(pokemon.type1) || types.includes(pokemon.type2);
+    }
+    if (types.length === 2) {
+      return types.includes(pokemon.type1) && types.includes(pokemon.type2);
+    }
+    return pokemon;
+  });
+};
+
+const filterBySearch = (filteredPokemon, search) => {
+  return filteredPokemon.filter(
+    pokemon =>
+      pokemon.name_eng.toLowerCase().indexOf(search.trim().toLowerCase()) >= 0
+  );
 };
 
 const generateBubble = (
@@ -46,7 +59,9 @@ const generateBubble = (
   showNames,
   pokemon
 ) => {
-  const pokemonIsSelected = selectedPokemon.includes(pokemon);
+  const pokemonIsSelected = selectedPokemon.find(
+    listPokemon => listPokemon.name_eng === pokemon.name_eng
+  );
   const pokemonIsAlolan = pokemon.generation === 7;
   return (
     <li
@@ -70,9 +85,9 @@ const generateBubble = (
         className={classNames(
           `pokemon-bubble `,
           { "alolan-line-height": pokemonIsAlolan },
-          { selected: pokemonIsSelected },
           { [pokemon.type1]: !pokemonIsSelected },
-          { [`${pokemon.type2}-border`]: !pokemonIsSelected }
+          { [`${pokemon.type2}-border`]: !pokemonIsSelected },
+          { selected: pokemonIsSelected }
         )}
       >
         <img
@@ -93,18 +108,42 @@ const DexPokemon = ({
   showNumbers,
   selectedPokemon,
   setSelectedPokemon,
-  selectedTypes
+  search,
+  types
 }) => {
-  const [filteredPokemon, setFilteredPokemon] = useState(
-    initialPokemon(selectedTypes)
-  );
+  const [filteredPokemon, setFilteredPokemon] = useState(initialPokemon());
 
   useEffect(() => {
-    setFilteredPokemon(initialPokemon(selectedTypes));
-  }, [selectedTypes]);
+    if (!types.length) {
+      setFilteredPokemon(initialPokemon());
+      return;
+    }
+    if (filteredPokemon => filteredPokemon.length === 0) {
+      filterByTypes(filteredPokemon, types);
+      setFilteredPokemon(() => filterByTypes(initialPokemon(), types));
+      return;
+    }
+    setFilteredPokemon(filteredPokemon =>
+      filterByTypes(filteredPokemon, types)
+    );
+  }, [filteredPokemon, types]);
 
+  useEffect(() => {
+    if (!search.length) {
+      setFilteredPokemon(initialPokemon());
+      return;
+    }
+    if (filteredPokemon => filteredPokemon.length === 0) {
+      setFilteredPokemon(() => filterBySearch(initialPokemon(), search));
+      return;
+    }
+    setFilteredPokemon(filteredPokemon =>
+      filterBySearch(filteredPokemon, search)
+    );
+  }, [search]);
   return (
     <div id="dex-pokemon-container">
+      <p className="total-results">Total Results: {filteredPokemon.length}</p>
       <ul className="dex-pokemon-list">
         {filteredPokemon.map(pokemon =>
           generateBubble(
@@ -134,9 +173,10 @@ const DexPokemon = ({
 DexPokemon.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
-  selectedTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
   selectedPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  setSelectedPokemon: PropTypes.func.isRequired
+  setSelectedPokemon: PropTypes.func.isRequired,
+  search: PropTypes.string,
+  type: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default DexPokemon;

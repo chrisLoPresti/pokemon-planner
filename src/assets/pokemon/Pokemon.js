@@ -10,7 +10,10 @@ export default {
     type1: "Grass",
     type2: "Poison",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "002": {
     number: "002",
@@ -23,7 +26,10 @@ export default {
     type1: "Grass",
     type2: "Poison",
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "003": {
     number: "003",
@@ -43,7 +49,10 @@ export default {
     type1: "Grass",
     type2: "Poison",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "004": {
     number: "004",
@@ -56,7 +65,10 @@ export default {
     type1: "Fire",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "005": {
     number: "005",
@@ -69,7 +81,10 @@ export default {
     type1: "Fire",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "006": {
     number: "006",
@@ -95,7 +110,10 @@ export default {
     type1: "Fire",
     type2: "Flying",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "007": {
     number: "007",
@@ -108,7 +126,10 @@ export default {
     type1: "Water",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "008": {
     number: "008",
@@ -121,7 +142,10 @@ export default {
     type1: "Water",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "009": {
     number: "009",
@@ -141,7 +165,10 @@ export default {
     type1: "Water",
     type2: null,
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "010": {
     number: "010",
@@ -154,7 +181,10 @@ export default {
     type1: "Bug",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "011": {
     number: "011",
@@ -167,7 +197,10 @@ export default {
     type1: "Bug",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "012": {
     number: "012",
@@ -180,7 +213,10 @@ export default {
     type1: "Bug",
     type2: "Flying",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "013": {
     number: "013",
@@ -193,7 +229,10 @@ export default {
     type1: "Bug",
     type2: "Poison",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "014": {
     number: "014",
@@ -206,7 +245,10 @@ export default {
     type1: "Bug",
     type2: "Poison",
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "015": {
     number: "015",
@@ -226,7 +268,10 @@ export default {
     type1: "Bug",
     type2: "Poison",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "016": {
     number: "016",
@@ -239,7 +284,10 @@ export default {
     type1: "Normal",
     type2: "Flying",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "017": {
     number: "017",
@@ -252,7 +300,10 @@ export default {
     type1: "Normal",
     type2: "Flying",
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "018": {
     number: "018",
@@ -272,7 +323,10 @@ export default {
     type1: "Normal",
     type2: "Flying",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "019": {
     number: "019",
@@ -294,7 +348,10 @@ export default {
     type1: "Normal",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "020": {
     number: "020",
@@ -316,7 +373,10 @@ export default {
     type1: "Normal",
     type2: null,
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "021": {
     number: "021",
@@ -329,7 +389,10 @@ export default {
     type1: "Normal",
     type2: "Flying",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "022": {
     number: "022",
@@ -342,7 +405,10 @@ export default {
     type1: "Normal",
     type2: "Flying",
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "023": {
     number: "023",
@@ -355,7 +421,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "024": {
     number: "024",
@@ -368,7 +437,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "025": {
     number: "025",
@@ -381,7 +453,10 @@ export default {
     type1: "Electric",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "026": {
     number: "026",
@@ -403,7 +478,10 @@ export default {
     type1: "Electric",
     type2: null,
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "027": {
     number: "027",
@@ -425,7 +503,10 @@ export default {
     type1: "Ground",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "028": {
     number: "028",
@@ -447,7 +528,10 @@ export default {
     type1: "Ground",
     type2: null,
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "029": {
     number: "029",
@@ -460,7 +544,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "030": {
     number: "030",
@@ -473,7 +560,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "031": {
     number: "031",
@@ -486,7 +576,10 @@ export default {
     type1: "Poison",
     type2: "Ground",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "032": {
     number: "032",
@@ -499,7 +592,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "033": {
     number: "033",
@@ -512,7 +608,10 @@ export default {
     type1: "Poison",
     type2: null,
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "034": {
     number: "034",
@@ -525,7 +624,10 @@ export default {
     type1: "Poison",
     type2: "Ground",
     stage: 3,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "035": {
     number: "035",
@@ -538,7 +640,10 @@ export default {
     type1: "Fairy",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "036": {
     number: "036",
@@ -551,7 +656,10 @@ export default {
     type1: "Fairy",
     type2: null,
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "037": {
     number: "037",
@@ -573,7 +681,10 @@ export default {
     type1: "Fire",
     type2: null,
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "038": {
     number: "038",
@@ -595,7 +706,10 @@ export default {
     type1: "Fire",
     type2: null,
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "039": {
     number: "039",
@@ -608,7 +722,10 @@ export default {
     type1: "Normal",
     type2: "Fairy",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "040": {
     number: "040",
@@ -621,7 +738,10 @@ export default {
     type1: "Normal",
     type2: "Fairy",
     stage: 2,
-    fullyEvolved: true
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "041": {
     number: "041",
@@ -634,7 +754,10 @@ export default {
     type1: "Poison",
     type2: "Flying",
     stage: 1,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   },
   "042": {
     number: "042",
@@ -647,96 +770,769 @@ export default {
     type1: "Poison",
     type2: "Flying",
     stage: 2,
-    fullyEvolved: false
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "043": {
+    number: "043",
+    name_eng: "Oddish",
+    name_jap: "ナゾノクサ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "044": {
+    number: "044",
+    name_eng: "Gloom",
+    name_jap: "クサイハナ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "045": {
+    number: "045",
+    name_eng: "Vileplume",
+    name_jap: "ラフレシア",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "046": {
+    number: "046",
+    name_eng: "Paras",
+    name_jap: "パラス",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Bug",
+    type2: "Grass",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "047": {
+    number: "047",
+    name_eng: "Parasect",
+    name_jap: "パラセクト",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Bug",
+    type2: "Grass",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "048": {
+    number: "048",
+    name_eng: "Venonat",
+    name_jap: "コンパン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Bug",
+    type2: "Poison",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "049": {
+    number: "049",
+    name_eng: "Venomoth",
+    name_jap: "モルフォン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Bug",
+    type2: "Poison",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "050": {
+    number: "050",
+    name_eng: "Diglett",
+    name_jap: "ディグダ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ground",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "051": {
+    number: "051",
+    name_eng: "Dugtrio",
+    name_jap: "ダグトリオ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Dugtrio",
+        spriteExtension: "-alola",
+        type1: "Ground",
+        type2: "Steel"
+      }
+    ],
+    type1: "Ground",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "052": {
+    number: "052",
+    name_eng: "Meowth",
+    name_jap: "ニャース",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Meowth",
+        spriteExtension: "-alola",
+        type1: "Dark",
+        type2: null
+      }
+    ],
+    type1: "Normal",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "053": {
+    number: "053",
+    name_eng: "Persian",
+    name_jap: "ペルシアン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Persian",
+        spriteExtension: "-alola",
+        type1: "Dark",
+        type2: null
+      }
+    ],
+    type1: "Normal",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "054": {
+    number: "054",
+    name_eng: "Psyduck",
+    name_jap: "コダック",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "055": {
+    number: "055",
+    name_eng: "Golduck",
+    name_jap: "コダック",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "056": {
+    number: "056",
+    name_eng: "Mankey",
+    name_jap: "マンキー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "057": {
+    number: "057",
+    name_eng: "Primeape",
+    name_jap: "オコリザル",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "058": {
+    number: "058",
+    name_eng: "Growlithe",
+    name_jap: "ガーディ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fire",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "059": {
+    number: "059",
+    name_eng: "Arcanine",
+    name_jap: "ウインディ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fire",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "060": {
+    number: "060",
+    name_eng: "Poliwag",
+    name_jap: "ニョロモ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "061": {
+    number: "061",
+    name_eng: "Poliwhirl",
+    name_jap: "ニョロゾ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "062": {
+    number: "062",
+    name_eng: "Poliwrath",
+    name_jap: "ニョロボン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Fighting",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "063": {
+    number: "063",
+    name_eng: "Abra",
+    name_jap: "ケーシィ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Psychic",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "064": {
+    number: "064",
+    name_eng: "Kadabra",
+    name_jap: "ユンゲラー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Psychic",
+    type2: null,
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "065": {
+    number: "065",
+    name_eng: "Alakazam",
+    name_jap: "フーディン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        name_eng: "Mega Alakazam",
+        spriteExtension: "-mega",
+        type1: "Psychic",
+        type2: null
+      }
+    ],
+    type1: "Psychic",
+    type2: null,
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "066": {
+    number: "066",
+    name_eng: "Machop",
+    name_jap: "ワンリキー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "067": {
+    number: "067",
+    name_eng: "Machoke",
+    name_jap: "ゴーリキー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "068": {
+    number: "068",
+    name_eng: "Machamp",
+    name_jap: "カイリキー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "069": {
+    number: "069",
+    name_eng: "Bellsprout",
+    name_jap: "マダツボミ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "070": {
+    number: "070",
+    name_eng: "Weepinbell",
+    name_jap: "ウツドン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "071": {
+    number: "071",
+    name_eng: "Victreebel",
+    name_jap: "ウツボット",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Poison",
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "072": {
+    number: "072",
+    name_eng: "Tentacool",
+    name_jap: "メノクラゲ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Poison",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "073": {
+    number: "073",
+    name_eng: "Tentacruel",
+    name_jap: "ドククラゲ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Poison",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "074": {
+    number: "074",
+    name_eng: "Geodude",
+    name_jap: "イシツブテ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Geodude",
+        spriteExtension: "-alola",
+        type1: "Rock",
+        type2: "Electric"
+      }
+    ],
+    type1: "Rock",
+    type2: "Ground",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "075": {
+    number: "075",
+    name_eng: "Graveler",
+    name_jap: "ゴローン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Graveler",
+        spriteExtension: "-alola",
+        type1: "Rock",
+        type2: "Electric"
+      }
+    ],
+    type1: "Rock",
+    type2: "Ground",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "076": {
+    number: "076",
+    name_eng: "Golem",
+    name_jap: "ゴローニャ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Golem",
+        spriteExtension: "-alola",
+        type1: "Rock",
+        type2: "Electric"
+      }
+    ],
+    type1: "Rock",
+    type2: "Ground",
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "077": {
+    number: "077",
+    name_eng: "Ponyta",
+    name_jap: "ポニータ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fire",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "078": {
+    number: "078",
+    name_eng: "Rapidash",
+    name_jap: "ギャロップ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fire",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "079": {
+    number: "079",
+    name_eng: "Slowpoke",
+    name_jap: "ヤドン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Psychic",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "080": {
+    number: "080",
+    name_eng: "Slowbro",
+    name_jap: "ヤドラン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        name_eng: "Mega Slowbro",
+        spriteExtension: "-mega",
+        type1: "Water",
+        type2: "Psychic"
+      }
+    ],
+    type1: "Water",
+    type2: "Psychic",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "081": {
+    number: "081",
+    name_eng: "Magnemite",
+    name_jap: "コイル",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Electric",
+    type2: "Steel",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "082": {
+    number: "082",
+    name_eng: "Magneton",
+    name_jap: "レアコイル",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Electric",
+    type2: "Steel",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "083": {
+    number: "083",
+    name_eng: "Farfetch'd",
+    name_jap: "カモネギ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Normal",
+    type2: "Flying",
+    stage: 1,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "084": {
+    number: "084",
+    name_eng: "Doduo",
+    name_jap: "ドードー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Normal",
+    type2: "Flying",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "085": {
+    number: "085",
+    name_eng: "Dodrio",
+    name_jap: "ドードリオ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Normal",
+    type2: "Flying",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   }
 };
 
-// 043	Oddish	ナゾノクサ
-// (Nazonokusa)	083	088	–		105Cen	–
-// 044	Gloom	クサイハナ
-// (Kusaihana)	084	089	–		106Cen	–
-// 045	Vileplume	ラフレシア
-// (Rafflesia)	085	090	–		107Cen	–
-// 046	Paras	パラス
-// (Paras)	070	235	–		–	147
-// 047	Parasect	パラセクト
-// (Parasect)	071	236	–		–	148
-// 048	Venonat	コンパン
-// (Kongpang)	109	237	–		–	–
-// 049	Venomoth	モルフォン
-// (Morphon)	110	238	–		–	–
-// 050	Diglett	ディグダ
-// (Digda)	134	239	–		001Mtn	071
-// 051	Dugtrio	ダグトリオ
-// (Dugtrio)	135	240	–		002Mtn	072
-// 052	Meowth	ニャース
-// (Nyarth)	138	241	–		–	045
-// 053	Persian	ペルシアン
-// (Persian)	139	242	–		–	046
-// 054	Psyduck	コダック
-// (Koduck)	140	158	043		059Cen	089
-// 055	Golduck	ゴルダック
-// (Golduck)	141	159	044		060Cen	090
-// 056	Mankey	マンキー
-// (Mankey)	136	243	–		–	079
-// 057	Primeape	オコリザル
-// (Okorizaru)	137	244	–		–	080
-// 058	Growlithe	ガーディ
-// (Gardie)	129	245	–		–	052
-// 059	Arcanine	ウインディ
-// (Windie)	130	246	–		–	053
-// 060	Poliwag	ニョロモ
-// (Nyoromo)	072	247	–		033Mtn	149
-// 061	Poliwhirl	ニョロゾ
-// (Nyorozo)	073	248	–		034Mtn	150
-// 062	Poliwrath	ニョロボン
-// (Nyorobon)	074	249	–		035Mtn	151
-// 063	Abra	ケーシィ
-// (Casey)	089	039	020		102Cen	042
-// 064	Kadabra	ユンゲラー
-// (Yungerer)	090	040	021		103Cen	043
-// 065	Alakazam	フーディン
-// (Foodin)	091	041	022		104Cen	044
-// 066	Machop	ワンリキー
-// (Wanriky)	142	073	040		057Mtn	095
-// 067	Machoke	ゴーリキー
-// (Goriky)	143	074	041		058Mtn	096
-// 068	Machamp	カイリキー
-// (Kairiky)	144	075	042		059Mtn	097
-// 069	Bellsprout	マダツボミ
-// (Madatsubomi)	064	250	–		026Mtn	–
-// 070	Weepinbell	ウツドン
-// (Utsudon)	065	251	–		027Mtn	–
-// 071	Victreebel	ウツボット
-// (Utsubot)	066	252	–		028Mtn	–
-// 072	Tentacool	メノクラゲ
-// (Menokurage)	164	066	136		025Coa	106
-// 073	Tentacruel	ドククラゲ
-// (Dokukurage)	165	067	137		026Coa	107
-// 074	Geodude	イシツブテ
-// (Isitsubute)	034	057	031		009Mtn	229
-// 075	Graveler	ゴローン
-// (Golone)	035	058	032		010Mtn	230
-// 076	Golem	ゴローニャ
-// (Golonya)	036	059	033		011Mtn	231
-// 077	Ponyta	ポニータ
-// (Ponyta)	206	253	090		–	–
-// 078	Rapidash	ギャロップ
-// (Gallop)	207	254	091		–	–
-// 079	Slowpoke	ヤドン
-// (Yadon)	080	255	–		133Coa	037
-// 080	Slowbro	ヤドラン
-// (Yadoran)	081	256	–		134Coa	038
-// 081	Magnemite	コイル
-// (Coil)	119	082	178		069Mtn	047
-// 082	Magneton	レアコイル
-// (Rarecoil)	120	083	179		070Mtn	048
-// 083	Farfetch'd	カモネギ
-// (Kamonegi)	160	257	–		061Cen	–
-// 084	Doduo	ドードー
-// (Dodo)	204	092	–		094Cen	–
-// 085	Dodrio	ドードリオ
-// (Dodorio)	205	093	–		095Cen	–
 // 086	Seel	パウワウ
 // (Pawou)	178	258	–		–	–
 // 087	Dewgong	ジュゴン

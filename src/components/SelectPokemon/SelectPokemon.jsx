@@ -9,46 +9,69 @@ class SelectPokemon extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTypes: [],
       showNames: false,
       showNumbers: true,
       selectedPokemon: [],
       error: false,
-      errorMessage: ""
+      errorMessage: "",
+      search: "",
+      types: []
     };
   }
 
   onChange = (target, value) => {
+    const { selectedPokemon, types } = this.state;
+
+    let error = "";
     if (Array.isArray(this.state[target])) {
       if (this.state[target].includes(value)) {
         this.setState({
           [target]: [...this.state[target].filter(item => item !== value)],
           error: false,
-          errorMessage: ""
+          errorMessage: error
         });
-      } else {
-        if (this.state.selectedTypes.length === 2) {
-          this.setState({
-            error: true,
-            errorMessage: "You can only filter on two types at a time."
-          });
-          return;
-        }
-        if (this.state.selectedPokemon.length === 6) {
-          this.setState({
-            error: true,
-            errorMessage: "You can only have six pokemon per team."
-          });
-          return;
-        }
-        this.setState({
-          [target]: [...this.state[target], value],
-          error: false,
-          errorMessage: ""
-        });
+        return;
       }
+      if (typeof value === "object") {
+        if (
+          this.state[target].find(
+            pokemon => pokemon.name_eng === value.name_eng
+          )
+        ) {
+          this.setState({
+            [target]: [
+              ...this.state[target].filter(
+                item => item.name_eng !== value.name_eng
+              )
+            ],
+            error: false,
+            errorMessage: error
+          });
+          return;
+        }
+      }
+      if (types.length === 2) {
+        error = "You can only filter on two types at a time.";
+      }
+
+      const duplicate = selectedPokemon.find(
+        pokemon => pokemon.number === value.number
+      );
+      if (duplicate) {
+        error =
+          "You can not have more than one pokemon with the same dex number.";
+      }
+      if (selectedPokemon.length === 6) {
+        error = "You can only have six pokemon per team.";
+      }
+      this.setState({
+        [target]: error ? this.state[target] : [...this.state[target], value],
+        error: error.length > 0,
+        errorMessage: error
+      });
       return;
     }
+
     this.setState({
       [target]: value,
       error: false,
@@ -60,23 +83,26 @@ class SelectPokemon extends Component {
     const {
       error,
       errorMessage,
-      selectedTypes,
       showNames,
       showNumbers,
-      selectedPokemon
+      selectedPokemon,
+      search,
+      types
     } = this.state;
     return (
       <div id="select-pokemon-container">
         <Filters
+          search={search}
+          types={types}
           showNames={showNames}
           showNumbers={showNumbers}
-          selectedTypes={selectedTypes}
           onChange={this.onChange}
         />
         <DexPokemon
+          search={search}
+          types={types}
           showNames={showNames}
           showNumbers={showNumbers}
-          selectedTypes={selectedTypes}
           selectedPokemon={selectedPokemon}
           setSelectedPokemon={this.onChange}
         />

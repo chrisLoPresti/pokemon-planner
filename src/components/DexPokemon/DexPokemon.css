@@ -30,11 +30,7 @@
 }
 
 .pokemon-bubble:hover {
-  background-size: cover;
-  border: 2px solid white;
   animation: mover 1s linear infinite;
-  background-image: url("../../assets/images/misc/pokeball.png");
-  background-color: white;
 }
 
 .selected {
@@ -282,4 +278,10 @@
 .no-results-image {
   margin: auto;
   height: 200px;
+}
+
+.total-results {
+  color: ghostwhite;
+  font-style: italic;
+  font-size: 14px;
 }
