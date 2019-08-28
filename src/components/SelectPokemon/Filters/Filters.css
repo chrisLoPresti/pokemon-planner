@@ -1,0 +1,46 @@
+.filters-container {
+  position: fixed;
+  z-index: 999;
+  background-color: #525252;
+  border-bottom: 1px solid #64c4ed;
+  width: 100%;
+}
+
+.filters-grid-flex {
+  display: flex;
+  align-items: center;
+}
+
+.filter-by {
+  margin-left: 10px;
+  color: ghostwhite;
+}
+
+.filter-title {
+  color: ghostwhite;
+}
+
+.filter-content {
+  margin: 5px 10px;
+}
+
+.type-menu-item {
+  float: left;
+  width: 50%;
+}
+.type-symbol {
+  margin: 2.5px 0;
+  height: 30px;
+}
+.filter-content .select {
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+.inactive {
+  opacity: 0.5;
+}
+
+.active {
+  opacity: 1;
+}

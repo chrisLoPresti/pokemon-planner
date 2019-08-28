@@ -1,0 +1,12 @@
+.App .header {
+  font-family: "Pokemon Solid";
+  background-color: #313131;
+  color: ghostwhite;
+  letter-spacing: 0.1rem;
+  position: sticky;
+}
+
+.home {
+  height: 50px;
+  cursor: pointer;
+}
