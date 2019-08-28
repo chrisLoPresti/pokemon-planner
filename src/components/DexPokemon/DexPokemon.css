@@ -25,6 +25,10 @@
   line-height: 30px;
 }
 
+.alolan-line-height {
+  line-height: 40px;
+}
+
 .pokemon-bubble:hover {
   background-size: cover;
   border: 2px solid white;

@@ -59,7 +59,10 @@ const generateBubble = (selectedPokemon, showNumbers, showNames, pokemon) => {
       </div>
 
       <div
-        className={`pokemon-bubble ${pokemon.type1} ${pokemon.type2}-border`}
+        className={classNames(
+          `pokemon-bubble ${pokemon.type1} ${pokemon.type2}-border`,
+          { "alolan-line-height": pokemon.generation === 7 }
+        )}
       >
         <img
           className="sprite"
