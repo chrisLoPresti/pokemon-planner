@@ -4,26 +4,18 @@
   background-color: #525252;
   border-bottom: 1px solid #64c4ed;
   width: 100%;
+  padding: 10px 20px;
 }
-
-.filters-grid-flex {
-  display: flex;
-  align-items: center;
-}
-
-.filter-by {
-  margin-left: 10px;
-  color: ghostwhite;
-}
-
 .filter-title {
   color: ghostwhite;
 }
 
-.filter-content {
-  margin: 5px 10px;
+@media screen and (max-width: 600px) {
+  .filter-content {
+    display: none;
+  }
 }
-
+/* 
 .type-menu-item {
   float: left;
   width: 50%;
@@ -43,16 +35,13 @@
 
 .active {
   opacity: 1;
-}
-
-.search-bar-container {
-  margin: 0 10px;
-}
+} */
 
 .search-bar {
   margin: 2px 0;
   background-color: transparent;
   color: ghostwhite;
+  width: 100%;
 }
 
 .search-bar::placeholder {

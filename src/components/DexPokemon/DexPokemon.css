@@ -1,6 +1,7 @@
 #dex-pokemon-container {
-  padding: 120px 20px 20px 20px;
-  height: 100%;
+  padding: 100px 20px 20px 20px;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .dex-pokemon-list {
@@ -8,7 +9,7 @@
   flex-flow: row wrap;
   list-style-type: none;
   text-align: center;
-  margin: 0;
+  margin: 20px 0;
   padding: 0;
   color: ghostwhite;
 }

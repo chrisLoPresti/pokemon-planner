@@ -30,10 +30,15 @@ const initialPokemon = () => {
       })
     );
   });
-  return pokemonArray;
+  return pokemonArray.sort(
+    (pokemon1, pokemon2) => +pokemon1.nationalNumber - +pokemon2.nationalNumber
+  );
 };
 
 const filterByTypes = (filteredPokemon, types) => {
+  if (!types.length) {
+    return filteredPokemon;
+  }
   return filteredPokemon.filter(pokemon => {
     if (types.length === 1) {
       return types.includes(pokemon.type1) || types.includes(pokemon.type2);
@@ -46,6 +51,9 @@ const filterByTypes = (filteredPokemon, types) => {
 };
 
 const filterBySearch = (filteredPokemon, search) => {
+  if (!search.length) {
+    return filteredPokemon;
+  }
   return filteredPokemon.filter(
     pokemon =>
       pokemon.name_eng.toLowerCase().indexOf(search.trim().toLowerCase()) >= 0
@@ -78,7 +86,9 @@ const generateBubble = (
       <div>
         {showNames && <p className="name-eng">{pokemon.name_eng}</p>}
         {showNames && <p className="name-jap">{pokemon.name_jap}</p>}
-        {showNumbers && <p className="pokemon-number">#{pokemon.number} </p>}
+        {showNumbers && (
+          <p className="pokemon-number">#{pokemon.nationalNumber} </p>
+        )}
       </div>
 
       <div
@@ -92,10 +102,10 @@ const generateBubble = (
       >
         <img
           className="sprite"
-          disabled={selectedPokemon[pokemon.number]}
-          src={require(`../../assets/images/sprites/pokedex/${pokemon.number}${
-            pokemon.spriteExtension ? pokemon.spriteExtension : ""
-          }.png`)}
+          disabled={selectedPokemon[pokemon.nationalNumber]}
+          src={require(`../../assets/images/sprites/pokedex/${
+            pokemon.nationalNumber
+          }${pokemon.spriteExtension ? pokemon.spriteExtension : ""}.png`)}
           alt={pokemon.name}
         />
       </div>
@@ -111,36 +121,15 @@ const DexPokemon = ({
   search,
   types
 }) => {
+  const [originalPokemonList] = useState(initialPokemon());
   const [filteredPokemon, setFilteredPokemon] = useState(initialPokemon());
 
   useEffect(() => {
-    if (!types.length) {
-      setFilteredPokemon(initialPokemon());
-      return;
-    }
-    if (filteredPokemon => filteredPokemon.length === 0) {
-      filterByTypes(filteredPokemon, types);
-      setFilteredPokemon(() => filterByTypes(initialPokemon(), types));
-      return;
-    }
-    setFilteredPokemon(filteredPokemon =>
-      filterByTypes(filteredPokemon, types)
+    setFilteredPokemon(
+      filterBySearch(filterByTypes(originalPokemonList, types), search)
     );
-  }, [filteredPokemon, types]);
+  }, [types, search, originalPokemonList]);
 
-  useEffect(() => {
-    if (!search.length) {
-      setFilteredPokemon(initialPokemon());
-      return;
-    }
-    if (filteredPokemon => filteredPokemon.length === 0) {
-      setFilteredPokemon(() => filterBySearch(initialPokemon(), search));
-      return;
-    }
-    setFilteredPokemon(filteredPokemon =>
-      filterBySearch(filteredPokemon, search)
-    );
-  }, [search]);
   return (
     <div id="dex-pokemon-container">
       <p className="total-results">Total Results: {filteredPokemon.length}</p>

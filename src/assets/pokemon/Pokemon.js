@@ -1,6 +1,6 @@
 export default {
   "001": {
-    number: "001",
+    nationalNumber: "001",
     name_eng: "Bulbasaur",
     name_jap: "フシギダネ",
     region: "Kanto",
@@ -16,7 +16,7 @@ export default {
     psuedoLegendary: false
   },
   "002": {
-    number: "002",
+    nationalNumber: "002",
     name_eng: "Ivysaur",
     name_jap: "フシギソウ",
     region: "Kanto",
@@ -32,7 +32,7 @@ export default {
     psuedoLegendary: false
   },
   "003": {
-    number: "003",
+    nationalNumber: "003",
     name_eng: "Venusaur",
     name_jap: "フシギバナ",
     region: "Kanto",
@@ -55,7 +55,7 @@ export default {
     psuedoLegendary: false
   },
   "004": {
-    number: "004",
+    nationalNumber: "004",
     name_eng: "Charmander",
     name_jap: "ヒトカゲ",
     region: "Kanto",
@@ -71,7 +71,7 @@ export default {
     psuedoLegendary: false
   },
   "005": {
-    number: "005",
+    nationalNumber: "005",
     name_eng: "Charmeleon",
     name_jap: "リザード",
     region: "Kanto",
@@ -87,7 +87,7 @@ export default {
     psuedoLegendary: false
   },
   "006": {
-    number: "006",
+    nationalNumber: "006",
     name_eng: "Charizard",
     name_jap: "リザードン",
     region: "Kanto",
@@ -116,7 +116,7 @@ export default {
     psuedoLegendary: false
   },
   "007": {
-    number: "007",
+    nationalNumber: "007",
     name_eng: "Squirtle",
     name_jap: "ゼニガメ",
     region: "Kanto",
@@ -132,7 +132,7 @@ export default {
     psuedoLegendary: false
   },
   "008": {
-    number: "008",
+    nationalNumber: "008",
     name_eng: "Wartortle",
     name_jap: "カメール",
     region: "Kanto",
@@ -148,7 +148,7 @@ export default {
     psuedoLegendary: false
   },
   "009": {
-    number: "009",
+    nationalNumber: "009",
     name_eng: "Blastoise",
     name_jap: "カメックス",
     region: "Kanto",
@@ -171,7 +171,7 @@ export default {
     psuedoLegendary: false
   },
   "010": {
-    number: "010",
+    nationalNumber: "010",
     name_eng: "Caterpie",
     name_jap: "キャタピー",
     region: "Kanto",
@@ -187,7 +187,7 @@ export default {
     psuedoLegendary: false
   },
   "011": {
-    number: "011",
+    nationalNumber: "011",
     name_eng: "Metapod",
     name_jap: "トランセル",
     region: "Kanto",
@@ -203,7 +203,7 @@ export default {
     psuedoLegendary: false
   },
   "012": {
-    number: "012",
+    nationalNumber: "012",
     name_eng: "Butterfree",
     name_jap: "バタフリー",
     region: "Kanto",
@@ -219,7 +219,7 @@ export default {
     psuedoLegendary: false
   },
   "013": {
-    number: "013",
+    nationalNumber: "013",
     name_eng: "Weedle",
     name_jap: "ビードル",
     region: "Kanto",
@@ -235,7 +235,7 @@ export default {
     psuedoLegendary: false
   },
   "014": {
-    number: "014",
+    nationalNumber: "014",
     name_eng: "Kakuna",
     name_jap: "コクーン",
     region: "Kanto",
@@ -251,7 +251,7 @@ export default {
     psuedoLegendary: false
   },
   "015": {
-    number: "015",
+    nationalNumber: "015",
     name_eng: "Beedrill",
     name_jap: "スピアー",
     region: "Kanto",
@@ -274,7 +274,7 @@ export default {
     psuedoLegendary: false
   },
   "016": {
-    number: "016",
+    nationalNumber: "016",
     name_eng: "Pidgey",
     name_jap: "ポッポ",
     region: "Kanto",
@@ -290,7 +290,7 @@ export default {
     psuedoLegendary: false
   },
   "017": {
-    number: "017",
+    nationalNumber: "017",
     name_eng: "Pidgeotto",
     name_jap: "ピジョン",
     region: "Kanto",
@@ -306,7 +306,7 @@ export default {
     psuedoLegendary: false
   },
   "018": {
-    number: "018",
+    nationalNumber: "018",
     name_eng: "Pidgeot",
     name_jap: "ピジョット",
     region: "Kanto",
@@ -329,7 +329,7 @@ export default {
     psuedoLegendary: false
   },
   "019": {
-    number: "019",
+    nationalNumber: "019",
     name_eng: "Rattata",
     name_jap: "コラッタ",
     region: "Kanto",
@@ -354,7 +354,7 @@ export default {
     psuedoLegendary: false
   },
   "020": {
-    number: "020",
+    nationalNumber: "020",
     name_eng: "Raticate",
     name_jap: "ラッタ",
     region: "Kanto",
@@ -379,7 +379,7 @@ export default {
     psuedoLegendary: false
   },
   "021": {
-    number: "021",
+    nationalNumber: "021",
     name_eng: "Spearow",
     name_jap: "オニスズメ",
     region: "Kanto",
@@ -395,7 +395,7 @@ export default {
     psuedoLegendary: false
   },
   "022": {
-    number: "022",
+    nationalNumber: "022",
     name_eng: "Fearow",
     name_jap: "オニドリル",
     region: "Kanto",
@@ -411,7 +411,7 @@ export default {
     psuedoLegendary: false
   },
   "023": {
-    number: "023",
+    nationalNumber: "023",
     name_eng: "Ekans",
     name_jap: "アーボ",
     region: "Kanto",
@@ -427,7 +427,7 @@ export default {
     psuedoLegendary: false
   },
   "024": {
-    number: "024",
+    nationalNumber: "024",
     name_eng: "Arbok",
     name_jap: "アーボック",
     region: "Kanto",
@@ -443,7 +443,7 @@ export default {
     psuedoLegendary: false
   },
   "025": {
-    number: "025",
+    nationalNumber: "025",
     name_eng: "Pikachu",
     name_jap: "ピカチュウ",
     region: "Kanto",
@@ -459,7 +459,7 @@ export default {
     psuedoLegendary: false
   },
   "026": {
-    number: "026",
+    nationalNumber: "026",
     name_eng: "Raichu",
     name_jap: "ピカチュウ",
     region: "Kanto",
@@ -484,7 +484,7 @@ export default {
     psuedoLegendary: false
   },
   "027": {
-    number: "027",
+    nationalNumber: "027",
     name_eng: "Sandshrew",
     name_jap: "サンド",
     region: "Kanto",
@@ -509,7 +509,7 @@ export default {
     psuedoLegendary: false
   },
   "028": {
-    number: "028",
+    nationalNumber: "028",
     name_eng: "Sandslash",
     name_jap: "サンドパン",
     region: "Kanto",
@@ -534,7 +534,7 @@ export default {
     psuedoLegendary: false
   },
   "029": {
-    number: "029",
+    nationalNumber: "029",
     name_eng: "Nidoran♀",
     name_jap: "ニドラン♀",
     region: "Kanto",
@@ -550,7 +550,7 @@ export default {
     psuedoLegendary: false
   },
   "030": {
-    number: "030",
+    nationalNumber: "030",
     name_eng: "Nidorina",
     name_jap: "ニドリーナ",
     region: "Kanto",
@@ -566,7 +566,7 @@ export default {
     psuedoLegendary: false
   },
   "031": {
-    number: "031",
+    nationalNumber: "031",
     name_eng: "Nidoqueen",
     name_jap: "ニドクイン",
     region: "Kanto",
@@ -582,7 +582,7 @@ export default {
     psuedoLegendary: false
   },
   "032": {
-    number: "032",
+    nationalNumber: "032",
     name_eng: "Nidoran♂",
     name_jap: "ニドラン♂",
     region: "Kanto",
@@ -598,7 +598,7 @@ export default {
     psuedoLegendary: false
   },
   "033": {
-    number: "033",
+    nationalNumber: "033",
     name_eng: "Nidorino",
     name_jap: "ニドリーノ",
     region: "Kanto",
@@ -614,7 +614,7 @@ export default {
     psuedoLegendary: false
   },
   "034": {
-    number: "034",
+    nationalNumber: "034",
     name_eng: "Nidoking",
     name_jap: "ニドキング",
     region: "Kanto",
@@ -630,7 +630,7 @@ export default {
     psuedoLegendary: false
   },
   "035": {
-    number: "035",
+    nationalNumber: "035",
     name_eng: "Clefairy",
     name_jap: "ピッピ",
     region: "Kanto",
@@ -646,7 +646,7 @@ export default {
     psuedoLegendary: false
   },
   "036": {
-    number: "036",
+    nationalNumber: "036",
     name_eng: "Clefable",
     name_jap: "ピクシー",
     region: "Kanto",
@@ -662,7 +662,7 @@ export default {
     psuedoLegendary: false
   },
   "037": {
-    number: "037",
+    nationalNumber: "037",
     name_eng: "Vulpix",
     name_jap: "ロコン",
     region: "Kanto",
@@ -687,7 +687,7 @@ export default {
     psuedoLegendary: false
   },
   "038": {
-    number: "038",
+    nationalNumber: "038",
     name_eng: "Ninetales",
     name_jap: "キュウコン",
     region: "Kanto",
@@ -712,7 +712,7 @@ export default {
     psuedoLegendary: false
   },
   "039": {
-    number: "039",
+    nationalNumber: "039",
     name_eng: "Jigglypuff",
     name_jap: "プリン",
     region: "Kanto",
@@ -728,7 +728,7 @@ export default {
     psuedoLegendary: false
   },
   "040": {
-    number: "040",
+    nationalNumber: "040",
     name_eng: "Wigglytuff",
     name_jap: "プクリン",
     region: "Kanto",
@@ -744,7 +744,7 @@ export default {
     psuedoLegendary: false
   },
   "041": {
-    number: "041",
+    nationalNumber: "041",
     name_eng: "Zubat",
     name_jap: "ズバット",
     region: "Kanto",
@@ -760,7 +760,7 @@ export default {
     psuedoLegendary: false
   },
   "042": {
-    number: "042",
+    nationalNumber: "042",
     name_eng: "Golbat",
     name_jap: "ゴルバット",
     region: "Kanto",
@@ -776,7 +776,7 @@ export default {
     psuedoLegendary: false
   },
   "043": {
-    number: "043",
+    nationalNumber: "043",
     name_eng: "Oddish",
     name_jap: "ナゾノクサ",
     region: "Kanto",
@@ -792,7 +792,7 @@ export default {
     psuedoLegendary: false
   },
   "044": {
-    number: "044",
+    nationalNumber: "044",
     name_eng: "Gloom",
     name_jap: "クサイハナ",
     region: "Kanto",
@@ -808,7 +808,7 @@ export default {
     psuedoLegendary: false
   },
   "045": {
-    number: "045",
+    nationalNumber: "045",
     name_eng: "Vileplume",
     name_jap: "ラフレシア",
     region: "Kanto",
@@ -824,7 +824,7 @@ export default {
     psuedoLegendary: false
   },
   "046": {
-    number: "046",
+    nationalNumber: "046",
     name_eng: "Paras",
     name_jap: "パラス",
     region: "Kanto",
@@ -840,7 +840,7 @@ export default {
     psuedoLegendary: false
   },
   "047": {
-    number: "047",
+    nationalNumber: "047",
     name_eng: "Parasect",
     name_jap: "パラセクト",
     region: "Kanto",
@@ -856,7 +856,7 @@ export default {
     psuedoLegendary: false
   },
   "048": {
-    number: "048",
+    nationalNumber: "048",
     name_eng: "Venonat",
     name_jap: "コンパン",
     region: "Kanto",
@@ -872,7 +872,7 @@ export default {
     psuedoLegendary: false
   },
   "049": {
-    number: "049",
+    nationalNumber: "049",
     name_eng: "Venomoth",
     name_jap: "モルフォン",
     region: "Kanto",
@@ -888,7 +888,7 @@ export default {
     psuedoLegendary: false
   },
   "050": {
-    number: "050",
+    nationalNumber: "050",
     name_eng: "Diglett",
     name_jap: "ディグダ",
     region: "Kanto",
@@ -904,7 +904,7 @@ export default {
     psuedoLegendary: false
   },
   "051": {
-    number: "051",
+    nationalNumber: "051",
     name_eng: "Dugtrio",
     name_jap: "ダグトリオ",
     region: "Kanto",
@@ -929,7 +929,7 @@ export default {
     psuedoLegendary: false
   },
   "052": {
-    number: "052",
+    nationalNumber: "052",
     name_eng: "Meowth",
     name_jap: "ニャース",
     region: "Kanto",
@@ -954,7 +954,7 @@ export default {
     psuedoLegendary: false
   },
   "053": {
-    number: "053",
+    nationalNumber: "053",
     name_eng: "Persian",
     name_jap: "ペルシアン",
     region: "Kanto",
@@ -979,7 +979,7 @@ export default {
     psuedoLegendary: false
   },
   "054": {
-    number: "054",
+    nationalNumber: "054",
     name_eng: "Psyduck",
     name_jap: "コダック",
     region: "Kanto",
@@ -995,7 +995,7 @@ export default {
     psuedoLegendary: false
   },
   "055": {
-    number: "055",
+    nationalNumber: "055",
     name_eng: "Golduck",
     name_jap: "コダック",
     region: "Kanto",
@@ -1011,7 +1011,7 @@ export default {
     psuedoLegendary: false
   },
   "056": {
-    number: "056",
+    nationalNumber: "056",
     name_eng: "Mankey",
     name_jap: "マンキー",
     region: "Kanto",
@@ -1027,7 +1027,7 @@ export default {
     psuedoLegendary: false
   },
   "057": {
-    number: "057",
+    nationalNumber: "057",
     name_eng: "Primeape",
     name_jap: "オコリザル",
     region: "Kanto",
@@ -1043,7 +1043,7 @@ export default {
     psuedoLegendary: false
   },
   "058": {
-    number: "058",
+    nationalNumber: "058",
     name_eng: "Growlithe",
     name_jap: "ガーディ",
     region: "Kanto",
@@ -1059,7 +1059,7 @@ export default {
     psuedoLegendary: false
   },
   "059": {
-    number: "059",
+    nationalNumber: "059",
     name_eng: "Arcanine",
     name_jap: "ウインディ",
     region: "Kanto",
@@ -1075,7 +1075,7 @@ export default {
     psuedoLegendary: false
   },
   "060": {
-    number: "060",
+    nationalNumber: "060",
     name_eng: "Poliwag",
     name_jap: "ニョロモ",
     region: "Kanto",
@@ -1091,7 +1091,7 @@ export default {
     psuedoLegendary: false
   },
   "061": {
-    number: "061",
+    nationalNumber: "061",
     name_eng: "Poliwhirl",
     name_jap: "ニョロゾ",
     region: "Kanto",
@@ -1107,7 +1107,7 @@ export default {
     psuedoLegendary: false
   },
   "062": {
-    number: "062",
+    nationalNumber: "062",
     name_eng: "Poliwrath",
     name_jap: "ニョロボン",
     region: "Kanto",
@@ -1123,7 +1123,7 @@ export default {
     psuedoLegendary: false
   },
   "063": {
-    number: "063",
+    nationalNumber: "063",
     name_eng: "Abra",
     name_jap: "ケーシィ",
     region: "Kanto",
@@ -1139,7 +1139,7 @@ export default {
     psuedoLegendary: false
   },
   "064": {
-    number: "064",
+    nationalNumber: "064",
     name_eng: "Kadabra",
     name_jap: "ユンゲラー",
     region: "Kanto",
@@ -1155,7 +1155,7 @@ export default {
     psuedoLegendary: false
   },
   "065": {
-    number: "065",
+    nationalNumber: "065",
     name_eng: "Alakazam",
     name_jap: "フーディン",
     region: "Kanto",
@@ -1178,7 +1178,7 @@ export default {
     psuedoLegendary: false
   },
   "066": {
-    number: "066",
+    nationalNumber: "066",
     name_eng: "Machop",
     name_jap: "ワンリキー",
     region: "Kanto",
@@ -1194,7 +1194,7 @@ export default {
     psuedoLegendary: false
   },
   "067": {
-    number: "067",
+    nationalNumber: "067",
     name_eng: "Machoke",
     name_jap: "ゴーリキー",
     region: "Kanto",
@@ -1210,7 +1210,7 @@ export default {
     psuedoLegendary: false
   },
   "068": {
-    number: "068",
+    nationalNumber: "068",
     name_eng: "Machamp",
     name_jap: "カイリキー",
     region: "Kanto",
@@ -1226,7 +1226,7 @@ export default {
     psuedoLegendary: false
   },
   "069": {
-    number: "069",
+    nationalNumber: "069",
     name_eng: "Bellsprout",
     name_jap: "マダツボミ",
     region: "Kanto",
@@ -1242,7 +1242,7 @@ export default {
     psuedoLegendary: false
   },
   "070": {
-    number: "070",
+    nationalNumber: "070",
     name_eng: "Weepinbell",
     name_jap: "ウツドン",
     region: "Kanto",
@@ -1258,7 +1258,7 @@ export default {
     psuedoLegendary: false
   },
   "071": {
-    number: "071",
+    nationalNumber: "071",
     name_eng: "Victreebel",
     name_jap: "ウツボット",
     region: "Kanto",
@@ -1274,7 +1274,7 @@ export default {
     psuedoLegendary: false
   },
   "072": {
-    number: "072",
+    nationalNumber: "072",
     name_eng: "Tentacool",
     name_jap: "メノクラゲ",
     region: "Kanto",
@@ -1290,7 +1290,7 @@ export default {
     psuedoLegendary: false
   },
   "073": {
-    number: "073",
+    nationalNumber: "073",
     name_eng: "Tentacruel",
     name_jap: "ドククラゲ",
     region: "Kanto",
@@ -1306,7 +1306,7 @@ export default {
     psuedoLegendary: false
   },
   "074": {
-    number: "074",
+    nationalNumber: "074",
     name_eng: "Geodude",
     name_jap: "イシツブテ",
     region: "Kanto",
@@ -1331,7 +1331,7 @@ export default {
     psuedoLegendary: false
   },
   "075": {
-    number: "075",
+    nationalNumber: "075",
     name_eng: "Graveler",
     name_jap: "ゴローン",
     region: "Kanto",
@@ -1356,7 +1356,7 @@ export default {
     psuedoLegendary: false
   },
   "076": {
-    number: "076",
+    nationalNumber: "076",
     name_eng: "Golem",
     name_jap: "ゴローニャ",
     region: "Kanto",
@@ -1381,7 +1381,7 @@ export default {
     psuedoLegendary: false
   },
   "077": {
-    number: "077",
+    nationalNumber: "077",
     name_eng: "Ponyta",
     name_jap: "ポニータ",
     region: "Kanto",
@@ -1397,7 +1397,7 @@ export default {
     psuedoLegendary: false
   },
   "078": {
-    number: "078",
+    nationalNumber: "078",
     name_eng: "Rapidash",
     name_jap: "ギャロップ",
     region: "Kanto",
@@ -1413,7 +1413,7 @@ export default {
     psuedoLegendary: false
   },
   "079": {
-    number: "079",
+    nationalNumber: "079",
     name_eng: "Slowpoke",
     name_jap: "ヤドン",
     region: "Kanto",
@@ -1429,7 +1429,7 @@ export default {
     psuedoLegendary: false
   },
   "080": {
-    number: "080",
+    nationalNumber: "080",
     name_eng: "Slowbro",
     name_jap: "ヤドラン",
     region: "Kanto",
@@ -1452,7 +1452,7 @@ export default {
     psuedoLegendary: false
   },
   "081": {
-    number: "081",
+    nationalNumber: "081",
     name_eng: "Magnemite",
     name_jap: "コイル",
     region: "Kanto",
@@ -1468,7 +1468,7 @@ export default {
     psuedoLegendary: false
   },
   "082": {
-    number: "082",
+    nationalNumber: "082",
     name_eng: "Magneton",
     name_jap: "レアコイル",
     region: "Kanto",
@@ -1484,7 +1484,7 @@ export default {
     psuedoLegendary: false
   },
   "083": {
-    number: "083",
+    nationalNumber: "083",
     name_eng: "Farfetch'd",
     name_jap: "カモネギ",
     region: "Kanto",
@@ -1500,7 +1500,7 @@ export default {
     psuedoLegendary: false
   },
   "084": {
-    number: "084",
+    nationalNumber: "084",
     name_eng: "Doduo",
     name_jap: "ドードー",
     region: "Kanto",
@@ -1516,7 +1516,7 @@ export default {
     psuedoLegendary: false
   },
   "085": {
-    number: "085",
+    nationalNumber: "085",
     name_eng: "Dodrio",
     name_jap: "ドードリオ",
     region: "Kanto",
@@ -1530,85 +1530,676 @@ export default {
     legendary: false,
     mythic: false,
     psuedoLegendary: false
+  },
+  "086": {
+    nationalNumber: "086",
+    name_eng: "Seel",
+    name_jap: "パウワウ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "087": {
+    nationalNumber: "087",
+    name_eng: "Dewgong",
+    name_jap: "ジュゴン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Ice",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "088": {
+    nationalNumber: "088",
+    name_eng: "Grimer",
+    name_jap: "ベトベター",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Grimer",
+        spriteExtension: "-alola",
+        type1: "Poison",
+        type2: "Dark"
+      }
+    ],
+    type1: "Poison",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "089": {
+    nationalNumber: "089",
+    name_eng: "Muk",
+    name_jap: "ベトベトン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Muk",
+        spriteExtension: "-alola",
+        type1: "Poison",
+        type2: "Dark"
+      }
+    ],
+    type1: "Poison",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "090": {
+    nationalNumber: "090",
+    name_eng: "Shellder",
+    name_jap: "シェルダー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "091": {
+    nationalNumber: "091",
+    name_eng: "Cloyster",
+    name_jap: "パルシェン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Ice",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "092": {
+    nationalNumber: "092",
+    name_eng: "Gastly",
+    name_jap: "ゴース",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ghost",
+    type2: "Poison",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "093": {
+    nationalNumber: "093",
+    name_eng: "Haunter",
+    name_jap: "ゴースト",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ghost",
+    type2: "Poison",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "094": {
+    nationalNumber: "094",
+    name_eng: "Gengar",
+    name_jap: "ゲンガー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        name_eng: "Mega Gengar",
+        spriteExtension: "-mega",
+        type1: "Ghost",
+        type2: "Poison"
+      }
+    ],
+    type1: "Ghost",
+    type2: "Poison",
+    stage: 3,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "095": {
+    nationalNumber: "095",
+    name_eng: "Onix",
+    name_jap: "イワーク",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Rock",
+    type2: "Ground",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "096": {
+    nationalNumber: "096",
+    name_eng: "Drowzee",
+    name_jap: "スリープ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Psychic",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "097": {
+    nationalNumber: "097",
+    name_eng: "Hypno",
+    name_jap: "スリーパー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Psychic",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "098": {
+    nationalNumber: "098",
+    name_eng: "Krabby",
+    name_jap: "クラブ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "099": {
+    nationalNumber: "099",
+    name_eng: "Kingler",
+    name_jap: "キングラー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "100": {
+    nationalNumber: "100",
+    name_eng: "Voltorb",
+    name_jap: "ビリリダマ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Electric",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "101": {
+    nationalNumber: "101",
+    name_eng: "Electrode",
+    name_jap: "マルマイン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Electric",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "102": {
+    nationalNumber: "102",
+    name_eng: "Exeggcute",
+    name_jap: "タマタマ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: "Psychic",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "103": {
+    nationalNumber: "103",
+    name_eng: "Exeggutor",
+    name_jap: "ナッシー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Exeggutor",
+        spriteExtension: "-alola",
+        type1: "Grass",
+        type2: "Dragon"
+      }
+    ],
+    type1: "Grass",
+    type2: "Psychic",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "104": {
+    nationalNumber: "104",
+    name_eng: "Cubone",
+    name_jap: "カラカラ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ground",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "105": {
+    nationalNumber: "105",
+    name_eng: "Marowak",
+    name_jap: "ガラガラ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Alola",
+        generation: 7,
+        name_eng: "Alolan Marowak",
+        spriteExtension: "-alola",
+        type1: "Fire",
+        type2: "Ghost"
+      }
+    ],
+    type1: "Ground",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "106": {
+    nationalNumber: "106",
+    name_eng: "Hitmonlee",
+    name_jap: "サワムラー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 1,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "107": {
+    nationalNumber: "107",
+    name_eng: "Hitmonchan",
+    name_jap: "エビワラー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Fighting",
+    type2: null,
+    stage: 1,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "108": {
+    nationalNumber: "108",
+    name_eng: "Lickitung",
+    name_jap: "ベロリンガ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Normal",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "109": {
+    nationalNumber: "109",
+    name_eng: "Koffing",
+    name_jap: "ドガース",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Poison",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "110": {
+    nationalNumber: "110",
+    name_eng: "Weezing",
+    name_jap: "マタドガス",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        region: "Galar",
+        generation: 8,
+        name_eng: "Galarian Weezing",
+        spriteExtension: "-galar",
+        type1: "Poison",
+        type2: "Fairy"
+      }
+    ],
+    type1: "Poison",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "111": {
+    nationalNumber: "111",
+    name_eng: "Rhyhorn",
+    name_jap: "サイホーン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ground",
+    type2: "Rock",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "112": {
+    nationalNumber: "112",
+    name_eng: "Rhydon",
+    name_jap: "サイドン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Ground",
+    type2: "Rock",
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "113": {
+    nationalNumber: "113",
+    name_eng: "Chansey",
+    name_jap: "ラッキー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Normal",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "114": {
+    nationalNumber: "114",
+    name_eng: "Tangela",
+    name_jap: "モンジャラ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Grass",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "115": {
+    nationalNumber: "115",
+    name_eng: "Kangaskhan",
+    name_jap: "ガルーラ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [
+      {
+        name_eng: "Mega Kangaskhan",
+        spriteExtension: "-mega",
+        type1: "Normal",
+        type2: null
+      }
+    ],
+    type1: "Normal",
+    type2: null,
+    stage: 1,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "116": {
+    nationalNumber: "116",
+    name_eng: "Horsea",
+    name_jap: "タッツー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "117": {
+    nationalNumber: "117",
+    name_eng: "Seadra",
+    name_jap: "シードラ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 2,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "118": {
+    nationalNumber: "118",
+    name_eng: "Goldeen",
+    name_jap: "トサキント",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "119": {
+    nationalNumber: "119",
+    name_eng: "Seaking",
+    name_jap: "アズマオウ",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "120": {
+    nationalNumber: "120",
+    name_eng: "Staryu",
+    name_jap: "ヒトデマン",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: null,
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "121": {
+    nationalNumber: "121",
+    name_eng: "Starmie",
+    name_jap: "スターミー",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Water",
+    type2: "Psychic",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "122": {
+    nationalNumber: "122",
+    name_eng: "Mr. Mime",
+    name_jap: "バリヤード",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Psychic",
+    type2: "Fairy",
+    stage: 2,
+    fullyEvolved: true,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
+  },
+  "123": {
+    nationalNumber: "123",
+    name_eng: "Scyther",
+    name_jap: "ストライク",
+    region: "Kanto",
+    generation: 1,
+    shinyLocked: false,
+    variations: [],
+    type1: "Bug",
+    type2: "Flying",
+    stage: 1,
+    fullyEvolved: false,
+    legendary: false,
+    mythic: false,
+    psuedoLegendary: false
   }
 };
 
-// 086	Seel	パウワウ
-// (Pawou)	178	258	–		–	–
-// 087	Dewgong	ジュゴン
-// (Jugon)	179	259	–		–	–
-// 088	Grimer	ベトベター
-// (Betbeter)	117	106	–		–	050
-// 089	Muk	ベトベトン
-// (Betbeton)	118	107	–		–	051
-// 090	Shellder	シェルダー
-// (Shellder)	171	260	–		036Coa	115
-// 091	Cloyster	パルシェン
-// (Parshen)	172	261	–		037Coa	116
-// 092	Gastly	ゴース
-// (Ghos)	058	262	069		030Mtn	061
-// 093	Haunter	ゴースト
-// (Ghost)	059	263	070		031Mtn	062
-// 094	Gengar	ゲンガー
-// (Gangar)	060	264	071		032Mtn	063
-// 095	Onix	イワーク
-// (Iwark)	062	265	034		053Coa	–
-// 096	Drowzee	スリープ
-// (Sleep)	087	266	–		–	054
-// 097	Hypno	スリーパー
-// (Sleeper)	088	267	–		–	055
-// 098	Krabby	クラブ
-// (Crab)	166	268	–		–	–
-// 099	Kingler	キングラー
-// (Kingler)	167	269	–		–	–
-// 100	Voltorb	ビリリダマ
-// ( Biriridama)	121	084	–		072Mtn	–
-// 101	Electrode	マルマイン
-// (Marumine)	122	085	–		073Mtn	–
-// 102	Exeggcute	タマタマ
-// (Tamatama)	105	270	–		136Coa	269
-// 103	Exeggutor	ナッシー
-// (Nassy)	106	271	–		137Coa	270
-// 104	Cubone	カラカラ
-// (Karakara)	208	272	–		060Coa	163
-// 105	Marowak	ガラガラ
-// (Garagara)	209	273	–		061Coa	164
-// 106	Hitmonlee	サワムラー
-// (Sawamular)	146	274	–		–	–
-// 107	Hitmonchan	エビワラー
-// (Ebiwalar)	147	275	–		–	–
-// 108	Lickitung	ベロリンガ
-// (Beroringa)	180	276	161		134Mtn	–
-// 109	Koffing	ドガース
-// (Dogars)	115	108	–		–	–
-// 110	Weezing	マタドガス
-// (Matadogas)	116	109	–		–	–
-// 111	Rhyhorn	サイホーン
-// (Sihorn)	211	169	186		050Coa	–
-// 112	Rhydon	サイドン
-// (Sidon)	212	170	187		051Coa	–
-// 113	Chansey	ラッキー
-// (Lucky)	222	277	097		–	033
-// 114	Tangela	モンジャラ
-// (Monjara)	182	278	181		–	–
-// 115	Kangaskhan	ガルーラ
-// (Garura)	210	279	–		062Coa	165
-// 116	Horsea	タッツー
-// (Tattu)	190	184	–		039Coa	–
-// 117	Seadra	シードラ
-// (Seadra)	191	185	–		040Coa	–
-// 118	Goldeen	トサキント
-// (Tosakinto)	078	050	078		053Cen	153
-// 119	Seaking	アズマオウ
-// (Azumao)	079	051	079		054Cen	154
-// 120	Staryu	ヒトデマン
-// (Hitodeman)	169	143	–		034Coa	184
-// 121	Starmie	スターミー
-// (Starmie)	170	144	–		035Coa	185
-// 122	Mr. Mime	バリヤード
-// (Barrierd)	158	280	095		114Coa	–
-// 123	Scyther	ストライク
-// (Strike)	111	281	195		136Mtn	275
 // 124	Jynx	ルージュラ
 // (Rougela)	155	282	–		084Mtn	–
 // 125	Electabuzz	エレブー

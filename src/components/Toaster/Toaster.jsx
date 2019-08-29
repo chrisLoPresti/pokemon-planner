@@ -15,7 +15,7 @@ const notify = message => {
   }
 
   const id = toast.error(message, {
-    autoClose: 2500,
+    autoClose: 3000,
     onClose: () => (toastId = null),
     onOpen: () => {
       if (toastIdToDismiss !== null) {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Grid } from "@material-ui/core";
 import DexPokemon from "../DexPokemon";
 import Filters from "./Filters";
 import Toaster from "../Toaster";
@@ -55,11 +54,11 @@ class SelectPokemon extends Component {
       }
 
       const duplicate = selectedPokemon.find(
-        pokemon => pokemon.number === value.number
+        pokemon => pokemon.nationalNumber === value.nationalNumber
       );
       if (duplicate) {
         error =
-          "You can not have more than one pokemon with the same dex number.";
+          "You can not have more than one pokemon with the same national dex number.";
       }
       if (selectedPokemon.length === 6) {
         error = "You can only have six pokemon per team.";

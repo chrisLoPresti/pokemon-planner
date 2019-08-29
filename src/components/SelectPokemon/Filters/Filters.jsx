@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Switch, withStyles } from "@material-ui/core";
+import { Grid, Input, Switch, withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 import pokemonTypes from "../../../assets/types";
 import classNames from "classnames";
@@ -25,28 +25,26 @@ const Filters = ({
   types
 }) => {
   return (
-    <div className="filters-container filters-grid-flex">
-      <div className="filter-content">
+    <Grid container className="filters-container">
+      <Grid xs={1} className="filter-content">
         <p className="filter-title">Names</p>
         <Switch
           className="switch"
           checked={showNames}
           onChange={() => onChange("showNames", !showNames)}
-          value="checkedA"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
-      </div>
-      <div className="filter-content">
+      </Grid>
+      <Grid xs={1} className="filter-content">
         <p className="filter-title">Numbers</p>
         <Switch
           className="switch"
           checked={showNumbers}
           onChange={() => onChange("showNumbers", !showNumbers)}
-          value="checkedA"
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
-      </div>
-      <div className="search-bar-container">
+      </Grid>
+      <Grid xs={12} sm={8}>
         <p className="filter-title">Search</p>
         <Input
           value={search}
@@ -59,6 +57,8 @@ const Filters = ({
           }}
           inputProps={{ "aria-label": "search" }}
         />
+      </Grid>
+      {/* <Grid className="search-bar-container">
         {pokemonTypes.map(type => (
           <img
             key={type}
@@ -70,8 +70,8 @@ const Filters = ({
             src={require(`../../../assets/images/symbols/${type.toLowerCase()}.png`)}
           />
         ))}
-      </div>
-    </div>
+      </Grid> */}
+    </Grid>
   );
 };
 
