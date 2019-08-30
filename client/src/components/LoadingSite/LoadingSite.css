@@ -1,0 +1,15 @@
+.image {
+  height: 100px;
+  margin-top: 30vh;
+}
+
+.loading-message {
+  font-family: "Pokemon Solid";
+}
+
+.loading-container {
+  background: #212121;
+  height: 100vh;
+  color: ghostwhite;
+  text-align: center;
+}

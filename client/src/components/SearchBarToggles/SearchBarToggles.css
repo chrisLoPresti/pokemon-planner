@@ -1,0 +1,27 @@
+.toggles-container {
+  position: fixed;
+  z-index: 999;
+  background-color: #5d5d5d;
+  border-bottom: 1px solid #64c4ed;
+  width: 100%;
+  padding: 10px 20px;
+}
+.toggle-title {
+  color: ghostwhite;
+}
+
+@media screen and (max-width: 600px) {
+  .toggle-content {
+    display: none;
+  }
+}
+.search-bar {
+  margin: 2px 0;
+  background-color: transparent;
+  color: ghostwhite;
+  width: 100%;
+}
+
+.search-bar::placeholder {
+  color: ghostwhite;
+}
