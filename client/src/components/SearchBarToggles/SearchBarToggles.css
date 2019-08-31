@@ -3,10 +3,20 @@
   z-index: 999;
   background-color: #5d5d5d;
   border-bottom: 1px solid #64c4ed;
-  width: 100%;
-  padding: 10px 20px;
+  margin-top: -5px;
+  padding: 10px;
 }
 .toggle-title {
+  color: ghostwhite;
+}
+
+.toggle-content {
+  margin: 0 10px;
+  color: ghostwhite;
+}
+
+.margin-container {
+  margin: 0 10px;
   color: ghostwhite;
 }
 
@@ -16,12 +26,17 @@
   }
 }
 .search-bar {
-  margin: 2px 0;
+  margin: 2px;
   background-color: transparent;
   color: ghostwhite;
-  width: 100%;
+  width: 75%;
 }
 
 .search-bar::placeholder {
   color: ghostwhite;
+}
+
+.total-results {
+  font-size: 12px;
+  font-style: italic;
 }

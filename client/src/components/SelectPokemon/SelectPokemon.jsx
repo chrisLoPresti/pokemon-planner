@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonList from "../PokemonList";
 import PropTypes from "prop-types";
 import SearchBarToggles from "../../containers/SearchBarTogglesContainer";
@@ -16,6 +16,7 @@ const SelectPokemon = ({
   showNames,
   showNumbers,
   search,
+  filtersError,
   // addPokemonToDb,
   loadPokemonListRequest,
   updateSelectedPokemon,
@@ -77,11 +78,17 @@ const SelectPokemon = ({
     }, 3000);
   };
 
+  const [resultsTotal, setResultsTotal] = useState(filteredPokemon.length);
+
   return !allPokemon.length && loadingPokemon ? (
     <LoadingSite />
   ) : (
     <div id="select-pokemon-container">
-      <SearchBarToggles showNames={showNames} showNumbers={showNumbers} />
+      <SearchBarToggles
+        totalResults={resultsTotal}
+        showNames={showNames}
+        showNumbers={showNumbers}
+      />
       <PokemonList
         search={search}
         showNames={showNames}
@@ -90,8 +97,12 @@ const SelectPokemon = ({
         setSelectedPokemon={setSelectedTeam}
         filteredPokemon={filteredPokemon}
         selectedTeam={selectedTeam}
+        setResultsTotal={setResultsTotal}
       />
-      <Toaster shouldNotify={pokemonListError} message={pokemonListError} />
+      <Toaster
+        shouldNotify={pokemonListError || filtersError}
+        message={pokemonListError || filtersError}
+      />
     </div>
   );
 };

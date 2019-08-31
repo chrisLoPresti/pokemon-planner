@@ -4,47 +4,47 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import "./PokemonList.css";
 
-const initialPokemon = addPokemonToDb => {
-  let pokemonArray = [];
+// const initialPokemon = addPokemonToDb => {
+//   let pokemonArray = [];
 
-  Object.keys(PokemonData).forEach(number => {
-    const pokemon = PokemonData[number];
-    pokemonArray.push(pokemon);
-    pokemon.variations.map(variation =>
-      pokemonArray.push({
-        ...pokemon,
-        // variations: [
-        //   ...pokemon.variations.filter(
-        //     pokemon => pokemon.name_eng !== variation.name_eng
-        //   ),
-        //   {
-        //     generation: pokemon.generation,
-        //     name_eng: pokemon.name_eng,
-        //     region: pokemon.region,
-        //     spriteExtension: pokemon.spriteExtension || "",
-        //     type1: pokemon.type1,
-        //     type2: pokemon.type2
-        //   }
-        // ],
-        ...variation
-      })
-    );
-  });
+//   Object.keys(PokemonData).forEach(number => {
+//     const pokemon = PokemonData[number];
+//     pokemonArray.push(pokemon);
+//     pokemon.variations.map(variation =>
+//       pokemonArray.push({
+//         ...pokemon,
+//         // variations: [
+//         //   ...pokemon.variations.filter(
+//         //     pokemon => pokemon.name_eng !== variation.name_eng
+//         //   ),
+//         //   {
+//         //     generation: pokemon.generation,
+//         //     name_eng: pokemon.name_eng,
+//         //     region: pokemon.region,
+//         //     spriteExtension: pokemon.spriteExtension || "",
+//         //     type1: pokemon.type1,
+//         //     type2: pokemon.type2
+//         //   }
+//         // ],
+//         ...variation
+//       })
+//     );
+//   });
 
-  // pokemonArray
-  //   .sort(
-  //     (pokemon1, pokemon2) =>
-  //       +pokemon1.nationalNumber - +pokemon2.nationalNumber
-  //   )
-  //   .forEach(pokemon => {
-  //     const { variations, ...rest } = pokemon;
-  //     addPokemonToDb(rest);
-  //   });
+//   // pokemonArray
+//   //   .sort(
+//   //     (pokemon1, pokemon2) =>
+//   //       +pokemon1.nationalNumber - +pokemon2.nationalNumber
+//   //   )
+//   //   .forEach(pokemon => {
+//   //     const { variations, ...rest } = pokemon;
+//   //     addPokemonToDb(rest);
+//   //   });
 
-  return pokemonArray.sort(
-    (pokemon1, pokemon2) => +pokemon1.nationalNumber - +pokemon2.nationalNumber
-  );
-};
+//   return pokemonArray.sort(
+//     (pokemon1, pokemon2) => +pokemon1.nationalNumber - +pokemon2.nationalNumber
+//   );
+// };
 
 const filterByTypes = (filteredPokemon, types) => {
   if (!types.length) {
@@ -125,27 +125,34 @@ const generateBubble = (
   );
 };
 
+const filterList = (search, list, updateCount) => {
+  const returnValue = search.trim().length
+    ? list.filter(
+        pokemon =>
+          pokemon.name_eng.toLowerCase().indexOf(search.trim().toLowerCase()) >=
+          0
+      )
+    : list;
+
+  updateCount(returnValue.length);
+  return returnValue;
+};
+
 const PokemonList = ({
   showNames,
   showNumbers,
   selectedTeam,
   setSelectedPokemon,
   // addPokemonToDb,
+  setResultsTotal,
   selectedPokemon,
   filteredPokemon,
   search
 }) => {
-  const activeList = search.trim().length
-    ? filteredPokemon.filter(
-        pokemon =>
-          pokemon.name_eng.toLowerCase().indexOf(search.trim().toLowerCase()) >=
-          0
-      )
-    : filteredPokemon;
+  const activeList = filterList(search, filteredPokemon, setResultsTotal);
 
   return (
     <div id="dex-pokemon-container">
-      <p className="total-results">Total Results: {activeList.length}</p>
       <ul className="dex-pokemon-list">
         {activeList.map(pokemon =>
           generateBubble(
@@ -178,7 +185,8 @@ PokemonList.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
   selectedTeam: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  setSelectedPokemon: PropTypes.func.isRequired
+  setSelectedPokemon: PropTypes.func.isRequired,
+  setResultsTotal: PropTypes.func.isRequired
 };
 
 export default PokemonList;

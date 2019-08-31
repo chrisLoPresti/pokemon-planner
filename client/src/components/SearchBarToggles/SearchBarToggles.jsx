@@ -21,10 +21,14 @@ const SearchBarToggles = ({
   setShowNames,
   setShowNumbers,
   updateSearchCriteria,
+  totalResults,
   search
 }) => {
   return (
     <Grid container className="toggles-container">
+      <Grid xs={12} className="margin-container">
+        <p className="total-results">Total Results: {totalResults}</p>
+      </Grid>
       <Grid xs={1} className="toggle-content">
         <p className="toggle-title">Names</p>
         <Switch
@@ -43,7 +47,7 @@ const SearchBarToggles = ({
           inputProps={{ "aria-label": "secondary checkbox" }}
         />
       </Grid>
-      <Grid xs={12} sm={8}>
+      <Grid xs={12} sm={8} className="margin-container">
         <p className="toggle-title">Search</p>
         <Input
           value={search}

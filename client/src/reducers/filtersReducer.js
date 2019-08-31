@@ -15,7 +15,7 @@ const initialState = {
   showNames: false,
   showNumbers: true,
   showOnlyMegas: false,
-  filterByGenerations: [],
+  filterByRegions: [],
   filterByStages: [],
   filtersError: null
 };
@@ -54,7 +54,7 @@ const contentReducer = (state = initialState, action) => {
     case UPDATE_FILTER_BY_GENERATION: {
       return {
         ...state,
-        filterByGenerations: payload,
+        filterByRegions: payload,
         filtersError: null
       };
     }

@@ -9,7 +9,7 @@ import {
 } from "../../actions/pokemonListActions/pokemonListActions";
 
 const mapStateToProps = ({
-  filters: { showNames, showNumbers, search },
+  filters: { showNames, showNumbers, search, filtersError },
   pokemonList: {
     allPokemon,
     selectedPokemon,
@@ -27,7 +27,8 @@ const mapStateToProps = ({
   selectedTeam,
   filteredPokemon,
   pokemonListError,
-  loadingPokemon
+  loadingPokemon,
+  filtersError
 });
 
 const mapDispatchToProps = {

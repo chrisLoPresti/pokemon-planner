@@ -7,7 +7,7 @@ export const UPDATE_FILTER_BY_MEGAS = "UPDATE_FILTER_BY_MEGAS";
 export const UPDATE_FILTER_BY_GENERATION = "UPDATE_FILTER_BY_GENERATION";
 export const UPDATE_FILTER_BY_STAGE = "UPDATE_FILTER_BY_STAGE";
 export const UPDATE_FILTER_ERROR = "UPDATE_FILTER_ERROR";
-export const UPDATE_SEARCH_CRITERIA = "UPDATE_FILTER_ERROR";
+export const UPDATE_SEARCH_CRITERIA = "UPDATE_SEARCH_CRITERIA";
 
 export const setFilterError = error => dispatch => {
   dispatch({ type: UPDATE_FILTER_ERROR, payload: error });
@@ -29,7 +29,7 @@ export const setShowOnlyMegas = showOnlyMegas => dispatch => {
   dispatch({ type: UPDATE_FILTER_BY_MEGAS, payload: showOnlyMegas });
 };
 
-export const setGenerationFilter = generations => dispatch => {
+export const setRegionsFilter = generations => dispatch => {
   dispatch({ type: UPDATE_FILTER_BY_GENERATION, payload: generations });
 };
 
