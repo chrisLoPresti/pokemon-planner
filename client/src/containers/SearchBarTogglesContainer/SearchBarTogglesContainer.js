@@ -3,19 +3,26 @@ import SearchBarToggles from "../../components/SearchBarToggles";
 import {
   setShowNames,
   setShowNumbers,
-  updateSearchCriteria
+  updateSearchCriteria,
+  updateShinySprites
 } from "../../actions/filterActions/filterActions";
 
-const mapStateToProps = ({ filters: { showNames, showNumbers, search } }) => ({
+const mapStateToProps = ({
+  pokemon: { totalFilteredPokemon },
+  filters: { showNames, showNumbers, search, shiny }
+}) => ({
   showNames,
   showNumbers,
-  search
+  search,
+  totalFilteredPokemon,
+  shiny
 });
 
 const mapDispatchToProps = {
   setShowNames,
   setShowNumbers,
-  updateSearchCriteria
+  updateSearchCriteria,
+  updateShinySprites
 };
 
 export default connect(

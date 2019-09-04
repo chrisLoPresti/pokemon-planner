@@ -2,21 +2,27 @@ import {
   UPDATE_SELECTED_POKEMON,
   LOAD_POKEMON_SUCCESS,
   LOAD_POKEMON_FAILURE,
-  FILTER_POKEMON_SUCCESS,
   SET_POKEMON_LIST_LOADING,
   UPDATE_SELECTED_TEAM,
-  SET_POKEMON_LIST_ERROR
+  SET_POKEMON_LIST_ERROR,
+  SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
 
 const allPokemon = JSON.parse(localStorage.getItem("allPokemon")) || [];
 
 const initialState = {
-  allPokemon,
-  selectedPokemon: {},
-  filteredPokemon: allPokemon,
-  selectedTeam: [],
+  allPokemon: allPokemon,
+  selectedPokemon: {
+    count: 0
+  },
+  selectedTeam: {
+    count: 0,
+    hasMega: false
+  },
   pokemonListError: null,
-  loadingPokemon: false
+  loadingPokemon: false,
+  pokemonLoaded: allPokemon.length ? true : false,
+  totalFilteredPokemon: allPokemon.length ? allPokemon.length : 0
 };
 
 const contentReducer = (state = initialState, action) => {
@@ -40,8 +46,9 @@ const contentReducer = (state = initialState, action) => {
       localStorage.setItem("allPokemon", JSON.stringify(payload));
       return {
         ...state,
-        allPokemon: [...payload],
-        filteredPokemon: [...payload],
+        allPokemon: payload,
+        pokemonLoaded: true,
+
         pokemonListError: null,
         loadingPokemon: false
       };
@@ -53,14 +60,6 @@ const contentReducer = (state = initialState, action) => {
         pokemonListError: payload
       };
     }
-    case FILTER_POKEMON_SUCCESS: {
-      return {
-        ...state,
-        filteredPokemon: payload,
-        loadingPokemon: false,
-        pokemonListError: null
-      };
-    }
     case SET_POKEMON_LIST_LOADING: {
       return {
         ...state,
@@ -70,7 +69,13 @@ const contentReducer = (state = initialState, action) => {
     case UPDATE_SELECTED_TEAM: {
       return {
         ...state,
-        selectedTeam: [...payload]
+        selectedTeam: payload
+      };
+    }
+    case SET_FILTERED_POKEMON_TOTAL: {
+      return {
+        ...state,
+        totalFilteredPokemon: payload
       };
     }
     default: {

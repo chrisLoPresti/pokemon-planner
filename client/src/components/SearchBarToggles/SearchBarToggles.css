@@ -1,22 +1,9 @@
 .toggles-container {
-  position: fixed;
   z-index: 999;
   background-color: #5d5d5d;
   border-bottom: 1px solid #64c4ed;
   margin-top: -5px;
   padding: 10px;
-}
-.toggle-title {
-  color: ghostwhite;
-}
-
-.toggle-content {
-  margin: 0 10px;
-  color: ghostwhite;
-}
-
-.margin-container {
-  margin: 0 10px;
   color: ghostwhite;
 }
 

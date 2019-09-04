@@ -2,26 +2,32 @@ import { connect } from "react-redux";
 import Filters from "../../components/Filters";
 import {
   setFilterError,
-  setTypeFilters,
-  setShowOnlyMegas,
-  setRegionsFilter,
-  setStagesFilter,
-  filterPokemonList
+  updateFilterByTypes,
+  updateFilterByMegas,
+  updateFilterByRegions,
+  updateFilterByStages,
+  updateFilterByLegendary,
+  updateFilterByMythic,
+  updateFilterByPseudo
 } from "../../actions/filterActions/filterActions";
 
 const mapStateToProps = ({
   filters: {
     filterByTypes,
     showOnlyMegas,
+    showOnlyLegendary,
+    showOnlyMythic,
+    showOnlyPseudo,
     filterByRegions,
     filterByStages,
     filtersError
-  },
-  pokemonList: { allPokemon }
+  }
 }) => ({
-  allPokemon,
   filterByTypes,
   showOnlyMegas,
+  showOnlyLegendary,
+  showOnlyMythic,
+  showOnlyPseudo,
   filterByRegions,
   filterByStages,
   filtersError
@@ -29,11 +35,13 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
   setFilterError,
-  setTypeFilters,
-  setShowOnlyMegas,
-  setRegionsFilter,
-  setStagesFilter,
-  filterPokemonList
+  updateFilterByTypes,
+  updateFilterByMegas,
+  updateFilterByRegions,
+  updateFilterByStages,
+  updateFilterByLegendary,
+  updateFilterByMythic,
+  updateFilterByPseudo
 };
 
 export default connect(

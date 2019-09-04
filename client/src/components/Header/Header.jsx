@@ -8,7 +8,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 import home from "../../assets/images/home/home.png";
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -68,7 +68,7 @@ export default function Header({ open, setOpen }) {
           <MenuIcon />
         </IconButton>
         <img alt="home" className={classes.home} src={home} />
-        Pokémon Team Planner
+        {!open && <p>Pokémon Team Planner</p>}
       </Toolbar>
     </AppBar>
   );

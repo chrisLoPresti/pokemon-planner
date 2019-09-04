@@ -5,47 +5,41 @@ const PokemonSchema = new Schema({
   nationalNumber: {
     type: String
   },
-  name_eng: {
+  name: {
+    type: Object
+  },
+  sprite: {
     type: String
   },
-  name_jap: {
-    type: String
-  },
-  region: {
-    type: String
-  },
-  generation: {
-    type: Number
-  },
-  shinyLocked: {
+  isLegendary: {
     type: Boolean
   },
-  variations: {
-    type: Array
+  isMythic: {
+    type: Boolean
   },
-  type1: {
-    type: String
+  isMega: {
+    type: Boolean
   },
-  type2: {
-    type: String
-  },
-  stage: {
-    type: Number
+  isPseudo: {
+    type: Boolean
   },
   fullyEvolved: {
     type: Boolean
   },
-  legendary: {
-    type: Boolean
+  stage: {
+    type: Number
+  },
+  region: {
+    type: String
+  },
+  form: {
+    type: Array
   },
   mythic: {
     type: Boolean
   },
-  psuedoLegendary: {
-    type: Boolean
-  },
-  spriteExtension: {
-    type: String
+  type: {
+    type: Array
   }
 });
 

@@ -6,7 +6,11 @@ import {
   UPDATE_FILTER_BY_MEGAS,
   UPDATE_FILTER_BY_GENERATION,
   UPDATE_FILTER_BY_STAGE,
-  UPDATE_FILTER_ERROR
+  UPDATE_FILTER_BY_LEGENDARY,
+  UPDATE_FILTER_BY_MYTHIC,
+  UPDATE_FILTER_BY_PSEUDO,
+  UPDATE_FILTER_ERROR,
+  UPDATE_SHINY_SPRITES
 } from "../actions/filterActions/filterActions";
 
 const initialState = {
@@ -14,10 +18,14 @@ const initialState = {
   search: "",
   showNames: false,
   showNumbers: true,
+  showOnlyLegendary: false,
+  showOnlyMythic: false,
+  showOnlyPseudo: false,
   showOnlyMegas: false,
   filterByRegions: [],
   filterByStages: [],
-  filtersError: null
+  filtersError: null,
+  shiny: false
 };
 
 const contentReducer = (state = initialState, action) => {
@@ -27,6 +35,13 @@ const contentReducer = (state = initialState, action) => {
       return {
         ...state,
         filterByTypes: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_SHINY_SPRITES: {
+      return {
+        ...state,
+        shiny: payload,
         filtersError: null
       };
     }
@@ -48,6 +63,27 @@ const contentReducer = (state = initialState, action) => {
       return {
         ...state,
         showOnlyMegas: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_FILTER_BY_LEGENDARY: {
+      return {
+        ...state,
+        showOnlyLegendary: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_FILTER_BY_MYTHIC: {
+      return {
+        ...state,
+        showOnlyMythic: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_FILTER_BY_PSEUDO: {
+      return {
+        ...state,
+        showOnlyPseudo: payload,
         filtersError: null
       };
     }

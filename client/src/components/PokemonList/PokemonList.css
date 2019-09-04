@@ -1,5 +1,6 @@
 #dex-pokemon-container {
-  padding: 100px 20px 20px 20px;
+  padding: 20px;
+  height: 100vh;
 }
 
 .dex-pokemon-list {
@@ -12,11 +13,16 @@
   overflow: scroll;
   height: 100%;
   color: ghostwhite;
-  justify-content: center;
+}
+
+.Row {
+  display: flex;
+  text-align: center;
 }
 
 .dex-pokemon-list-item {
-  margin: 5px;
+  padding: 0 12px;
+  text-align: center;
 }
 
 .pokemon-bubble {
@@ -50,18 +56,8 @@
   vertical-align: middle;
 }
 
-.small {
-  width: 60px;
-}
-
 .large {
-  width: 180px;
-}
-
-@media screen and (max-width: 800px) {
-  .large {
-    width: 150px;
-  }
+  width: 150px;
 }
 
 .pokemon-number {
@@ -69,6 +65,8 @@
 }
 
 .name-eng {
+  color: ghostwhite;
+  line-height: 20px !important;
   font-weight: bold;
   line-height: 5px;
 }
@@ -280,4 +278,8 @@
 .no-results-image {
   margin: auto;
   height: 200px;
+}
+
+.name-container {
+  height: 100px;
 }

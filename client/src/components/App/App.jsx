@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import SelectPokemon from "../../containers/SelectPokemonContainer";
 import Filters from "../../containers/FiltersContainer";
 import Header from "../Header";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,10 +21,15 @@ export default function MiniDrawer() {
   return (
     <div className={classes.root}>
       <Header open={open} setOpen={setOpen} />
-      <Filters open={open} setOpen={setOpen} />
-      <main className={classes.content}>
-        <SelectPokemon />
-      </main>
+      <Router>
+        <Route
+          path={"/"}
+          render={props => <Filters {...props} open={open} setOpen={setOpen} />}
+        />
+        <main className={classes.content}>
+          <Route path={"/"} render={props => <SelectPokemon {...props} />} />
+        </main>
+      </Router>
     </div>
   );
 }

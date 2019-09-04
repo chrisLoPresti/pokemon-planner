@@ -1,43 +1,16 @@
 import { connect } from "react-redux";
 import SelectPokemon from "../../components/SelectPokemon";
-import {
-  addPokemonToDb,
-  loadPokemonListRequest,
-  updateSelectedPokemon,
-  setPokemonListError,
-  updateSelectedTeam
-} from "../../actions/pokemonListActions/pokemonListActions";
 
 const mapStateToProps = ({
-  filters: { showNames, showNumbers, search, filtersError },
-  pokemonList: {
-    allPokemon,
-    selectedPokemon,
-    filteredPokemon,
-    selectedTeam,
-    pokemonListError,
-    loadingPokemon
-  }
+  filters: { filtersError },
+  pokemon: { pokemonListError, loadingPokemon }
 }) => ({
-  search,
-  showNames,
-  showNumbers,
-  allPokemon,
-  selectedPokemon,
-  selectedTeam,
-  filteredPokemon,
   pokemonListError,
-  loadingPokemon,
-  filtersError
+  filtersError,
+  loadingPokemon
 });
 
-const mapDispatchToProps = {
-  addPokemonToDb,
-  loadPokemonListRequest,
-  updateSelectedTeam,
-  updateSelectedPokemon,
-  setPokemonListError
-};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,

@@ -61,8 +61,7 @@ export default () => next => action => {
     ({ data }) =>
       next(
         actionWith({
-          ...schema(data),
-          payload: data,
+          payload: schema(data),
           type: successType
         })
       ),

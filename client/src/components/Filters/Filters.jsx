@@ -1,5 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import classNames from "classnames";
+import queryString from "query-string";
 import {
   makeStyles,
   useTheme,
@@ -21,6 +23,10 @@ import typesIcon from "../../assets/images/misc/typesIcon.png";
 import region from "../../assets/images/misc/region.png";
 import megaSymbol from "../../assets/images/misc/megaSymbol.png";
 import evolution from "../../assets/images/misc/evolution.svg";
+import legendary from "../../assets/images/misc/legendary.svg";
+import mythic from "../../assets/images/misc/mythic.png";
+import pseudo from "../../assets/images/misc/pseudo.png";
+
 import types from "../../assets/types";
 
 const regions = [
@@ -60,7 +66,7 @@ const regions = [
 
 const stages = [1, 2, 3, "Fully Evolved"];
 
-const drawerWidth = 240;
+const drawerWidth = 260;
 
 const useStyles = makeStyles(theme => ({
   hide: {
@@ -69,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   icon: {
     color: "ghostWhite",
     height: 40,
-    padding: "10px 20px 10px 0",
+    padding: "5px 20px 5px 0",
     [theme.breakpoints.down("xs")]: {
       height: 30
     },
@@ -160,18 +166,22 @@ const useStyles = makeStyles(theme => ({
 const Filters = ({
   setOpen,
   open,
-  allPokemon,
   filterByTypes,
   showOnlyMegas,
   filterByRegions,
   filterByStages,
-  // filtersError,
   setFilterError,
-  setTypeFilters,
-  setShowOnlyMegas,
-  setRegionsFilter,
-  setStagesFilter,
-  filterPokemonList
+  updateFilterByTypes,
+  updateFilterByMegas,
+  updateFilterByRegions,
+  updateFilterByStages,
+  updateFilterByLegendary,
+  updateFilterByMythic,
+  updateFilterByPseudo,
+  showOnlyLegendary,
+  showOnlyMythic,
+  showOnlyPseudo,
+  history
 }) => {
   const classes = useStyles();
   const theme = useTheme();
@@ -191,18 +201,18 @@ const Filters = ({
   const updateRegionFilter = (e, region) => {
     e.stopPropagation();
     if (filterByRegions.includes(region)) {
-      setRegionsFilter(
+      updateFilterByRegions(
         filterByRegions.filter(includedRegion => includedRegion !== region)
       );
     } else {
-      setRegionsFilter([...filterByRegions, region]);
+      updateFilterByRegions([...filterByRegions, region]);
     }
   };
 
   const updateTypesFilter = (e, type) => {
     e.stopPropagation();
     if (filterByTypes.includes(type)) {
-      setTypeFilters(
+      updateFilterByTypes(
         filterByTypes.filter(includedType => includedType !== type)
       );
     } else {
@@ -210,64 +220,122 @@ const Filters = ({
         setFilterError("You can only filter by two types at a time.");
         return;
       }
-      setTypeFilters([...filterByTypes, type]);
+      updateFilterByTypes([...filterByTypes, type]);
     }
   };
 
   const updateShowOnlyMegas = (e, megasOnly) => {
     e.stopPropagation();
-    setShowOnlyMegas(megasOnly);
+    updateFilterByMegas(megasOnly);
+  };
+
+  const updateShowOnlyLegendary = (e, legendsOnly) => {
+    e.stopPropagation();
+    updateFilterByLegendary(legendsOnly);
+  };
+
+  const updateShowOnlyMythic = (e, mythicsOnly) => {
+    e.stopPropagation();
+    updateFilterByMythic(mythicsOnly);
+  };
+
+  const updateShowOnlyPseudo = (e, pseudosOnly) => {
+    e.stopPropagation();
+    updateFilterByPseudo(pseudosOnly);
   };
 
   const updateStageFilter = (e, stage) => {
     e.stopPropagation();
     if (filterByStages.includes(stage)) {
-      setStagesFilter(
+      updateFilterByStages(
         filterByStages.filter(includedStages => includedStages !== stage)
       );
     } else {
-      setStagesFilter([...filterByStages, stage]);
+      updateFilterByStages([...filterByStages, stage]);
     }
   };
 
-  const massFilter = () => {
-    const newlyFilteredPokemon = allPokemon.filter(pokemon => {
-      let validRegion = true;
-      let validTypes = true;
-      let validMega = true;
-      let validStage = true;
-      if (filterByRegions.length) {
-        validRegion = filterByRegions.includes(pokemon.region);
-      }
-      if (filterByTypes.length) {
-        let type1Confirmed = filterByTypes.includes(pokemon.type1);
-        let type2Confirmed = filterByTypes.includes(pokemon.type2);
-        if (filterByTypes.length === 1) {
-          validTypes = type1Confirmed || type2Confirmed;
-        } else {
-          validTypes = type1Confirmed && type2Confirmed;
-        }
-      }
+  const [openFilters, updateOpenFilters] = useState([]);
 
-      if (showOnlyMegas) {
-        validMega = pokemon.name_eng.indexOf("Mega") >= 0;
-      }
-
-      if (filterByStages.length) {
-        validStage =
-          filterByStages.includes(pokemon.stage) ||
-          (filterByStages.includes("Fully Evolved") && pokemon.fullyEvolved);
-      }
-      if (validRegion && validTypes && validMega && validStage) {
-        return pokemon;
-      }
-    });
-    filterPokemonList(newlyFilteredPokemon);
+  const setOpenFilters = filter => {
+    setOpen(true);
+    if (openFilters.includes(filter)) {
+      updateOpenFilters(
+        openFilters.filter(includedFilter => includedFilter !== filter)
+      );
+    } else {
+      updateOpenFilters([...openFilters, filter]);
+    }
   };
 
   useEffect(() => {
-    massFilter();
-  }, [filterByTypes, showOnlyMegas, filterByRegions, filterByStages]);
+    const querySearch = queryString.parse(history.location.search);
+    console.log(querySearch);
+    if (!Object.keys(querySearch).length) {
+      return;
+    }
+    const filters = JSON.parse(querySearch.filters);
+    const {
+      showOnlyLegendary = false,
+      showOnlyMythic = false,
+      showOnlyPseudo = false,
+      showOnlyMegas = false,
+      filterByTypes = [],
+      filterByRegions = [],
+      filterByStages = []
+    } = filters;
+    if (showOnlyLegendary) {
+      updateFilterByLegendary(showOnlyLegendary);
+    }
+    if (showOnlyMythic) {
+      updateFilterByMythic(showOnlyMythic);
+    }
+    if (showOnlyPseudo) {
+      updateFilterByPseudo(showOnlyPseudo);
+    }
+    if (showOnlyMegas) {
+      updateFilterByMegas(showOnlyMegas);
+    }
+    if (filterByTypes.length) {
+      updateFilterByTypes(filterByTypes);
+    }
+    if (filterByRegions.length) {
+      updateFilterByRegions(filterByRegions);
+    }
+    if (filterByStages.length) {
+      updateFilterByStages(filterByStages);
+    }
+  }, []);
+
+  useEffect(() => {
+    const querySearch = queryString.parse(history.location.search);
+
+    const { search } = querySearch;
+    const query = queryString.stringify({
+      filters: JSON.stringify({
+        showOnlyLegendary,
+        showOnlyMythic,
+        showOnlyPseudo,
+        filterByTypes,
+        showOnlyMegas,
+        filterByRegions,
+        filterByStages
+      }),
+      search
+    });
+    history.push({
+      search: query.length > 7 ? query : ""
+    });
+  }, [
+    showOnlyLegendary,
+    showOnlyMythic,
+    showOnlyPseudo,
+    filterByTypes,
+    showOnlyMegas,
+    filterByRegions,
+    filterByStages
+  ]);
+
   return (
     <div className={classes.root}>
       <Drawer
@@ -301,18 +369,18 @@ const Filters = ({
         </div>
         <Divider />
         <List>
-          <ListItem disableGutters button onClick={() => setOpen(true)}>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("regionFilter")}
+          >
             <ExpansionPanel
+              expanded={open && openFilters.includes("regionFilter")}
               className={classNames(classes.panel, {
                 [classes.activeFilter]: filterByRegions.length
               })}
             >
               <ExpansionPanelSummary
-                IconButtonProps={{
-                  classes: {
-                    root: classNames(classes.expandButton)
-                  }
-                }}
                 IconButtonProps={{
                   classes: {
                     root: classNames(classes.expandButton)
@@ -338,6 +406,7 @@ const Filters = ({
               <ExpansionPanelDetails className={classes.details}>
                 {regions.map(region => (
                   <div
+                    key={region.name}
                     className={classes.checkContainer}
                     onClick={e => updateRegionFilter(e, region.name)}
                   >
@@ -354,8 +423,13 @@ const Filters = ({
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </ListItem>
-          <ListItem disableGutters button onClick={() => setOpen(true)}>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("typesFilter")}
+          >
             <ExpansionPanel
+              expanded={open && openFilters.includes("typesFilter")}
               className={classNames(classes.panel, {
                 [classes.activeFilter]: filterByTypes.length
               })}
@@ -386,6 +460,7 @@ const Filters = ({
               <ExpansionPanelDetails className={classes.details}>
                 {types.map(type => (
                   <div
+                    key={type}
                     className={classes.checkContainer}
                     onClick={e => updateTypesFilter(e, type)}
                   >
@@ -409,8 +484,13 @@ const Filters = ({
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </ListItem>
-          <ListItem disableGutters button onClick={() => setOpen(true)}>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("megaFilter")}
+          >
             <ExpansionPanel
+              expanded={open && openFilters.includes("megaFilter")}
               className={classNames(classes.panel, {
                 [classes.activeFilter]: showOnlyMegas
               })}
@@ -428,7 +508,7 @@ const Filters = ({
                 <img
                   className={classes.icon}
                   src={megaSymbol}
-                  alt="region filter"
+                  alt="megas filter"
                 />
                 <Typography
                   className={classNames(classes.heading, {
@@ -455,8 +535,13 @@ const Filters = ({
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </ListItem>
-          <ListItem disableGutters button onClick={() => setOpen(true)}>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("stagesFilter")}
+          >
             <ExpansionPanel
+              expanded={open && openFilters.includes("stagesFilter")}
               className={classNames(classes.panel, {
                 [classes.activeFilter]: filterByStages.length
               })}
@@ -487,6 +572,7 @@ const Filters = ({
               <ExpansionPanelDetails className={classes.details}>
                 {stages.map(stage => (
                   <div
+                    key={stage}
                     className={classes.checkContainer}
                     onClick={e => updateStageFilter(e, stage)}
                   >
@@ -503,10 +589,183 @@ const Filters = ({
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </ListItem>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("legendaryFilter")}
+          >
+            <ExpansionPanel
+              expanded={open && openFilters.includes("legendaryFilter")}
+              className={classNames(classes.panel, {
+                [classes.activeFilter]: showOnlyLegendary
+              })}
+            >
+              <ExpansionPanelSummary
+                IconButtonProps={{
+                  classes: {
+                    root: classNames(classes.expandButton)
+                  }
+                }}
+                className={classes.summary}
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="legendary panel"
+              >
+                <img
+                  className={classes.icon}
+                  src={legendary}
+                  alt="legendary filter"
+                />
+                <Typography
+                  className={classNames(classes.heading, {
+                    [classes.hide]: !open
+                  })}
+                >
+                  Filter by legendary
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <div
+                  className={classes.checkContainer}
+                  onClick={e => updateShowOnlyLegendary(e, !showOnlyLegendary)}
+                >
+                  <Checkbox
+                    checked={showOnlyLegendary}
+                    value={showOnlyLegendary}
+                    inputProps={{
+                      "aria-label": "primary checkbox"
+                    }}
+                  />
+                  <p>Is a legendary</p>
+                </div>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("mythicFilter")}
+          >
+            <ExpansionPanel
+              expanded={open && openFilters.includes("mythicFilter")}
+              className={classNames(classes.panel, {
+                [classes.activeFilter]: showOnlyMythic
+              })}
+            >
+              <ExpansionPanelSummary
+                IconButtonProps={{
+                  classes: {
+                    root: classNames(classes.expandButton)
+                  }
+                }}
+                className={classes.summary}
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="mythic panel"
+              >
+                <img
+                  className={classes.icon}
+                  src={mythic}
+                  alt="mythic filter"
+                />
+                <Typography
+                  className={classNames(classes.heading, {
+                    [classes.hide]: !open
+                  })}
+                >
+                  Filter by mythic
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <div
+                  className={classes.checkContainer}
+                  onClick={e => updateShowOnlyMythic(e, !showOnlyMythic)}
+                >
+                  <Checkbox
+                    checked={showOnlyMythic}
+                    value={showOnlyMythic}
+                    inputProps={{
+                      "aria-label": "primary checkbox"
+                    }}
+                  />
+                  <p>Is a mythic</p>
+                </div>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("pseudoFilter")}
+          >
+            <ExpansionPanel
+              expanded={open && openFilters.includes("pseudoFilter")}
+              className={classNames(classes.panel, {
+                [classes.activeFilter]: showOnlyPseudo
+              })}
+            >
+              <ExpansionPanelSummary
+                IconButtonProps={{
+                  classes: {
+                    root: classNames(classes.expandButton)
+                  }
+                }}
+                className={classes.summary}
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="pseudo panel"
+              >
+                <img
+                  className={classes.icon}
+                  src={pseudo}
+                  alt="pseudo filter"
+                />
+                <Typography
+                  className={classNames(classes.heading, {
+                    [classes.hide]: !open
+                  })}
+                >
+                  Filter by pseudos
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <div
+                  className={classes.checkContainer}
+                  onClick={e => updateShowOnlyPseudo(e, !showOnlyPseudo)}
+                >
+                  <Checkbox
+                    checked={showOnlyPseudo}
+                    value={showOnlyPseudo}
+                    inputProps={{
+                      "aria-label": "primary checkbox"
+                    }}
+                  />
+                  <p>Is a pseudos leg.</p>
+                </div>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
         </List>
       </Drawer>
     </div>
   );
+};
+
+Filters.propTypes = {
+  setOpen: PropTypes.bool.isRequired,
+  open: PropTypes.bool.isRequired,
+  filterByTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
+  showOnlyMegas: PropTypes.bool.isRequired,
+  filterByRegions: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filterByStages: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setFilterError: PropTypes.func.isRequired,
+  updateFilterByTypes: PropTypes.func.isRequired,
+  updateFilterByMegas: PropTypes.func.isRequired,
+  updateFilterByRegions: PropTypes.func.isRequired,
+  updateFilterByStages: PropTypes.func.isRequired,
+  updateFilterByLegendary: PropTypes.func.isRequired,
+  updateFilterByMythic: PropTypes.func.isRequired,
+  updateFilterByPseudo: PropTypes.func.isRequired,
+  showOnlyLegendary: PropTypes.bool.isRequired,
+  showOnlyMythic: PropTypes.bool.isRequired,
+  showOnlyPseudo: PropTypes.bool.isRequired
 };
 
 export default Filters;
