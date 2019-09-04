@@ -1,7 +1,7 @@
 {
-  "name": "terrestrialImagingServer",
+  "name": "pokemon-planner-ani",
   "version": "1.0.0",
-  "description": "terrestrial imaging server code",
+  "description": "pokemon planner site",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix ../client",
