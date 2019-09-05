@@ -44,7 +44,7 @@ const Toaster = ({ shouldNotify, message }) => {
 };
 
 Toaster.propTypes = {
-  shouldNotify: PropTypes.bool,
+  shouldNotify: PropTypes.bool.isRequired,
   message: PropTypes.string
 };
 

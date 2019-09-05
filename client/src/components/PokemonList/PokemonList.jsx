@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 import List from "react-virtualized/dist/commonjs/List";
-import queryString from "query-string";
-import _ from "lodash";
 import "./PokemonList.css";
 
 const PokemonList = React.memo(

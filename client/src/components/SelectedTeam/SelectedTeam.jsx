@@ -3,7 +3,6 @@ import { Grid } from "@material-ui/core";
 import Pokemon from "./Pokemon";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
-import _ from "lodash";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import TouchBackend from "react-dnd-touch-backend";

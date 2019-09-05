@@ -7,12 +7,8 @@ import {
   SET_POKEMON_LIST_ERROR,
   SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
-import Cookies from "js-cookie";
-const dev = process.env.NODE_ENV === "development";
 
-const allPokemon = dev
-  ? JSON.parse(localStorage.getItem("allPokemon")) || []
-  : Cookies.get("allPokemon") || [];
+const allPokemon = JSON.parse(localStorage.getItem("allPokemon")) || [];
 
 const initialState = {
   allPokemon: allPokemon,
@@ -47,11 +43,8 @@ const contentReducer = (state = initialState, action) => {
       };
     }
     case LOAD_POKEMON_SUCCESS: {
-      if (dev) {
-        JSON.parse(localStorage.getItem("allPokemon"));
-      } else {
-        Cookies.set("allPokemon", payload, { expires: 7 });
-      }
+      JSON.parse(localStorage.getItem("allPokemon"));
+
       return {
         ...state,
         allPokemon: payload,

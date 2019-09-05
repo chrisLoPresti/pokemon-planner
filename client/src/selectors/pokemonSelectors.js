@@ -1,5 +1,4 @@
 import { createSelector } from "reselect";
-import _ from "lodash";
 
 const allPokemonSelector = state => state.pokemon.allPokemon;
 const filtersSelector = state => state.filters;
