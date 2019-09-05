@@ -45,7 +45,6 @@ router.post("/pokemonList", (req, res) => {
 // @access Private
 router.post("/pokemonStats", (req, res) => {
   const { errors } = {};
-  console.log("wtf");
 
   const newStat = new Stats({
     nationalNumber: req.body.nationalNumber,

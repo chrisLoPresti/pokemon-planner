@@ -1,7 +1,6 @@
-.selected-team-container {
+.selected-team-container .selected-pokemon-container {
   display: flex;
   justify-content: space-evenly;
-  padding-top: 20px;
 }
 
 .selected-pokemon {
@@ -30,4 +29,10 @@
   text-align: center;
   font-style: italic;
   color: ghostwhite;
+  font-size: 14px;
+}
+
+.dragging {
+  background-color: #57b795;
+  border: 1px solid ghostwhite;
 }

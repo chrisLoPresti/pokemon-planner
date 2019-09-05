@@ -28,10 +28,10 @@
     "reselect": "^4.0.0"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6",
-    "serve": "^11.1.0",
+    "redux-devtools-extension": "^2.13.8",
     "redux-immutable-state-invariant": "^2.1.0",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-logger": "^3.0.6",
+    "serve": "^11.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

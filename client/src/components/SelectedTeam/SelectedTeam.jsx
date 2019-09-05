@@ -3,7 +3,6 @@ import { Grid, IconButton } from "@material-ui/core";
 import Pokemon from "./Pokemon";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
-
 import TeamPreviewInfo from "./TeamPreviewInfo";
 import "./SelectedTeam.css";
 
@@ -14,7 +13,7 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
   const [infoOpen, handleOpenInfo] = useState(false);
-
+  const [isAPokemonDragging, setIsAPokemonDragging] = useState(false);
   const setSelectedTeam = pokemon => {
     const newTeamObject = {
       hasMega: false,
@@ -77,6 +76,8 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
         generateExtension={generateExtension}
         url={url}
         setSelectedTeam={setSelectedTeam}
+        isAPokemonDragging={isAPokemonDragging}
+        setIsAPokemonDragging={setIsAPokemonDragging}
       />
     );
   };
@@ -108,7 +109,6 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
       return `${name[1]}${extension}`;
     }
     if (name[0] === "nidoran" && !shiny) {
-      console.log(extension);
       if (extension === "_m") {
         return `${name[0]}${extension.replace("_", "")}`;
       } else {
@@ -121,7 +121,7 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
 
   return (
     <>
-      <Grid container>
+      <Grid container className="selected-team-container">
         <Grid item xs={12} className="team-preview-title">
           Selected Team Preview
           <IconButton

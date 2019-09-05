@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Grid } from "@material-ui/core";
 import { useDrag, useDrop } from "react-dnd";
+import classNames from "classnames";
 import ItemTypes from "./ItemTypes";
 const style = {
   cursor: "move"
@@ -12,7 +13,9 @@ const DraggablePokemon = ({
   generateExtension,
   url,
   pokemon,
-  setSelectedTeam
+  setSelectedTeam,
+  isAPokemonDragging,
+  setIsAPokemonDragging
 }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
@@ -45,6 +48,16 @@ const DraggablePokemon = ({
   });
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.POKEMON, id, index },
+    begin: () => {
+      if (!isAPokemonDragging) {
+        setIsAPokemonDragging(true);
+      }
+    },
+    end: () => {
+      if (isAPokemonDragging) {
+        setIsAPokemonDragging(false);
+      }
+    },
     collect: monitor => ({
       isDragging: monitor.isDragging()
     })
@@ -56,7 +69,9 @@ const DraggablePokemon = ({
       item
       xs={4}
       md={2}
-      className="selected-team-container"
+      className={classNames("selected-pokemon-container", {
+        dragging: isAPokemonDragging
+      })}
       onDoubleClick={() => setSelectedTeam(pokemon)}
     >
       <img
