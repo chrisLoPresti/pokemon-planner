@@ -19,39 +19,6 @@ const backends = {
 const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
 const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
 
-const generateExtension = mon => {
-  const name = mon.name.english
-    .toLowerCase()
-    .replace("'", "")
-    .split(" ");
-  if (name[0] === "silvally") {
-    return `${name[0]}-${mon.type[0].toLowerCase()}`;
-  }
-  if (name[0] === "ash-greninja") {
-    return "greninja-ash";
-  }
-  if (name[0] === "mega" || name[0] === "ultra") {
-    if (name[1] === "charizard" || name[1] === "mewtwo") {
-      return `${name[1]}-${name[0]}${name[2]}`;
-    }
-    return `${name[1]}-${name[0]}`;
-  }
-  let extension = mon.sprite
-    .replace(mon.nationalNumber, "")
-    .replace(".png", "");
-  if (name[0] === "alolan") {
-    return `${name[1]}${extension}`;
-  }
-  if (name[1] === "rotom") {
-    return `${name[1]}${extension}`;
-  }
-
-  if (extension === "-female") {
-    extension = "-f";
-  }
-  return `${name[0]}${extension}`;
-};
-
 const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
@@ -98,6 +65,44 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
         url={url}
       />
     );
+  };
+
+  const generateExtension = mon => {
+    const name = mon.name.english
+      .toLowerCase()
+      .replace(/[!@#$%^&*'♀♂]/g, "")
+      .split(" ");
+    if (name[0] === "silvally") {
+      return `${name[0]}-${mon.type[0].toLowerCase()}`;
+    }
+    if (name[0] === "ash-greninja") {
+      return "greninja-ash";
+    }
+    if (name[0] === "mega" || name[0] === "ultra") {
+      if (name[1] === "charizard" || name[1] === "mewtwo") {
+        return `${name[1]}-${name[0]}${name[2]}`;
+      }
+      return `${name[1]}-${name[0]}`;
+    }
+    let extension = mon.sprite
+      .replace(mon.nationalNumber, "")
+      .replace(".png", "");
+    if (name[0] === "alolan") {
+      return `${name[1]}${extension}`;
+    }
+    if (name[1] === "rotom") {
+      return `${name[1]}${extension}`;
+    }
+    if (name[0] === "nidoran" && !shiny) {
+      console.log(extension);
+      if (extension === "_m") {
+        return `${name[0]}${extension.replace("_", "")}`;
+      } else {
+        return `${name[0]}${extension.replace("_", "-")}`;
+      }
+    }
+
+    return `${name[0]}${extension}`;
   };
 
   return (
