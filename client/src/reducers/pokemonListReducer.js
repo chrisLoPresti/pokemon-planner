@@ -43,7 +43,7 @@ const contentReducer = (state = initialState, action) => {
       };
     }
     case LOAD_POKEMON_SUCCESS: {
-      JSON.parse(localStorage.getItem("allPokemon"));
+      localStorage.setItem("allPokemon", JSON.stringify(payload));
 
       return {
         ...state,

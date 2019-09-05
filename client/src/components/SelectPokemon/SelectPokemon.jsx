@@ -20,10 +20,7 @@ const SelectPokemon = ({
       <SearchBarToggles history={history} />
       <SelectedTeam history={history} />
       <PokemonList history={history} />
-      <Toaster
-        shouldNotify={pokemonListError || filtersError}
-        message={pokemonListError || filtersError}
-      />
+      <Toaster message={pokemonListError || filtersError} />
     </div>
   );
 };

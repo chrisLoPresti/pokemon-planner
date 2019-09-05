@@ -27,8 +27,8 @@ const notify = message => {
   });
   toastId = id;
 };
-const Toaster = ({ shouldNotify, message }) => {
-  if (shouldNotify) {
+const Toaster = ({ message }) => {
+  if (message && message.length > 0) {
     notify(message);
   }
   return (
@@ -44,7 +44,6 @@ const Toaster = ({ shouldNotify, message }) => {
 };
 
 Toaster.propTypes = {
-  shouldNotify: PropTypes.bool.isRequired,
   message: PropTypes.string
 };
 
