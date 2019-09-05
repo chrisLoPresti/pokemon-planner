@@ -4,46 +4,11 @@ import classNames from "classnames";
 import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 import List from "react-virtualized/dist/commonjs/List";
 import queryString from "query-string";
+import _ from "lodash";
 import "./PokemonList.css";
 
-const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
-const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
-
-const generateExtension = mon => {
-  const name = mon.name.english
-    .toLowerCase()
-    .replace("'", "")
-    .split(" ");
-  if (name[0] === "silvally") {
-    return `${name[0]}-${mon.type[0].toLowerCase()}`;
-  }
-  if (name[0] === "ash-greninja") {
-    return "greninja-ash";
-  }
-  if (name[0] === "mega" || name[0] === "ultra") {
-    if (name[1] === "charizard" || name[1] === "mewtwo") {
-      return `${name[1]}-${name[0]}${name[2]}`;
-    }
-    return `${name[1]}-${name[0]}`;
-  }
-  let extension = mon.sprite
-    .replace(mon.nationalNumber, "")
-    .replace(".png", "");
-  if (name[0] === "alolan") {
-    return `${name[1]}${extension}`;
-  }
-  if (name[1] === "rotom") {
-    return `${name[1]}${extension}`;
-  }
-
-  if (extension === "-female") {
-    extension = "-f";
-  }
-  return `${name[0]}${extension}`;
-};
 const PokemonList = React.memo(
   ({
-    shiny,
     filteredPokemon,
     selectedPokemon,
     selectedTeam,
@@ -80,7 +45,7 @@ const PokemonList = React.memo(
       } = selectedTeam;
 
       if (potentialMatch && potentialMatch === pokemon) {
-        let hasMega = pokemon.hasMega;
+        let hasMega = plucked.hasMega;
         if (pokemon.isMega) {
           hasMega = false;
         }
@@ -91,11 +56,11 @@ const PokemonList = React.memo(
           "You can not have more than one pokemon with the same national dex number."
         );
       }
-      if (pokemon.isMega && selectedTeam.hasMega) {
+      if (pokemon.isMega && plucked.hasMega) {
         dispatchError("You can not have more than one mega evolution.");
         return;
       }
-      if (selectedTeam.count === 6) {
+      if (count === 6) {
         dispatchError("You can not have more than six pokemon per team.");
         return;
       }
@@ -112,34 +77,9 @@ const PokemonList = React.memo(
     }, [setFilteredPokemonTotal, filteredPokemon]);
 
     const BOX_WIDTH = showNames ? 150 : 70;
-    const BOX_HEIGHT = showNames ? 200 : 100;
-    const url = shiny ? shinyBaseUrl : baseUrl;
+    const BOX_HEIGHT = showNames ? 200 : 120;
     return (
       <div id="dex-pokemon-container">
-        {selectedTeam.count !== 0 && (
-          <div
-            style={{
-              boxShadow: "0 4px 6px -6px #222",
-              padding: 30,
-              marginBottom: 20
-            }}
-          >
-            {Object.keys(selectedTeam).length > 2 &&
-              Object.keys(selectedTeam).map(key => {
-                if (key == "count" || key == "hasMega") {
-                  return;
-                }
-                const mon = selectedTeam[key];
-                return (
-                  <img
-                    key={mon.name.english}
-                    style={{ margin: "10px" }}
-                    src={`${url}${generateExtension(mon)}.gif`}
-                  />
-                );
-              })}
-          </div>
-        )}
         <AutoSizer>
           {({ height, width }) => {
             const numberOfBoxesPerRow = width
@@ -195,7 +135,7 @@ const PokemonList = React.memo(
                             )}
 
                             <p className="pokemon-number">
-                              #{pokemon.nationalNumber}{" "}
+                              #{pokemon.nationalNumber}
                             </p>
                           </div>
                         )}
@@ -219,18 +159,7 @@ const PokemonList = React.memo(
                     );
                   }
                   return (
-                    <div
-                      className="Row"
-                      key={key}
-                      style={{
-                        ...style,
-                        justifyContent:
-                          toIndex === totalFilteredPokemon
-                            ? "flex-start"
-                            : "space-evenly",
-                        paddingTop: !showNumbers && !showNames ? 20 : 0
-                      }}
-                    >
+                    <div className="Row" key={key} style={style}>
                       {items}
                     </div>
                   );

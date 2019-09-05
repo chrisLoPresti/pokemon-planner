@@ -1,9 +1,7 @@
 .toggles-container {
-  z-index: 999;
   background-color: #5d5d5d;
   border-bottom: 1px solid #64c4ed;
-  margin-top: -5px;
-  padding: 10px;
+  padding: 20px 20px 5px 20px;
   color: ghostwhite;
 }
 

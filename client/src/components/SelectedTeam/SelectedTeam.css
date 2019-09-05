@@ -1,0 +1,10 @@
+.selected-team-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+}
+
+.selected-pokemon {
+  align-self: center;
+  transform: scale(0.7);
+}

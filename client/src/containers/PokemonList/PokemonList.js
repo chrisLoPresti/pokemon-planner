@@ -27,8 +27,7 @@ const mapStateToProps = state => ({
   pokemonLoaded: getLoaded(state),
   totalFilteredPokemon: getTotalFilteredPokemon(state),
   showNumbers: state.filters.showNumbers,
-  showNames: state.filters.showNames,
-  shiny: state.filters.shiny
+  showNames: state.filters.showNames
 });
 
 const mapDispatchToProps = {

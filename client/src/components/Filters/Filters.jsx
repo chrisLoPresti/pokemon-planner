@@ -26,7 +26,7 @@ import evolution from "../../assets/images/misc/evolution.svg";
 import legendary from "../../assets/images/misc/legendary.svg";
 import mythic from "../../assets/images/misc/mythic.png";
 import pseudo from "../../assets/images/misc/pseudo.png";
-
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import types from "../../assets/types";
 
 const regions = [
@@ -185,7 +185,7 @@ const Filters = ({
 }) => {
   const classes = useStyles();
   const theme = useTheme();
-
+  const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const isSelectedRegion = region => {
     return filterByRegions.includes(region);
   };
@@ -270,7 +270,6 @@ const Filters = ({
 
   useEffect(() => {
     const querySearch = queryString.parse(history.location.search);
-    console.log(querySearch);
     if (!Object.keys(querySearch).length) {
       return;
     }
@@ -339,7 +338,8 @@ const Filters = ({
   return (
     <div className={classes.root}>
       <Drawer
-        variant="permanent"
+        onClose={() => setOpen(false)}
+        variant={smallScreen ? "temporary" : "permanent"}
         className={classNames(classes.drawer, {
           [classes.drawerOpen]: open,
           [classes.drawerClose]: !open
