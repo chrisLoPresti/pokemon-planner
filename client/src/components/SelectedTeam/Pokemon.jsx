@@ -11,7 +11,8 @@ const DraggablePokemon = ({
   movePokemon,
   generateExtension,
   url,
-  pokemon
+  pokemon,
+  setSelectedTeam
 }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
@@ -51,7 +52,13 @@ const DraggablePokemon = ({
   const opacity = isDragging ? 0 : 1;
   drag(drop(ref));
   return (
-    <Grid item xs={4} md={2} className="selected-team-container">
+    <Grid
+      item
+      xs={4}
+      md={2}
+      className="selected-team-container"
+      onDoubleClick={() => setSelectedTeam(pokemon)}
+    >
       <img
         draggable={true}
         ref={ref}

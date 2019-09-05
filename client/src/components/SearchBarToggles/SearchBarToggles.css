@@ -5,7 +5,7 @@
   color: ghostwhite;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 960px) {
   .toggle-content {
     display: none;
   }
@@ -24,4 +24,45 @@
 .total-results {
   font-size: 12px;
   font-style: italic;
+}
+.button-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.button-container .clear-team-button {
+  color: ghostwhite;
+  margin-left: 10px;
+  background-color: #e53935;
+}
+
+.button-container .clear-team-button:hover {
+  background-color: #b71c1c;
+}
+
+.button-container .specs-button {
+  color: ghostwhite;
+  margin-right: 10px;
+  background-color: #7c7ab0;
+}
+
+.button-container .specs-button:hover {
+  background-color: #8b647d;
+}
+
+@media screen and (max-width: 960px) {
+  .button-container {
+    padding: 15px;
+  }
+}
+
+.clear-search-image-container {
+  height: 50px;
+  width: 50px;
+}
+
+.clear-search-image {
+  height: 25px;
+  margin-right: 2px;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid, IconButton } from "@material-ui/core";
 import Pokemon from "./Pokemon";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
@@ -7,6 +7,7 @@ import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
 import TouchBackend from "react-dnd-touch-backend";
 import { isBrowser, isMobile } from "react-device-detect";
+import TeamPreviewInfo from "./TeamPreviewInfo";
 import "./SelectedTeam.css";
 
 const backends = {
@@ -21,8 +22,30 @@ const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
 const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
+  const [infoOpen, handleOpenInfo] = useState(false);
+
+  const setSelectedTeam = pokemon => {
+    const newTeamObject = {
+      hasMega: false,
+      count: 0
+    };
+    selectedTeam.forEach(selectedPokemon => {
+      if (selectedPokemon.isMega) {
+        newTeamObject.hasMega = true;
+      }
+      if (selectedPokemon !== pokemon) {
+        newTeamObject.count += 1;
+        newTeamObject[selectedPokemon.nationalNumber] = selectedPokemon;
+      }
+    });
+    return updateSelectedTeam(newTeamObject);
+  };
 
   useEffect(() => {
+    if (!selectedTeam.length) {
+      setSelectedTeamArray([]);
+      return;
+    }
     const addDiff = selectedTeam.find(
       pokemon => !selectedTeamArray.includes(pokemon)
     );
@@ -62,6 +85,7 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
         movePokemon={movePokemon}
         generateExtension={generateExtension}
         url={url}
+        setSelectedTeam={setSelectedTeam}
       />
     );
   };
@@ -106,14 +130,32 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
 
   return (
     selectedTeamArray.length > 0 && (
-      <DndProvider
-        backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
-        options={isMobile ? backends.TouchBackend.options : {}}
-      >
-        <Grid container>
-          {selectedTeamArray.map((pokemon, i) => renderTeam(pokemon, i))}
-        </Grid>
-      </DndProvider>
+      <>
+        <DndProvider
+          backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
+          options={isMobile ? backends.TouchBackend.options : {}}
+        >
+          <Grid container>
+            <Grid item xs={12} className="team-preview-title">
+              Selected Team Preview
+              <IconButton
+                className="team-preview-icon-container"
+                onClick={() => handleOpenInfo(true)}
+              >
+                <img
+                  className="team-preview-icon"
+                  alt="information about the team preview"
+                  src={
+                    "http://play.pokemonshowdown.com/sprites/xyani-shiny/unown-question.gif"
+                  }
+                />
+              </IconButton>
+            </Grid>
+            {selectedTeamArray.map((pokemon, i) => renderTeam(pokemon, i))}
+          </Grid>
+        </DndProvider>
+        <TeamPreviewInfo open={infoOpen} setOpen={handleOpenInfo} />
+      </>
     )
   );
 };

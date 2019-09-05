@@ -8,3 +8,20 @@
   align-self: center;
   transform: scale(0.7);
 }
+
+.team-preview-title {
+  text-align: center;
+  width: 100%;
+  color: ghostwhite;
+  font-size: 20px;
+  font-family: "Pokemon Solid";
+  padding-top: 20px;
+}
+
+.team-preview-icon {
+  height: 20px;
+}
+
+.team-preview-title .team-preview-icon-container {
+  margin-left: 20px;
+}

@@ -6,6 +6,7 @@ import {
   updateSearchCriteria,
   updateShinySprites
 } from "../../actions/filterActions/filterActions";
+import { updateSelectedTeam } from "../../actions/pokemonListActions/pokemonListActions";
 
 const mapStateToProps = ({
   pokemon: { totalFilteredPokemon },
@@ -22,7 +23,8 @@ const mapDispatchToProps = {
   setShowNames,
   setShowNumbers,
   updateSearchCriteria,
-  updateShinySprites
+  updateShinySprites,
+  updateSelectedTeam
 };
 
 export default connect(

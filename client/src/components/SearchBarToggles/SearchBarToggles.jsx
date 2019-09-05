@@ -1,7 +1,15 @@
 import React, { useEffect } from "react";
-import { Grid, Input, Switch, withStyles } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Input,
+  IconButton,
+  Switch,
+  withStyles
+} from "@material-ui/core";
 import PropTypes from "prop-types";
 import queryString from "query-string";
+import clearImage from "../../assets/images/misc/clear.png";
 import "./SearchBarToggles.css";
 
 const styles = {
@@ -27,7 +35,8 @@ const SearchBarToggles = React.memo(
     search,
     shiny,
     updateShinySprites,
-    history
+    history,
+    updateSelectedTeam
   }) => {
     useEffect(() => {
       const querySearch = queryString.parse(history.location.search);
@@ -85,7 +94,7 @@ const SearchBarToggles = React.memo(
             inputProps={{ "aria-label": "secondary checkbox" }}
           />
         </Grid>
-        <Grid item xs={10} sm={6} className="margin-container">
+        <Grid item xs={10} md={9} className="margin-container">
           <p className="toggle-title">Search</p>
           <Input
             value={search}
@@ -100,6 +109,27 @@ const SearchBarToggles = React.memo(
             }}
             inputProps={{ "aria-label": "search" }}
           />
+          <IconButton
+            className="clear-search-image-container"
+            onClick={() => updateSearchCriteria("")}
+          >
+            <img
+              className="clear-search-image"
+              src={clearImage}
+              alt="clear search"
+            />
+          </IconButton>
+        </Grid>
+        <Grid item xs={12} className="button-container">
+          <Button disabled className="specs-button">
+            Set Specs
+          </Button>
+          <Button
+            className="clear-team-button"
+            onClick={() => updateSelectedTeam({ count: 0, hasMega: false })}
+          >
+            Clear Team
+          </Button>
         </Grid>
       </Grid>
     );
@@ -111,7 +141,14 @@ SearchBarToggles.propTypes = {
   showNumbers: PropTypes.bool.isRequired,
   classes: PropTypes.shape({}).isRequired,
   search: PropTypes.string.isRequired,
-  shiny: PropTypes.bool.isRequired
+  shiny: PropTypes.bool.isRequired,
+  updateSelectedTeam: PropTypes.func.isRequired,
+  setShowNames: PropTypes.func.isRequired,
+  setShowNumbers: PropTypes.func.isRequired,
+  updateSearchCriteria: PropTypes.func.isRequired,
+  totalFilteredPokemon: PropTypes.number.isRequired,
+  updateShinySprites: PropTypes.func.isRequired,
+  history: PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(SearchBarToggles);
