@@ -3,6 +3,7 @@ import { Grid } from "@material-ui/core";
 import { useDrag, useDrop } from "react-dnd";
 import classNames from "classnames";
 import ItemTypes from "./ItemTypes";
+import _ from "lodash";
 const style = {
   cursor: "move"
 };
@@ -15,7 +16,8 @@ const DraggablePokemon = ({
   pokemon,
   setSelectedTeam,
   isAPokemonDragging,
-  setIsAPokemonDragging
+  setIsAPokemonDragging,
+  setCanDropPokemon
 }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
@@ -49,17 +51,22 @@ const DraggablePokemon = ({
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.POKEMON, id, index },
     begin: () => {
+      _.delay(() => {
+        setCanDropPokemon(true);
+      }, 250);
       if (!isAPokemonDragging) {
         setIsAPokemonDragging(true);
       }
     },
     end: () => {
+      setCanDropPokemon(false);
       if (isAPokemonDragging) {
         setIsAPokemonDragging(false);
       }
     },
     collect: monitor => ({
-      isDragging: monitor.isDragging()
+      isDragging: monitor.isDragging(),
+      canDrag: monitor.canDrag()
     })
   });
   const opacity = isDragging ? 0 : 1;

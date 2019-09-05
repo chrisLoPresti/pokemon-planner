@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -23,12 +23,18 @@ const PokemonList = React.memo(
     updateSelectedTeam,
     setFilteredPokemonTotal,
     totalFilteredPokemon,
-    history
+    history,
+    canDropPokemon
   }) => {
+    const [allowPokemonToDrop, setAllowPokemonToDrop] = useState(false);
+    useEffect(() => {
+      setAllowPokemonToDrop(canDropPokemon);
+    }, [canDropPokemon]);
+
     if (!pokemonLoaded && !loadingPokemon) {
       loadPokemonListRequest();
     }
-    const [{ canDrop, isOver }, drop] = useDrop({
+    const [{ isOver }, drop] = useDrop({
       accept: ItemTypes.POKEMON,
       drop: ({ id }) => {
         const { [id]: match, ...rest } = selectedTeam;
@@ -39,16 +45,17 @@ const PokemonList = React.memo(
         let count = rest.count - 1;
         updateSelectedTeam({ ...rest, hasMega, count });
       },
+      canDrop: () => allowPokemonToDrop,
       collect: monitor => ({
-        isOver: monitor.isOver(),
-        canDrop: monitor.canDrop()
+        isOver: monitor.isOver()
+        // canDrop: monitor.canDrop()
       })
     });
-    const isActive = canDrop && isOver;
+    const isActive = allowPokemonToDrop && isOver;
     let backgroundColor = "";
     if (isActive) {
       backgroundColor = "#e53935";
-    } else if (canDrop) {
+    } else if (allowPokemonToDrop) {
       backgroundColor = "#e57373";
     }
     const dispatchError = error => {

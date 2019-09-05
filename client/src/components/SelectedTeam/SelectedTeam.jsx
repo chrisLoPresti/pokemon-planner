@@ -9,11 +9,17 @@ import "./SelectedTeam.css";
 const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
 const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
 
-const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
+const SelectedTeam = ({
+  shiny,
+  selectedTeam,
+  updateSelectedTeam,
+  setCanDropPokemon
+}) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
   const [infoOpen, handleOpenInfo] = useState(false);
   const [isAPokemonDragging, setIsAPokemonDragging] = useState(false);
+
   const setSelectedTeam = pokemon => {
     const newTeamObject = {
       hasMega: false,
@@ -78,6 +84,7 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
         setSelectedTeam={setSelectedTeam}
         isAPokemonDragging={isAPokemonDragging}
         setIsAPokemonDragging={setIsAPokemonDragging}
+        setCanDropPokemon={setCanDropPokemon}
       />
     );
   };

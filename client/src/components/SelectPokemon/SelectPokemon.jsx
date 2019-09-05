@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PokemonList from "../../containers/PokemonList";
 import PropTypes from "prop-types";
 import SearchBarToggles from "../../containers/SearchBarTogglesContainer";
@@ -23,6 +23,7 @@ const SelectPokemon = ({
   filtersError,
   history
 }) => {
+  const [canDropPokemon, setCanDropPokemon] = useState(false);
   return loadingPokemon ? (
     <LoadingSite />
   ) : (
@@ -32,8 +33,8 @@ const SelectPokemon = ({
         backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
         options={isMobile ? backends.TouchBackend.options : {}}
       >
-        <SelectedTeam history={history} />
-        <PokemonList history={history} />
+        <SelectedTeam history={history} setCanDropPokemon={setCanDropPokemon} />
+        <PokemonList history={history} canDropPokemon={canDropPokemon} />
       </DndProvider>
       <Toaster message={pokemonListError || filtersError} />
     </div>
