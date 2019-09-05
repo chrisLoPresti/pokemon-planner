@@ -3,18 +3,9 @@ import { Grid, IconButton } from "@material-ui/core";
 import Pokemon from "./Pokemon";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
-import { DndProvider } from "react-dnd";
-import HTML5Backend from "react-dnd-html5-backend";
-import TouchBackend from "react-dnd-touch-backend";
-import { isBrowser, isMobile } from "react-device-detect";
+
 import TeamPreviewInfo from "./TeamPreviewInfo";
 import "./SelectedTeam.css";
-
-const backends = {
-  HTML5Backend,
-  TouchBackend: TouchBackend,
-  options: { enableMouseEvents: true, preview: true }
-};
 
 const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
 const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
@@ -129,34 +120,33 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
   };
 
   return (
-    selectedTeamArray.length > 0 && (
-      <>
-        <DndProvider
-          backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
-          options={isMobile ? backends.TouchBackend.options : {}}
-        >
-          <Grid container>
-            <Grid item xs={12} className="team-preview-title">
-              Selected Team Preview
-              <IconButton
-                className="team-preview-icon-container"
-                onClick={() => handleOpenInfo(true)}
-              >
-                <img
-                  className="team-preview-icon"
-                  alt="information about the team preview"
-                  src={
-                    "http://play.pokemonshowdown.com/sprites/xyani-shiny/unown-question.gif"
-                  }
-                />
-              </IconButton>
-            </Grid>
-            {selectedTeamArray.map((pokemon, i) => renderTeam(pokemon, i))}
+    <>
+      <Grid container>
+        <Grid item xs={12} className="team-preview-title">
+          Selected Team Preview
+          <IconButton
+            className="team-preview-icon-container"
+            onClick={() => handleOpenInfo(true)}
+          >
+            <img
+              className="team-preview-icon"
+              alt="information about the team preview"
+              src={
+                "http://play.pokemonshowdown.com/sprites/xyani-shiny/unown-question.gif"
+              }
+            />
+          </IconButton>
+        </Grid>
+        {selectedTeamArray.length === 0 && (
+          <Grid item xs={12} className="select-your-team">
+            <p>Select your team, or click the Unown for help!</p>
           </Grid>
-        </DndProvider>
-        <TeamPreviewInfo open={infoOpen} setOpen={handleOpenInfo} />
-      </>
-    )
+        )}
+        {selectedTeamArray.length > 0 &&
+          selectedTeamArray.map((pokemon, i) => renderTeam(pokemon, i))}
+      </Grid>
+      <TeamPreviewInfo open={infoOpen} setOpen={handleOpenInfo} />
+    </>
   );
 };
 

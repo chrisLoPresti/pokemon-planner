@@ -36,7 +36,18 @@ const TeamPreviewInfo = ({ setOpen, open }) => {
               <li>
                 Drag Pokemon over each other to switch their order in your team
               </li>
-              <li>Double click/tap a Pokemon to remove them from your team</li>
+              <li>
+                If on pc:
+                <br />
+                {"\tDouble click a Pokemon or..."}
+                <br />
+                {"\tDrag them back into the list to remove them from your team"}
+              </li>
+              <li>
+                If on mobile:
+                <br />
+                {"\tDrag them back into the list to remove them from your team"}
+              </li>
             </ul>
           </DialogContentText>
         </DialogContent>

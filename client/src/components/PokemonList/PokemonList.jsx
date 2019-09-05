@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { useDrop } from "react-dnd";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import AutoSizer from "react-virtualized/dist/commonjs/AutoSizer";
 import List from "react-virtualized/dist/commonjs/List";
+import ItemTypes from "../SelectedTeam/ItemTypes";
 import "./PokemonList.css";
 
 const PokemonList = React.memo(
@@ -26,7 +28,29 @@ const PokemonList = React.memo(
     if (!pokemonLoaded && !loadingPokemon) {
       loadPokemonListRequest();
     }
-
+    const [{ canDrop, isOver }, drop] = useDrop({
+      accept: ItemTypes.POKEMON,
+      drop: ({ id }) => {
+        const { [id]: match, ...rest } = selectedTeam;
+        let hasMega = rest.hasMega;
+        if (match.isMega) {
+          hasMega = false;
+        }
+        let count = rest.count - 1;
+        updateSelectedTeam({ ...rest, hasMega, count });
+      },
+      collect: monitor => ({
+        isOver: monitor.isOver(),
+        canDrop: monitor.canDrop()
+      })
+    });
+    const isActive = canDrop && isOver;
+    let backgroundColor = "";
+    if (isActive) {
+      backgroundColor = "#e53935";
+    } else if (canDrop) {
+      backgroundColor = "#e57373";
+    }
     const dispatchError = error => {
       setPokemonListError(error);
       setTimeout(() => {
@@ -77,7 +101,7 @@ const PokemonList = React.memo(
     const BOX_WIDTH = showNames ? 150 : 70;
     const BOX_HEIGHT = showNames ? 200 : 120;
     return (
-      <div id="dex-pokemon-container">
+      <div id="dex-pokemon-container" ref={drop}>
         <AutoSizer>
           {({ height, width }) => {
             const numberOfBoxesPerRow = width
@@ -91,7 +115,8 @@ const PokemonList = React.memo(
                 style={{
                   outline: "none",
                   boxShadow:
-                    "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)"
+                    "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
+                  backgroundColor
                 }}
                 height={height}
                 rowCount={rowCount}

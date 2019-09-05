@@ -4,9 +4,19 @@ import PropTypes from "prop-types";
 import SearchBarToggles from "../../containers/SearchBarTogglesContainer";
 import SelectedTeam from "../../containers/SelectedTeamContainer";
 import Toaster from "../Toaster";
-import "./SelectPokemon.css";
-import LoadingSite from "../LoadingSite";
+import HTML5Backend from "react-dnd-html5-backend";
+import TouchBackend from "react-dnd-touch-backend";
+import { isBrowser, isMobile } from "react-device-detect";
+import { DndProvider } from "react-dnd";
 
+import LoadingSite from "../LoadingSite";
+import "./SelectPokemon.css";
+
+const backends = {
+  HTML5Backend,
+  TouchBackend: TouchBackend,
+  options: { enableMouseEvents: true, preview: true }
+};
 const SelectPokemon = ({
   loadingPokemon,
   pokemonListError,
@@ -18,8 +28,13 @@ const SelectPokemon = ({
   ) : (
     <div id="select-pokemon-container">
       <SearchBarToggles history={history} />
-      <SelectedTeam history={history} />
-      <PokemonList history={history} />
+      <DndProvider
+        backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
+        options={isMobile ? backends.TouchBackend.options : {}}
+      >
+        <SelectedTeam history={history} />
+        <PokemonList history={history} />
+      </DndProvider>
       <Toaster message={pokemonListError || filtersError} />
     </div>
   );

@@ -19,9 +19,15 @@
 }
 
 .team-preview-icon {
-  height: 20px;
+  height: 25px;
 }
 
 .team-preview-title .team-preview-icon-container {
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.select-your-team {
+  text-align: center;
+  font-style: italic;
+  color: ghostwhite;
 }
