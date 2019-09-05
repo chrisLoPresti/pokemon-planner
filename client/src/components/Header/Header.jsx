@@ -68,7 +68,7 @@ export default function Header({ open, setOpen }) {
           <MenuIcon />
         </IconButton>
         <img alt="home" className={classes.home} src={home} />
-        {!open && <p>Pokémon Team Planner</p>}
+        <p>Pokémon Team Planner</p>
       </Toolbar>
     </AppBar>
   );
