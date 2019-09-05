@@ -8,8 +8,11 @@ import {
   SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
 import Cookies from "js-cookie";
+const dev = process.env.NODE_ENV === "development";
 
-const allPokemon = Cookies.get("allPokemon") || [];
+const allPokemon = dev
+  ? JSON.parse(localStorage.getItem("allPokemon")) || []
+  : Cookies.get("allPokemon") || [];
 
 const initialState = {
   allPokemon: allPokemon,
@@ -44,7 +47,11 @@ const contentReducer = (state = initialState, action) => {
       };
     }
     case LOAD_POKEMON_SUCCESS: {
-      Cookies.set("allPokemon", payload, { expires: 5 });
+      if (dev) {
+        JSON.parse(localStorage.getItem("allPokemon"));
+      } else {
+        Cookies.set("allPokemon", payload, { expires: 7 });
+      }
       return {
         ...state,
         allPokemon: payload,
