@@ -6,7 +6,15 @@ import update from "immutability-helper";
 import _ from "lodash";
 import { DndProvider } from "react-dnd";
 import HTML5Backend from "react-dnd-html5-backend";
+import TouchBackend from "react-dnd-touch-backend";
+import { isBrowser, isMobile } from "react-device-detect";
 import "./SelectedTeam.css";
+
+const backends = {
+  HTML5Backend,
+  TouchBackend: TouchBackend,
+  options: { enableMouseEvents: true, preview: true }
+};
 
 const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
 const shinyBaseUrl = "http://play.pokemonshowdown.com/sprites/xyani-shiny/";
@@ -94,7 +102,10 @@ const SelectedTeam = ({ shiny, selectedTeam, updateSelectedTeam }) => {
 
   return (
     selectedTeamArray.length > 0 && (
-      <DndProvider backend={HTML5Backend}>
+      <DndProvider
+        backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
+        options={isMobile ? backends.TouchBackend.options : {}}
+      >
         <Grid container>
           {selectedTeamArray.map((pokemon, i) => renderTeam(pokemon, i))}
         </Grid>
@@ -112,18 +123,3 @@ SelectedTeam.propTypes = {
 };
 
 export default SelectedTeam;
-{
-  /* <Grid container>
-<Example />
-{Object.keys(selectedTeam).length > 2 &&
-  Object.keys(selectedTeam).map(key => {
-    if (key == "count" || key == "hasMega") {
-      return;
-    }
-    const mon = selectedTeam[key];
-    return (
-    
-    );
-  })}
-</Grid> */
-}

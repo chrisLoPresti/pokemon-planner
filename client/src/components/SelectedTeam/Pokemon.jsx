@@ -53,6 +53,7 @@ const DraggablePokemon = ({
   return (
     <Grid item xs={4} md={2} className="selected-team-container">
       <img
+        draggable={true}
         ref={ref}
         style={{ ...style, opacity }}
         className="selected-pokemon"

@@ -3472,6 +3472,11 @@ dnd-core@^9.3.4:
     invariant "^2.2.4"
     redux "^4.0.1"
 
+dnd-multi-backend@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/dnd-multi-backend/-/dnd-multi-backend-3.2.1.tgz#528c7624b831d1c23512cbed191b34fb506dcf93"
+  integrity sha512-A783JbrONpeufxX+jDMHOxR2AWh+gFv5Z/lLpDB3vdON6t0bb2fHSh8fKH2h8gOLRAJGD08m9xYXAJIWreTI5A==
+
 dns-equal@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/dns-equal/-/dns-equal-1.0.0.tgz#b39e7f1da6eb0a75ba9c17324b34753c47e0654d"
@@ -8487,12 +8492,42 @@ react-dev-utils@^9.0.3:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
+react-device-detect@^1.7.5:
+  version "1.7.5"
+  resolved "https://registry.yarnpkg.com/react-device-detect/-/react-device-detect-1.7.5.tgz#04c8a6475d67b5ac4f984c8d912ec11134f5b893"
+  integrity sha512-ccgJuTHVCI3yfqvgU56gQDvjueFyaHVAXsa5rJuzWRasvsd0IalzfyccSECIlygjv3E+DmAGcwNYWUarUA82Fw==
+
 react-dnd-html5-backend@^9.3.4:
   version "9.3.4"
   resolved "https://registry.yarnpkg.com/react-dnd-html5-backend/-/react-dnd-html5-backend-9.3.4.tgz#5d1f5ac608206d7b294b7407b9e1a336589eedd7"
   integrity sha512-s+Xu0j7fHV9bLMSaOCuX76baQKcZfycAx0EzDmkxcFXPBiiFlI8l6rzwURdSJCjNcvLYXd8MLb4VkSNSq5ISZQ==
   dependencies:
     dnd-core "^9.3.4"
+
+react-dnd-multi-backend@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-dnd-multi-backend/-/react-dnd-multi-backend-3.2.2.tgz#4ecb20ccdfc753fa8a1e457a4df04606251d8f8f"
+  integrity sha512-94lBSZ8acVLeV2nyBLNwILcWcEGAcGrMzNRLIVeUI1yC0Uq1SaRM+5rdEyrElR9GMDjn0U41jVBlfS+usccZTA==
+  dependencies:
+    dnd-multi-backend "^3.2.1"
+    prop-types "^15.6.2"
+    react-dnd-preview "^3.2.2"
+
+react-dnd-preview@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/react-dnd-preview/-/react-dnd-preview-3.2.2.tgz#194d620f7bebaec9bd2cd38672abc7b24fa1474a"
+  integrity sha512-IuuU9X4cX7b0xahnbOcj+Ec2VGBlPJHogZXUCtfp/JfVdvoW8M1M/jA8rx28BlIJ7BAc0YY24TxHk5Rm4faExQ==
+  dependencies:
+    prop-types "^15.6.2"
+
+react-dnd-touch-backend@^9.3.4:
+  version "9.3.4"
+  resolved "https://registry.yarnpkg.com/react-dnd-touch-backend/-/react-dnd-touch-backend-9.3.4.tgz#6a93d06967a400dad2154b49e273f93aeee1cdfe"
+  integrity sha512-AREEmbttYY2c8y8lPYilzQksskArkbP0eCSrmilyxmUqQ1pzTRaYFl/5e0t3YKNBjgR47l44KFAHl37pTs81Pw==
+  dependencies:
+    "@types/invariant" "^2.2.30"
+    dnd-core "^9.3.4"
+    invariant "^2.2.4"
 
 react-dnd@^9.3.4:
   version "9.3.4"
