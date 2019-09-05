@@ -67,7 +67,7 @@ const PokemonList = React.memo(
       return updateSelectedTeam({
         ...selectedTeam,
         [pokemonNumber]: pokemon,
-        hasMega: pokemon.isMega,
+        hasMega: plucked.hasMega || pokemon.isMega,
         count: count + 1
       });
     };

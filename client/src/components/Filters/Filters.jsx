@@ -338,6 +338,7 @@ const Filters = ({
   return (
     <div className={classes.root}>
       <Drawer
+        anchor="left"
         onClose={() => setOpen(false)}
         variant={smallScreen ? "temporary" : "permanent"}
         className={classNames(classes.drawer, {

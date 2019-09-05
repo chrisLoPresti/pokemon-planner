@@ -1,4 +1,5 @@
 import { createSelector } from "reselect";
+import _ from "lodash";
 
 const allPokemonSelector = state => state.pokemon.allPokemon;
 const filtersSelector = state => state.filters;
@@ -24,6 +25,14 @@ export const getSelectedPokemon = createSelector(
 export const getSelectedTeam = createSelector(
   selectedTeamSelector,
   team => team
+);
+
+export const getSelectedPokemonArray = createSelector(
+  selectedTeamSelector,
+  team =>
+    Object.keys(team)
+      .filter(key => key !== "count" && key !== "hasMega")
+      .map(key => team[key])
 );
 
 export const getListError = createSelector(
