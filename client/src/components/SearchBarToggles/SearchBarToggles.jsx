@@ -47,6 +47,7 @@ const SearchBarToggles = React.memo(
         updateSearchCriteria(querySearch.search);
       }
     }, []);
+
     useEffect(() => {
       const querySearch = queryString.parse(history.location.search);
 

@@ -17,7 +17,8 @@ const DraggablePokemon = ({
   setSelectedTeam,
   isAPokemonDragging,
   setIsAPokemonDragging,
-  setCanDropPokemon
+  setCanDropPokemon,
+  canDropPokemon
 }) => {
   const ref = useRef(null);
   const [, drop] = useDrop({
@@ -51,15 +52,22 @@ const DraggablePokemon = ({
   const [{ isDragging }, drag] = useDrag({
     item: { type: ItemTypes.POKEMON, id, index },
     begin: () => {
-      _.delay(() => {
-        setCanDropPokemon(true);
-      }, 250);
       if (!isAPokemonDragging) {
         setIsAPokemonDragging(true);
+        _.delay(() => {
+          setCanDropPokemon(true);
+        }, 300);
       }
     },
     end: () => {
-      setCanDropPokemon(false);
+      if (canDropPokemon) {
+        setCanDropPokemon(false);
+      } else {
+        _.delay(() => {
+          setCanDropPokemon(false);
+        }, 301);
+      }
+
       if (isAPokemonDragging) {
         setIsAPokemonDragging(false);
       }
@@ -82,6 +90,7 @@ const DraggablePokemon = ({
       onDoubleClick={() => setSelectedTeam(pokemon)}
     >
       <img
+        alt={`${pokemon.name.english}`}
         draggable={true}
         ref={ref}
         style={{ ...style, opacity }}

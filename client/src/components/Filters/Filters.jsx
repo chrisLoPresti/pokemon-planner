@@ -750,7 +750,7 @@ const Filters = ({
 };
 
 Filters.propTypes = {
-  setOpen: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
   filterByTypes: PropTypes.arrayOf(PropTypes.string).isRequired,
   showOnlyMegas: PropTypes.bool.isRequired,

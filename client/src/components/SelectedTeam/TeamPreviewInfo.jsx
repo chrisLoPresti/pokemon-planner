@@ -31,8 +31,8 @@ const TeamPreviewInfo = ({ setOpen, open }) => {
             Pokemon's name (english). You can clear your filters at any time or
             clear your search by clicking on the ghost.
           </DialogContentText>
-          <DialogContentText id="alert-dialog-slide-description">
-            <ul>
+          <ul>
+            <DialogContentText id="alert-dialog-slide-description">
               <li>
                 Drag Pokemon over each other to switch their order in your team
               </li>
@@ -48,8 +48,8 @@ const TeamPreviewInfo = ({ setOpen, open }) => {
                 <br />
                 {"\tDrag them back into the list to remove them from your team"}
               </li>
-            </ul>
-          </DialogContentText>
+            </DialogContentText>
+          </ul>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setOpen(false)} color="primary">

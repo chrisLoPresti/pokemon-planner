@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDrop } from "react-dnd";
 import PropTypes from "prop-types";
 import classNames from "classnames";
@@ -26,11 +26,6 @@ const PokemonList = React.memo(
     history,
     canDropPokemon
   }) => {
-    const [allowPokemonToDrop, setAllowPokemonToDrop] = useState(false);
-    useEffect(() => {
-      setAllowPokemonToDrop(canDropPokemon);
-    }, [canDropPokemon]);
-
     if (!pokemonLoaded && !loadingPokemon) {
       loadPokemonListRequest();
     }
@@ -45,17 +40,16 @@ const PokemonList = React.memo(
         let count = rest.count - 1;
         updateSelectedTeam({ ...rest, hasMega, count });
       },
-      canDrop: () => allowPokemonToDrop,
+      canDrop: () => canDropPokemon,
       collect: monitor => ({
         isOver: monitor.isOver()
-        // canDrop: monitor.canDrop()
       })
     });
-    const isActive = allowPokemonToDrop && isOver;
+    const isActive = canDropPokemon && isOver;
     let backgroundColor = "";
     if (isActive) {
       backgroundColor = "#e53935";
-    } else if (allowPokemonToDrop) {
+    } else if (canDropPokemon) {
       backgroundColor = "#e57373";
     }
     const dispatchError = error => {
@@ -103,7 +97,7 @@ const PokemonList = React.memo(
 
     useEffect(() => {
       setFilteredPokemonTotal(filteredPokemon.length);
-    }, [setFilteredPokemonTotal, filteredPokemon]);
+    }, [filteredPokemon]);
 
     const BOX_WIDTH = showNames ? 150 : 70;
     const BOX_HEIGHT = showNames ? 200 : 120;

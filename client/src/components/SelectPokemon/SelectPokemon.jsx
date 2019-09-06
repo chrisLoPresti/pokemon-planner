@@ -33,7 +33,11 @@ const SelectPokemon = ({
         backend={isBrowser ? backends.HTML5Backend : backends.TouchBackend}
         options={isMobile ? backends.TouchBackend.options : {}}
       >
-        <SelectedTeam history={history} setCanDropPokemon={setCanDropPokemon} />
+        <SelectedTeam
+          history={history}
+          canDropPokemon={canDropPokemon}
+          setCanDropPokemon={setCanDropPokemon}
+        />
         <PokemonList history={history} canDropPokemon={canDropPokemon} />
       </DndProvider>
       <Toaster message={pokemonListError || filtersError} />

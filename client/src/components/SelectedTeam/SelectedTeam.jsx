@@ -13,7 +13,8 @@ const SelectedTeam = ({
   shiny,
   selectedTeam,
   updateSelectedTeam,
-  setCanDropPokemon
+  setCanDropPokemon,
+  canDropPokemon
 }) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
@@ -54,7 +55,7 @@ const SelectedTeam = ({
       return;
     } else if (removeDiff) {
       setSelectedTeamArray(
-        selectedTeamArray.filter(pokemon => pokemon != removeDiff)
+        selectedTeamArray.filter(pokemon => pokemon !== removeDiff)
       );
       return;
     }
@@ -74,6 +75,7 @@ const SelectedTeam = ({
   const renderTeam = (pokemon, index) => {
     return (
       <Pokemon
+        canDropPokemon={canDropPokemon}
         key={pokemon.nationalNumber}
         index={index}
         id={pokemon.nationalNumber}
