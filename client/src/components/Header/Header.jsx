@@ -5,7 +5,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-
+import { useTheme } from "@material-ui/core/styles";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import home from "../../assets/images/home/home.png";
 
 const drawerWidth = 260;
@@ -47,12 +48,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function Header({ open, setOpen }) {
   const classes = useStyles();
+  const theme = useTheme();
+  const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <AppBar
       position="fixed"
       className={classNames(classes.appBar, {
-        [classes.appBarShift]: open
+        [classes.appBarShift]: !smallScreen && open
       })}
     >
       <Toolbar>

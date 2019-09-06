@@ -269,6 +269,12 @@ const Filters = ({
   };
 
   useEffect(() => {
+    if (!open) {
+      updateOpenFilters([]);
+    }
+  }, [open]);
+
+  useEffect(() => {
     const querySearch = queryString.parse(history.location.search);
     if (!Object.keys(querySearch).length) {
       return;
