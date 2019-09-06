@@ -111,10 +111,7 @@ const SelectedTeam = ({
     let extension = mon.sprite
       .replace(mon.nationalNumber, "")
       .replace(".png", "");
-    if (name[0] === "alolan") {
-      return `${name[1]}${extension}`;
-    }
-    if (name[1] === "rotom") {
+    if (name[0] === "alolan" || name[0] === "primal" || name[1] === "rotom") {
       return `${name[1]}${extension}`;
     }
     if (name[0] === "nidoran" && !shiny) {
