@@ -5,7 +5,7 @@ import queryString from "query-string";
 import {
   makeStyles,
   useTheme,
-  Drawer,
+  SwipeableDrawer,
   List,
   Divider,
   IconButton,
@@ -343,7 +343,7 @@ const Filters = ({
 
   return (
     <div className={classes.root}>
-      <Drawer
+      <SwipeableDrawer
         anchor="left"
         onClose={() => setOpen(false)}
         variant={smallScreen ? "temporary" : "permanent"}
@@ -750,7 +750,7 @@ const Filters = ({
             </ExpansionPanel>
           </ListItem>
         </List>
-      </Drawer>
+      </SwipeableDrawer>
     </div>
   );
 };

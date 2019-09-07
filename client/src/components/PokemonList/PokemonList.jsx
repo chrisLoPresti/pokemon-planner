@@ -46,7 +46,7 @@ const PokemonList = React.memo(
       })
     });
     const isActive = canDropPokemon && isOver;
-    let backgroundColor = "";
+    let backgroundColor = "dimgrey";
     if (isActive) {
       backgroundColor = "#e53935";
     } else if (canDropPokemon) {
@@ -74,6 +74,11 @@ const PokemonList = React.memo(
         }
         return updateSelectedTeam({ ...plucked, count: count - 1, hasMega });
       }
+
+      if (count === 6) {
+        dispatchError("You can not have more than six pokemon per team.");
+        return;
+      }
       if (potentialMatch) {
         return dispatchError(
           "You can not have more than one pokemon with the same national dex number."
@@ -81,10 +86,6 @@ const PokemonList = React.memo(
       }
       if (pokemon.isMega && plucked.hasMega) {
         dispatchError("You can not have more than one mega evolution.");
-        return;
-      }
-      if (count === 6) {
-        dispatchError("You can not have more than six pokemon per team.");
         return;
       }
       return updateSelectedTeam({
