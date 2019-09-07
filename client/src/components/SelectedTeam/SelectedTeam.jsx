@@ -39,26 +39,7 @@ const SelectedTeam = ({
   };
 
   useEffect(() => {
-    if (!selectedTeam.length) {
-      setSelectedTeamArray([]);
-      return;
-    }
-    const addDiff = selectedTeam.find(
-      pokemon => !selectedTeamArray.includes(pokemon)
-    );
-    const removeDiff = selectedTeamArray.find(
-      pokemon => !selectedTeam.includes(pokemon)
-    );
-
-    if (addDiff) {
-      setSelectedTeamArray([...selectedTeamArray, addDiff]);
-      return;
-    } else if (removeDiff) {
-      setSelectedTeamArray(
-        selectedTeamArray.filter(pokemon => pokemon !== removeDiff)
-      );
-      return;
-    }
+    setSelectedTeamArray(selectedTeam);
   }, [selectedTeam]);
 
   const movePokemon = useCallback(
@@ -95,6 +76,7 @@ const SelectedTeam = ({
     const name = mon.name.english
       .toLowerCase()
       .replace(/[.!@#$%^&*'♀♂-]/g, "")
+      .replace(/é+/g, "e")
       .split(" ");
     if (name[0] === "silvally") {
       return `${name[0]}-${mon.type[0].toLowerCase()}`;

@@ -8,11 +8,10 @@ import {
   SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
 
-const mostRecentUpdate = "2019-09-08";
+const mostRecentUpdate = "2019-09-07 17:46";
 
 const allPokemonDecision = () => {
   const lastStoredUpdate = JSON.parse(localStorage.getItem("lastStoredUpdate"));
-  console.log(lastStoredUpdate);
   var currentDate = new Date();
   if (
     !lastStoredUpdate ||
@@ -68,7 +67,6 @@ const contentReducer = (state = initialState, action) => {
         ...state,
         allPokemon: payload,
         pokemonLoaded: true,
-
         pokemonListError: null,
         loadingPokemon: false
       };

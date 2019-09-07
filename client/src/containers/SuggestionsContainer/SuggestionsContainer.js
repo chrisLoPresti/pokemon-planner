@@ -1,18 +1,22 @@
 import { connect } from "react-redux";
-import { getFilteredPokemon } from "../../selectors/pokemonSelectors";
+import {
+  getFilteredPokemon,
+  getExcludedPokemon
+} from "../../selectors/pokemonSelectors";
 
-import { updateExcludePokemon } from "../../actions/filterActions/filterActions";
-import PokemonList from "../../components/PokemonList";
+import { updateExcludedPokemon } from "../../actions/filterActions/filterActions";
+import Suggestions from "../../components/Filters/Suggestions";
 
 const mapStateToProps = state => ({
-  filteredPokemon: getFilteredPokemon(state)
+  filteredPokemon: getFilteredPokemon(state),
+  excludedPokemon: getExcludedPokemon(state)
 });
 
 const mapDispatchToProps = {
-  updateExcludePokemon
+  updateExcludedPokemon
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PokemonList);
+)(Suggestions);

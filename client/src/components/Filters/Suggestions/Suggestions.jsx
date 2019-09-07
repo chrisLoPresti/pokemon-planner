@@ -7,45 +7,18 @@ import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import Paper from "@material-ui/core/Paper";
 import MenuItem from "@material-ui/core/MenuItem";
-import Popper from "@material-ui/core/Popper";
+import classNames from "classnames";
 import { makeStyles } from "@material-ui/core/styles";
+import _ from "lodash";
 
-const suggestions = [
-  { label: "Afghanistan" },
-  { label: "Aland Islands" },
-  { label: "Albania" },
-  { label: "Algeria" },
-  { label: "American Samoa" },
-  { label: "Andorra" },
-  { label: "Angola" },
-  { label: "Anguilla" },
-  { label: "Antarctica" },
-  { label: "Antigua and Barbuda" },
-  { label: "Argentina" },
-  { label: "Armenia" },
-  { label: "Aruba" },
-  { label: "Australia" },
-  { label: "Austria" },
-  { label: "Azerbaijan" },
-  { label: "Bahamas" },
-  { label: "Bahrain" },
-  { label: "Bangladesh" },
-  { label: "Barbados" },
-  { label: "Belarus" },
-  { label: "Belgium" },
-  { label: "Belize" },
-  { label: "Benin" },
-  { label: "Bermuda" },
-  { label: "Bhutan" },
-  { label: "Bolivia, Plurinational State of" },
-  { label: "Bonaire, Sint Eustatius and Saba" },
-  { label: "Bosnia and Herzegovina" },
-  { label: "Botswana" },
-  { label: "Bouvet Island" },
-  { label: "Brazil" },
-  { label: "British Indian Ocean Territory" },
-  { label: "Brunei Darussalam" }
-];
+const determineAction = (suggestion, excludedPokemon, updateFunction) => {
+  const isExcluded = excludedPokemon.find(pokemon => pokemon !== suggestion);
+  if (isExcluded) {
+    updateFunction(excludedPokemon.filter(pokemon => pokemon !== isExcluded));
+  } else {
+    updateFunction([...excludedPokemon, suggestion]);
+  }
+};
 
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
@@ -53,13 +26,18 @@ function renderInputComponent(inputProps) {
   return (
     <TextField
       fullWidth
+      InputLabelProps={{
+        style: { color: "ghostwhite" }
+      }}
       InputProps={{
         inputRef: node => {
           ref(node);
           inputRef(node);
         },
         classes: {
-          input: classes.input
+          root: classes.textField,
+          input: classes.input,
+          underline: classes.underline
         }
       }}
       {...other}
@@ -67,48 +45,31 @@ function renderInputComponent(inputProps) {
   );
 }
 
-function renderSuggestion(suggestion, { query, isHighlighted }) {
-  const matches = match(suggestion.label, query);
-  const parts = parse(suggestion.label, matches);
-
-  return (
-    <MenuItem selected={isHighlighted} component="div">
-      <div>
-        {parts.map(part => (
-          <span
-            key={part.text}
-            style={{ fontWeight: part.highlight ? 500 : 400 }}
-          >
-            {part.text}
-          </span>
-        ))}
-      </div>
-    </MenuItem>
-  );
-}
-
-function getSuggestions(value) {
+function getSuggestions(filteredPokemon, value) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
 
   return inputLength === 0
     ? []
-    : suggestions.filter(suggestion => {
-        const keep =
-          count < 5 &&
-          suggestion.label.slice(0, inputLength).toLowerCase() === inputValue;
+    : _.uniqBy(
+        filteredPokemon.filter(suggestion => {
+          const keep =
+            count < 4 &&
+            suggestion.name.english.slice(0, inputLength).toLowerCase() ===
+              inputValue;
 
-        if (keep) {
-          count += 1;
-        }
-
-        return keep;
-      });
+          if (keep) {
+            count += 1;
+          }
+          return keep;
+        }),
+        "name.english"
+      );
 }
 
 function getSuggestionValue(suggestion) {
-  return suggestion.label;
+  return suggestion.name.english;
 }
 
 const useStyles = makeStyles(theme => ({
@@ -136,33 +97,89 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     height: theme.spacing(2)
+  },
+  underline: {
+    "&:after": {
+      borderBottom: "2px solid #ef4b4b"
+    }
+  },
+  textField: {
+    color: "ghostwhite"
+  },
+  flexDisplay: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    color: "ghostwhite"
+  },
+  checkDisplay: {
+    justifyContent: "start"
   }
 }));
 
-export default function IntegrationAutosuggest() {
+export default function IntegrationAutosuggest({
+  updateExcludedPokemon,
+  filteredPokemon,
+  excludedPokemon
+}) {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [state, setState] = React.useState({
-    single: "",
-    popper: ""
-  });
+  const [search, setSearch] = React.useState("");
 
   const [stateSuggestions, setSuggestions] = React.useState([]);
 
   const handleSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(value));
+    setSuggestions(getSuggestions(filteredPokemon, value));
   };
 
   const handleSuggestionsClearRequested = () => {
     setSuggestions([]);
   };
 
-  const handleChange = name => (event, { newValue }) => {
-    setState({
-      ...state,
-      [name]: newValue
-    });
+  const handleChange = () => (event, { newValue }) => {
+    setSearch(newValue);
   };
+
+  function renderSuggestion(suggestion, { query, isHighlighted }) {
+    const suggestedName = suggestion.name.english;
+    const suggestedSprite = suggestion.sprite;
+    const matches = match(suggestedName, query);
+    const parts = parse(suggestedName, matches);
+    return (
+      <MenuItem
+        onClick={() =>
+          determineAction(
+            { name: suggestedName, sprite: suggestedSprite },
+            excludedPokemon,
+            updateExcludedPokemon
+          )
+        }
+        selected={isHighlighted}
+        component="div"
+        style={{
+          background:
+            "linear-gradient(to right bottom, #414141 40%, #5d5d5d 60%)"
+        }}
+      >
+        <div className={classes.flexDisplay}>
+          <div>
+            {parts.map(part => (
+              <span
+                key={part.text}
+                style={{ fontWeight: part.highlight ? 500 : 400 }}
+              >
+                {part.text}
+              </span>
+            ))}
+          </div>
+          <img
+            style={{ alignSelf: "center" }}
+            alt={suggestedName}
+            src={require(`../../../assets/images/sprites/pokedex/${suggestedSprite}`)}
+          />
+        </div>
+      </MenuItem>
+    );
+  }
 
   const autosuggestProps = {
     renderInputComponent,
@@ -177,12 +194,13 @@ export default function IntegrationAutosuggest() {
     <div className={classes.root}>
       <Autosuggest
         {...autosuggestProps}
+        onSuggestionSelected={() => setSearch("")}
         inputProps={{
           classes,
           id: "react-autosuggest-simple",
-          label: "Country",
-          placeholder: "Search a country (start with a)",
-          value: state.single,
+          label: "Exclude Pokemon",
+          placeholder: "Search by name (english)",
+          value: search,
           onChange: handleChange("single")
         }}
         theme={{
@@ -198,38 +216,37 @@ export default function IntegrationAutosuggest() {
         )}
       />
       <div className={classes.divider} />
-      <Autosuggest
-        {...autosuggestProps}
-        inputProps={{
-          classes,
-          id: "react-autosuggest-popper",
-          label: "Country",
-          placeholder: "With Popper",
-          value: state.popper,
-          onChange: handleChange("popper"),
-          inputRef: node => {
-            setAnchorEl(node);
-          },
-          InputLabelProps: {
-            shrink: true
+      {excludedPokemon.map(({ name, sprite }) => (
+        <div
+          key={name}
+          className={classes.flexDisplay}
+          onClick={() =>
+            determineAction(
+              { name, sprite },
+              excludedPokemon,
+              updateExcludedPokemon
+            )
           }
-        }}
-        theme={{
-          suggestionsList: classes.suggestionsList,
-          suggestion: classes.suggestion
-        }}
-        renderSuggestionsContainer={options => (
-          <Popper anchorEl={anchorEl} open={Boolean(options.children)}>
-            <Paper
-              square
-              {...options.containerProps}
-              style={{ width: anchorEl ? anchorEl.clientWidth : undefined }}
-            >
-              {options.children}
-            </Paper>
-          </Popper>
-        )}
-      />
+        >
+          <div
+            className={classNames(classes.checkDisplay, classes.flexDisplay)}
+          >
+            <Checkbox
+              checked
+              value={name}
+              inputProps={{
+                "aria-label": "primary checkbox"
+              }}
+            />
+            <p>{name}</p>
+          </div>
+          <img
+            style={{ alignSelf: "center" }}
+            alt={name}
+            src={require(`../../../assets/images/sprites/pokedex/${sprite}`)}
+          />
+        </div>
+      ))}
     </div>
   );
 }

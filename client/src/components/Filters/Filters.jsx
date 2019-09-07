@@ -14,7 +14,8 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
-  Checkbox
+  Checkbox,
+  Input
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -26,8 +27,10 @@ import evolution from "../../assets/images/misc/evolution.svg";
 import legendary from "../../assets/images/misc/legendary.svg";
 import mythic from "../../assets/images/misc/mythic.png";
 import pseudo from "../../assets/images/misc/pseudo.png";
+import exclude from "../../assets/images/misc/exclude.png";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import types from "../../assets/types";
+import Suggestions from "../../containers/SuggestionsContainer";
 
 const regions = [
   {
@@ -160,12 +163,20 @@ const useStyles = makeStyles(theme => ({
   },
   typeSymbol: {
     height: "30px"
-  }
+  },
+  excludeSearch: {
+    backgroundColor: "ghostwhite",
+    borderRadius: 10,
+    width: "100%",
+    padding: 5
+  },
+  underline: {}
 }));
 
 const Filters = ({
   setOpen,
   open,
+  excludedPokemon,
   filterByTypes,
   showOnlyMegas,
   filterByRegions,
@@ -181,6 +192,7 @@ const Filters = ({
   showOnlyLegendary,
   showOnlyMythic,
   showOnlyPseudo,
+  updateExcludedPokemon,
   history
 }) => {
   const classes = useStyles();
@@ -287,7 +299,8 @@ const Filters = ({
       showOnlyMegas = false,
       filterByTypes = [],
       filterByRegions = [],
-      filterByStages = []
+      filterByStages = [],
+      excludedPokemon = []
     } = filters;
     if (showOnlyLegendary) {
       updateFilterByLegendary(showOnlyLegendary);
@@ -310,6 +323,9 @@ const Filters = ({
     if (filterByStages.length) {
       updateFilterByStages(filterByStages);
     }
+    if (excludedPokemon.length) {
+      updateExcludedPokemon(excludedPokemon);
+    }
   }, []);
 
   useEffect(() => {
@@ -324,7 +340,8 @@ const Filters = ({
         filterByTypes,
         showOnlyMegas,
         filterByRegions,
-        filterByStages
+        filterByStages,
+        excludedPokemon
       }),
       search
     });
@@ -338,7 +355,8 @@ const Filters = ({
     filterByTypes,
     showOnlyMegas,
     filterByRegions,
-    filterByStages
+    filterByStages,
+    excludedPokemon
   ]);
 
   return (
@@ -376,6 +394,45 @@ const Filters = ({
         </div>
         <Divider />
         <List>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("excludeFilter")}
+          >
+            <ExpansionPanel
+              expanded={open && openFilters.includes("excludeFilter")}
+              className={classNames(classes.panel, {
+                [classes.activeFilter]: excludedPokemon.length > 0
+              })}
+            >
+              <ExpansionPanelSummary
+                IconButtonProps={{
+                  classes: {
+                    root: classNames(classes.expandButton)
+                  }
+                }}
+                className={classes.summary}
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="excluded pokemon panel"
+              >
+                <img
+                  className={classes.icon}
+                  src={exclude}
+                  alt="excluded pokemon filter"
+                />
+                <Typography
+                  className={classNames(classes.heading, {
+                    [classes.hide]: !open
+                  })}
+                >
+                  Excluded pokemon
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails onClick={e => e.stopPropagation()}>
+                <Suggestions />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
           <ListItem
             disableGutters
             button

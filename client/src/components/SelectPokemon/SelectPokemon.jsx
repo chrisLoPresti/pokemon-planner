@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PokemonList from "../../containers/PokemonList";
+import PokemonList from "../../containers/PokemonListContainer";
 import PropTypes from "prop-types";
 import SearchBarToggles from "../../containers/SearchBarTogglesContainer";
 import SelectedTeam from "../../containers/SelectedTeamContainer";

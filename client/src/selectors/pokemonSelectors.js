@@ -10,7 +10,12 @@ const loadingPokemonSelector = state => state.pokemon.loadingPokemon;
 const pokemonLoadedSelector = state => state.pokemon.pokemonLoaded;
 const totalFilteredPokemonSelector = state =>
   state.pokemon.totalFilteredPokemon;
+const excludedPokemon = state => state.filters.excludedPokemon;
 
+export const getExcludedPokemon = createSelector(
+  excludedPokemon,
+  allExcludedPokemon => allExcludedPokemon
+);
 const getAllPokemon = createSelector(
   allPokemonSelector,
   pokemon => pokemon
@@ -65,7 +70,8 @@ export const getFilteredPokemon = createSelector(
       showOnlyMegas,
       filterByRegions,
       filterByStages,
-      filterByTypes
+      filterByTypes,
+      excludedPokemon
     } = filters;
 
     if (
@@ -76,7 +82,8 @@ export const getFilteredPokemon = createSelector(
       !search.length &&
       !filterByTypes.length &&
       !filterByRegions.length &&
-      !filterByStages.length
+      !filterByStages.length &&
+      !excludedPokemon.length
     ) {
       return allPokemon;
     }
@@ -95,7 +102,9 @@ export const getFilteredPokemon = createSelector(
           filterByStages.includes(pokemon.stage) ||
           (filterByStages.includes("Fully Evolved") && pokemon.fullyEvolved);
       }
-
+      const notExcluded = !excludedPokemon.find(
+        ({ name }) => name === pokemon.name.english
+      );
       let validTypes = true;
 
       if (filterByTypes.length === 1) {
@@ -122,6 +131,7 @@ export const getFilteredPokemon = createSelector(
         validRegion &&
         validStage &&
         validSearch &&
+        notExcluded &&
         pokemon
       );
     });

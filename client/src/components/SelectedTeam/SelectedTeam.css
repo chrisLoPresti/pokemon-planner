@@ -1,3 +1,7 @@
+.selected-team-container {
+  margin-bottom: 20px;
+}
+
 .selected-team-container .selected-pokemon-container {
   display: flex;
   justify-content: space-evenly;
@@ -14,7 +18,7 @@
   color: ghostwhite;
   font-size: 20px;
   font-family: "Pokemon Solid";
-  padding: 20px 0 40px 0;
+  padding: 20px;
 }
 
 .team-preview-icon {
@@ -35,4 +39,18 @@
 .dragging {
   background-color: #57b795;
   border: 1px solid ghostwhite;
+}
+
+.random-button-container {
+  text-align: center;
+}
+.random-button-container .random-button {
+  margin: 20px;
+  width: 200px;
+  color: ghostwhite;
+  background-color: #419cee;
+}
+
+.random-button-container .random-button:hover {
+  background-color: #629ccd;
 }

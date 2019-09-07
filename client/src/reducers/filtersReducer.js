@@ -10,7 +10,8 @@ import {
   UPDATE_FILTER_BY_MYTHIC,
   UPDATE_FILTER_BY_PSEUDO,
   UPDATE_FILTER_ERROR,
-  UPDATE_SHINY_SPRITES
+  UPDATE_SHINY_SPRITES,
+  UPDATE_EXCLUDED_POKEMON
 } from "../actions/filterActions/filterActions";
 
 const initialState = {
@@ -25,7 +26,8 @@ const initialState = {
   filterByRegions: [],
   filterByStages: [],
   filtersError: null,
-  shiny: false
+  shiny: false,
+  excludedPokemon: []
 };
 
 const contentReducer = (state = initialState, action) => {
@@ -35,6 +37,13 @@ const contentReducer = (state = initialState, action) => {
       return {
         ...state,
         filterByTypes: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_EXCLUDED_POKEMON: {
+      return {
+        ...state,
+        excludedPokemon: payload,
         filtersError: null
       };
     }
