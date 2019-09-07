@@ -12,9 +12,14 @@ import { makeStyles } from "@material-ui/core/styles";
 import _ from "lodash";
 
 const determineAction = (suggestion, excludedPokemon, updateFunction) => {
-  const isExcluded = excludedPokemon.find(pokemon => pokemon !== suggestion);
+  console.log(suggestion);
+  const isExcluded = excludedPokemon.find(
+    ({ name }) => name === suggestion.name
+  );
   if (isExcluded) {
-    updateFunction(excludedPokemon.filter(pokemon => pokemon !== isExcluded));
+    updateFunction(
+      excludedPokemon.filter(({ name }) => name !== isExcluded.name)
+    );
   } else {
     updateFunction([...excludedPokemon, suggestion]);
   }
@@ -114,6 +119,10 @@ const useStyles = makeStyles(theme => ({
   },
   checkDisplay: {
     justifyContent: "start"
+  },
+  checkBoxContainer: {
+    overflow: "auto",
+    height: "200px"
   }
 }));
 
@@ -216,37 +225,39 @@ export default function IntegrationAutosuggest({
         )}
       />
       <div className={classes.divider} />
-      {excludedPokemon.map(({ name, sprite }) => (
-        <div
-          key={name}
-          className={classes.flexDisplay}
-          onClick={() =>
-            determineAction(
-              { name, sprite },
-              excludedPokemon,
-              updateExcludedPokemon
-            )
-          }
-        >
+      <div className={classes.checkBoxContainer}>
+        {excludedPokemon.map(({ name, sprite }) => (
           <div
-            className={classNames(classes.checkDisplay, classes.flexDisplay)}
+            key={name}
+            className={classes.flexDisplay}
+            onClick={() =>
+              determineAction(
+                { name, sprite },
+                excludedPokemon,
+                updateExcludedPokemon
+              )
+            }
           >
-            <Checkbox
-              checked
-              value={name}
-              inputProps={{
-                "aria-label": "primary checkbox"
-              }}
+            <div
+              className={classNames(classes.checkDisplay, classes.flexDisplay)}
+            >
+              <Checkbox
+                checked
+                value={name}
+                inputProps={{
+                  "aria-label": "primary checkbox"
+                }}
+              />
+              <p>{name}</p>
+            </div>
+            <img
+              style={{ alignSelf: "center" }}
+              alt={name}
+              src={require(`../../../assets/images/sprites/pokedex/${sprite}`)}
             />
-            <p>{name}</p>
           </div>
-          <img
-            style={{ alignSelf: "center" }}
-            alt={name}
-            src={require(`../../../assets/images/sprites/pokedex/${sprite}`)}
-          />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

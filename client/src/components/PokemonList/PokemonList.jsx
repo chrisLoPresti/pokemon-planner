@@ -102,7 +102,10 @@ const PokemonList = React.memo(
     }, [filteredPokemon]);
 
     const randomTeam = () => {
-      const currentTeam = { count: 0, hasMega: false };
+      let currentTeam = { ...selectedTeam };
+      if (currentTeam.count === 6) {
+        currentTeam = { count: 0, hasMega: false };
+      }
       let time = 0;
       while (time < 20 && currentTeam.count !== 6) {
         const index = Math.floor(

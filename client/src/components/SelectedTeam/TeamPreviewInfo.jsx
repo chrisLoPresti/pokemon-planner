@@ -34,6 +34,11 @@ const TeamPreviewInfo = ({ setOpen, open }) => {
           <ul>
             <DialogContentText id="alert-dialog-slide-description">
               <li>
+                Pressing the random button will give you a full team of 6. You
+                can also choose pokemon you want, and use random to fill in the
+                gaps!
+              </li>
+              <li>
                 Drag Pokemon over each other to switch their order in your team
               </li>
               <li>
