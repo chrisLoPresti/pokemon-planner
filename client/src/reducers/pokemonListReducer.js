@@ -8,7 +8,22 @@ import {
   SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
 
-const allPokemon = JSON.parse(localStorage.getItem("allPokemon")) || [];
+const mostRecentUpdate = "2019-09-07";
+
+const allPokemonDecision = () => {
+  const lastStoredUpdate = JSON.parse(localStorage.getItem("lastStoredUpdate"));
+  var currentDate = new Date();
+  if (!lastStoredUpdate || currentDate < new Date(mostRecentUpdate)) {
+    localStorage.removeItem("lastStoredUpdate");
+    localStorage.removeItem("lastStoredUpdate");
+    localStorage.setItem("lastStoredUpdate", JSON.stringify(currentDate));
+    return [];
+  } else {
+    return JSON.parse(localStorage.getItem("allPokemon")) || [];
+  }
+};
+
+const allPokemon = allPokemonDecision();
 
 const initialState = {
   allPokemon: allPokemon,
@@ -22,7 +37,7 @@ const initialState = {
   pokemonListError: null,
   loadingPokemon: false,
   pokemonLoaded: allPokemon.length ? true : false,
-  totalFilteredPokemon: allPokemon.length ? allPokemon.length : 0
+  totalFilteredPokemon: allPokemon ? allPokemon.length : 0
 };
 
 const contentReducer = (state = initialState, action) => {
