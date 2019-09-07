@@ -94,12 +94,12 @@ const SelectedTeam = ({
   const generateExtension = mon => {
     const name = mon.name.english
       .toLowerCase()
-      .replace(/[!@#$%^&*'♀♂-]/g, "")
+      .replace(/[.!@#$%^&*'♀♂-]/g, "")
       .split(" ");
     if (name[0] === "silvally") {
       return `${name[0]}-${mon.type[0].toLowerCase()}`;
     }
-    if (name[0] === "tapu") {
+    if (name[0] === "tapu" || name[0] === "mr" || name[0] === "mime") {
       return `${name[0]}${name[1]}`;
     }
     if (name[0] === "ashgreninja") {
