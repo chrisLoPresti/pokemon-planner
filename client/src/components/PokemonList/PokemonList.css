@@ -1,6 +1,8 @@
 #dex-pokemon-container {
-  padding: 40px 20px 0 20px;
+  margin: 40px 20px 0 20px;
   height: 100vh;
+  background-color: dimgray;
+  border-radius: 10px;
 }
 
 .Row {
