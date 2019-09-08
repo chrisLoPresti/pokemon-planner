@@ -268,7 +268,7 @@ export default function IntegrationAutosuggest({
                   textOverflow: "ellipsis"
                 }}
               >
-                {name.replace(/ *\([^)]*\) */g, "")}
+                {name}
               </p>
             </div>
             <img
