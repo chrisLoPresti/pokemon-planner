@@ -194,6 +194,9 @@ const PokemonList = React.memo(
                               {showNames && (
                                 <p className="name-eng">
                                   {pokemon.name.english}
+                                  {(pokemon.name.english === "Silvally" ||
+                                    pokemon.name.english === "Arceus") &&
+                                    ` - ${pokemon.type[0]}`}
                                 </p>
                               )}
 

@@ -8,7 +8,7 @@ import {
   SET_FILTERED_POKEMON_TOTAL
 } from "../actions/pokemonListActions/pokemonListActions";
 
-const mostRecentUpdate = "2019-09-07 17:46";
+const mostRecentUpdate = "2019-09-08 00:12:24";
 
 const allPokemonDecision = () => {
   const lastStoredUpdate = JSON.parse(localStorage.getItem("lastStoredUpdate"));

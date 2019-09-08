@@ -4,6 +4,7 @@ import Pokemon from "./Pokemon";
 import PropTypes from "prop-types";
 import update from "immutability-helper";
 import TeamPreviewInfo from "./TeamPreviewInfo";
+import _ from "lodash";
 import "./SelectedTeam.css";
 
 const baseUrl = "http://play.pokemonshowdown.com/sprites/xyani/";
@@ -14,7 +15,8 @@ const SelectedTeam = ({
   selectedTeam,
   updateSelectedTeam,
   setCanDropPokemon,
-  canDropPokemon
+  canDropPokemon,
+  excludedPokemon
 }) => {
   const url = shiny ? shinyBaseUrl : baseUrl;
   const [selectedTeamArray, setSelectedTeamArray] = useState([]);
@@ -78,7 +80,10 @@ const SelectedTeam = ({
       .replace(/[.!@#$%^&*'♀♂-]/g, "")
       .replace(/é+/g, "e")
       .split(" ");
-    if (name[0] === "silvally") {
+    if (name[0] === "silvally" || name[0] === "arceus") {
+      if (mon.type[0] === "Normal") {
+        return `${name[0]}`;
+      }
       return `${name[0]}-${mon.type[0].toLowerCase()}`;
     }
     if (name[0] === "tapu" || name[0] === "mr" || name[0] === "mime") {
@@ -109,6 +114,14 @@ const SelectedTeam = ({
 
     return `${name[0]}${extension}`;
   };
+  useEffect(() => {
+    const excludedNames = excludedPokemon.map(excluded => excluded.name);
+    setSelectedTeam(
+      _.remove(selectedTeam, pokemon =>
+        excludedNames.includes(pokemon.name.english)
+      )
+    );
+  }, [excludedPokemon]);
 
   return (
     <>

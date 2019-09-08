@@ -30,6 +30,7 @@ function renderInputComponent(inputProps) {
 
   return (
     <TextField
+      id="tet"
       fullWidth
       InputLabelProps={{
         style: { color: "ghostwhite" }
@@ -50,7 +51,7 @@ function renderInputComponent(inputProps) {
   );
 }
 
-function getSuggestions(filteredPokemon, value) {
+function getSuggestions(allPokemon, value, excludedPokemon) {
   const inputValue = deburr(value.trim()).toLowerCase();
   const inputLength = inputValue.length;
   let count = 0;
@@ -58,11 +59,13 @@ function getSuggestions(filteredPokemon, value) {
   return inputLength === 0
     ? []
     : _.uniqBy(
-        filteredPokemon.filter(suggestion => {
+        allPokemon.filter(suggestion => {
+          const suggestedName = suggestion.name.english;
+
           const keep =
             count < 4 &&
-            suggestion.name.english.slice(0, inputLength).toLowerCase() ===
-              inputValue;
+            !excludedPokemon.some(pokemon => pokemon.name === suggestedName) &&
+            suggestedName.toLowerCase().includes(inputValue);
 
           if (keep) {
             count += 1;
@@ -79,7 +82,6 @@ function getSuggestionValue(suggestion) {
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: 250,
     flexGrow: 1
   },
   container: {
@@ -122,13 +124,13 @@ const useStyles = makeStyles(theme => ({
   },
   checkBoxContainer: {
     overflow: "auto",
-    height: "200px"
+    maxHeight: "180px"
   }
 }));
 
 export default function IntegrationAutosuggest({
   updateExcludedPokemon,
-  filteredPokemon,
+  allPokemon,
   excludedPokemon
 }) {
   const classes = useStyles();
@@ -137,7 +139,7 @@ export default function IntegrationAutosuggest({
   const [stateSuggestions, setSuggestions] = React.useState([]);
 
   const handleSuggestionsFetchRequested = ({ value }) => {
-    setSuggestions(getSuggestions(filteredPokemon, value));
+    setSuggestions(getSuggestions(allPokemon, value, excludedPokemon));
   };
 
   const handleSuggestionsClearRequested = () => {
@@ -157,7 +159,11 @@ export default function IntegrationAutosuggest({
       <MenuItem
         onClick={() =>
           determineAction(
-            { name: suggestedName, sprite: suggestedSprite },
+            {
+              name: suggestedName,
+              sprite: suggestedSprite,
+              nationalNumber: suggestion.nationalNumber
+            },
             excludedPokemon,
             updateExcludedPokemon
           )
@@ -170,11 +176,19 @@ export default function IntegrationAutosuggest({
         }}
       >
         <div className={classes.flexDisplay}>
-          <div>
+          <div
+            style={{
+              width: 180,
+              overflow: "hidden",
+              textOverflow: "ellipsis"
+            }}
+          >
             {parts.map(part => (
               <span
                 key={part.text}
-                style={{ fontWeight: part.highlight ? 500 : 400 }}
+                style={{
+                  fontWeight: part.highlight ? 500 : 400
+                }}
               >
                 {part.text}
               </span>
@@ -226,13 +240,13 @@ export default function IntegrationAutosuggest({
       />
       <div className={classes.divider} />
       <div className={classes.checkBoxContainer}>
-        {excludedPokemon.map(({ name, sprite }) => (
+        {excludedPokemon.map(({ name, sprite, nationalNumber }) => (
           <div
             key={name}
             className={classes.flexDisplay}
             onClick={() =>
               determineAction(
-                { name, sprite },
+                { name, sprite, nationalNumber },
                 excludedPokemon,
                 updateExcludedPokemon
               )
@@ -248,7 +262,15 @@ export default function IntegrationAutosuggest({
                   "aria-label": "primary checkbox"
                 }}
               />
-              <p>{name}</p>
+              <p
+                style={{
+                  width: 120,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis"
+                }}
+              >
+                {name.replace(/ *\([^)]*\) */g, "")}
+              </p>
             </div>
             <img
               style={{ alignSelf: "center" }}
