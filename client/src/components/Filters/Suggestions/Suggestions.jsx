@@ -12,7 +12,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import _ from "lodash";
 
 const determineAction = (suggestion, excludedPokemon, updateFunction) => {
-  console.log(suggestion);
   const isExcluded = excludedPokemon.find(
     ({ name }) => name === suggestion.name
   );
