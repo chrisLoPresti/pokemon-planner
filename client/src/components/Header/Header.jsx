@@ -9,7 +9,7 @@ import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import home from "../../assets/images/home/home.png";
 
-const drawerWidth = 260;
+const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
   root: {

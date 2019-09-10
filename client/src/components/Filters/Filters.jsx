@@ -84,7 +84,7 @@ const gamesList = [
 
 const stages = [1, 2, 3, "Fully Evolved"];
 
-const drawerWidth = 260;
+const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
   hide: {
