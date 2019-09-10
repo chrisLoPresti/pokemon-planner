@@ -191,8 +191,6 @@ export const getFilteredPokemon = createSelector(
             +pokemon1.gamesAvailable[selectedGame] -
             +pokemon2.gamesAvailable[selectedGame]
           );
-        } else {
-          return pokemon1.nationalNumber < pokemon2.nationalNumber;
         }
       });
   }
