@@ -185,7 +185,11 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     padding: 5
   },
-  underline: {}
+  filterText: {
+    maxWidth: 180,
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  }
 }));
 
 const Filters = ({
@@ -398,6 +402,7 @@ const Filters = ({
   return (
     <div className={classes.root}>
       <SwipeableDrawer
+        onOpen={() => {}}
         anchor="left"
         onClose={() => setOpen(false)}
         variant={smallScreen ? "temporary" : "permanent"}
@@ -517,7 +522,7 @@ const Filters = ({
                         "aria-label": "primary checkbox"
                       }}
                     />
-                    <p>{name}</p>
+                    <p className={classes.filterText}>{name}</p>
                   </div>
                 ))}
               </ExpansionPanelDetails>
@@ -571,7 +576,7 @@ const Filters = ({
                         "aria-label": "primary checkbox"
                       }}
                     />
-                    <p>{region.name}</p>
+                    <p className={classes.filterText}>{region.name}</p>
                   </div>
                 ))}
               </ExpansionPanelDetails>
@@ -737,7 +742,7 @@ const Filters = ({
                         "aria-label": "primary checkbox"
                       }}
                     />
-                    <p>{stage}</p>
+                    <p className={classes.filterText}>{stage}</p>
                   </div>
                 ))}
               </ExpansionPanelDetails>
