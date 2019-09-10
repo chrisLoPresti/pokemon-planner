@@ -14,8 +14,7 @@ import {
   ExpansionPanelSummary,
   ExpansionPanelDetails,
   Typography,
-  Checkbox,
-  Input
+  Checkbox
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -27,11 +26,11 @@ import evolution from "../../assets/images/misc/evolution.svg";
 import legendary from "../../assets/images/misc/legendary.svg";
 import mythic from "../../assets/images/misc/mythic.png";
 import pseudo from "../../assets/images/misc/pseudo.png";
+import games from "../../assets/images/misc/games.png";
 import exclude from "../../assets/images/misc/exclude.png";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import types from "../../assets/types";
 import Suggestions from "../../containers/SuggestionsContainer";
-
 const regions = [
   {
     name: "Kanto",
@@ -65,6 +64,22 @@ const regions = [
     name: "Galar",
     generation: 8
   }
+];
+
+const gamesList = [
+  { name: "Red, Blue Yellow", abbreviation: "RBY" },
+  { name: "Gold, Silver, Crystal", abbreviation: "GSC" },
+  { name: "Ruby, Sapphire, Emerald", abbreviation: "RSE" },
+  { name: "FireRed, LeafGreen", abbreviation: "FRLG" },
+  { name: "Diamond & Pearl", abbreviation: "DP" },
+  { name: "Platinum", abbreviation: "PL" },
+  { name: "HeartGold & SoulSilver", abbreviation: "HGSS" },
+  { name: "Black & White", abbreviation: "BW" },
+  { name: "Black 2 & White 2", abbreviation: "B2W2" },
+  { name: "X & Y", abbreviation: "XY" },
+  { name: "Omega Ruby & Alpha Sapphire", abbreviation: "ORAS" },
+  { name: "Sun & Moon", abbreviation: "SM" },
+  { name: "Ultra Sun & Ultra Moon", abbreviation: "USUM" }
 ];
 
 const stages = [1, 2, 3, "Fully Evolved"];
@@ -193,6 +208,8 @@ const Filters = ({
   showOnlyMythic,
   showOnlyPseudo,
   updateExcludedPokemon,
+  selectedGame,
+  updateSelectedGame,
   history
 }) => {
   const classes = useStyles();
@@ -204,6 +221,9 @@ const Filters = ({
 
   const isSelectedStage = stage => {
     return filterByStages.includes(stage);
+  };
+  const isSelectedGame = game => {
+    return selectedGame === game;
   };
 
   const isSelectedType = type => {
@@ -244,6 +264,16 @@ const Filters = ({
   const updateShowOnlyLegendary = (e, legendsOnly) => {
     e.stopPropagation();
     updateFilterByLegendary(legendsOnly);
+  };
+
+  const updateChangeSelectedGame = (e, newGame) => {
+    e.stopPropagation();
+
+    if (isSelectedGame(newGame)) {
+      updateSelectedGame("");
+      return;
+    }
+    updateSelectedGame(newGame);
   };
 
   const updateShowOnlyMythic = (e, mythicsOnly) => {
@@ -300,7 +330,8 @@ const Filters = ({
       filterByTypes = [],
       filterByRegions = [],
       filterByStages = [],
-      excludedPokemon = []
+      excludedPokemon = [],
+      selectedGame = ""
     } = filters;
     if (showOnlyLegendary) {
       updateFilterByLegendary(showOnlyLegendary);
@@ -326,6 +357,9 @@ const Filters = ({
     if (excludedPokemon.length) {
       updateExcludedPokemon(excludedPokemon);
     }
+    if (selectedGame.length) {
+      updateSelectedGame(selectedGame);
+    }
   }, []);
 
   useEffect(() => {
@@ -341,7 +375,8 @@ const Filters = ({
         showOnlyMegas,
         filterByRegions,
         filterByStages,
-        excludedPokemon
+        excludedPokemon,
+        selectedGame
       }),
       search
     });
@@ -356,7 +391,8 @@ const Filters = ({
     showOnlyMegas,
     filterByRegions,
     filterByStages,
-    excludedPokemon
+    excludedPokemon,
+    selectedGame
   ]);
 
   return (
@@ -430,6 +466,60 @@ const Filters = ({
               </ExpansionPanelSummary>
               <ExpansionPanelDetails onClick={e => e.stopPropagation()}>
                 <Suggestions />
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </ListItem>
+          <ListItem
+            disableGutters
+            button
+            onClick={e => setOpenFilters("selectedGame")}
+          >
+            <ExpansionPanel
+              expanded={open && openFilters.includes("selectedGame")}
+              className={classNames(classes.panel, {
+                [classes.activeFilter]: selectedGame.length > 0
+              })}
+            >
+              <ExpansionPanelSummary
+                IconButtonProps={{
+                  classes: {
+                    root: classNames(classes.expandButton)
+                  }
+                }}
+                className={classes.summary}
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls=" Filter by game panel"
+              >
+                <img
+                  className={classes.icon}
+                  src={games}
+                  alt=" Filter by game filter"
+                />
+                <Typography
+                  className={classNames(classes.heading, {
+                    [classes.hide]: !open
+                  })}
+                >
+                  Filter by game
+                </Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails className={classes.details}>
+                {gamesList.map(({ name, abbreviation }) => (
+                  <div
+                    key={abbreviation}
+                    className={classes.checkContainer}
+                    onClick={e => updateChangeSelectedGame(e, abbreviation)}
+                  >
+                    <Checkbox
+                      checked={isSelectedGame(abbreviation)}
+                      value={name}
+                      inputProps={{
+                        "aria-label": "primary checkbox"
+                      }}
+                    />
+                    <p>{name}</p>
+                  </div>
+                ))}
               </ExpansionPanelDetails>
             </ExpansionPanel>
           </ListItem>

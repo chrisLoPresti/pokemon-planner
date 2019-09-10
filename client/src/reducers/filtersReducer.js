@@ -11,7 +11,8 @@ import {
   UPDATE_FILTER_BY_PSEUDO,
   UPDATE_FILTER_ERROR,
   UPDATE_SHINY_SPRITES,
-  UPDATE_EXCLUDED_POKEMON
+  UPDATE_EXCLUDED_POKEMON,
+  UPDATE_SELECTED_GAME
 } from "../actions/filterActions/filterActions";
 
 const initialState = {
@@ -27,7 +28,8 @@ const initialState = {
   filterByStages: [],
   filtersError: null,
   shiny: false,
-  excludedPokemon: []
+  excludedPokemon: [],
+  selectedGame: ""
 };
 
 const contentReducer = (state = initialState, action) => {
@@ -37,6 +39,13 @@ const contentReducer = (state = initialState, action) => {
       return {
         ...state,
         filterByTypes: payload,
+        filtersError: null
+      };
+    }
+    case UPDATE_SELECTED_GAME: {
+      return {
+        ...state,
+        selectedGame: payload,
         filtersError: null
       };
     }

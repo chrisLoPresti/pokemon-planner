@@ -9,7 +9,8 @@ import {
   updateFilterByLegendary,
   updateFilterByMythic,
   updateFilterByPseudo,
-  updateExcludedPokemon
+  updateExcludedPokemon,
+  updateSelectedGame
 } from "../../actions/filterActions/filterActions";
 
 const mapStateToProps = ({
@@ -22,7 +23,8 @@ const mapStateToProps = ({
     filterByRegions,
     filterByStages,
     filtersError,
-    excludedPokemon
+    excludedPokemon,
+    selectedGame
   }
 }) => ({
   filterByTypes,
@@ -33,7 +35,8 @@ const mapStateToProps = ({
   filterByRegions,
   filterByStages,
   filtersError,
-  excludedPokemon
+  excludedPokemon,
+  selectedGame
 });
 
 const mapDispatchToProps = {
@@ -45,7 +48,8 @@ const mapDispatchToProps = {
   updateFilterByLegendary,
   updateFilterByMythic,
   updateFilterByPseudo,
-  updateExcludedPokemon
+  updateExcludedPokemon,
+  updateSelectedGame
 };
 
 export default connect(

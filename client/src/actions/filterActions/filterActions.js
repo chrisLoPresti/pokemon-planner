@@ -11,6 +11,7 @@ export const UPDATE_FILTER_BY_MYTHIC = "UPDATE_FILTER_BY_MYTHIC";
 export const UPDATE_FILTER_BY_PSEUDO = "UPDATE_FILTER_BY_PSEUDO";
 export const UPDATE_SHINY_SPRITES = "UPDATE_SHINY_SPRITES";
 export const UPDATE_EXCLUDED_POKEMON = "UPDATE_EXCLUDED_POKEMON";
+export const UPDATE_SELECTED_GAME = "UPDATE_SELECTED_GAME";
 
 export const setFilterError = error => dispatch => {
   dispatch({ type: UPDATE_FILTER_ERROR, payload: error });
@@ -22,6 +23,10 @@ export const updateFilterByTypes = types => dispatch => {
 
 export const updateExcludedPokemon = excludedPokemon => dispatch => {
   dispatch({ type: UPDATE_EXCLUDED_POKEMON, payload: excludedPokemon });
+};
+
+export const updateSelectedGame = selectedGame => dispatch => {
+  dispatch({ type: UPDATE_SELECTED_GAME, payload: selectedGame });
 };
 
 export const setShowNames = showNames => dispatch => {

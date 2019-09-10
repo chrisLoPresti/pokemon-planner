@@ -11,6 +11,8 @@ const path = require("path");
 const cors = require("cors");
 //set up routes
 const pokemon = require("./routes/api/pokemon");
+const abilities = require("./routes/api/abilities");
+const moves = require("./routes/api/moves");
 
 //variable to hold new express app
 const app = express();
@@ -40,6 +42,8 @@ mongoose
 
 //use routes => incoming requests will be appropraitely routed
 app.use("/api/pokemon", pokemon);
+app.use("/api/abilities", abilities);
+app.use("/api/moves", moves);
 
 //serve static asses it in production
 if (process.env.NODE_ENV === "production") {

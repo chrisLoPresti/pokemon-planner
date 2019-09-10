@@ -1,8 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
-// const passport = require("passport");
-
 const Pokemon = require("../../models/pokemon");
 const Stats = require("../../models/stats");
 
@@ -59,24 +56,23 @@ router.post("/pokemonStats", (req, res) => {
   newStat.save().then(stat => res.json({ success: true }));
 });
 
-// // @route  SiteContent api/site-content/:id
-// // @desc   Add to a content bundle
-// // @access Private
-// router.post("/update/:id", (req, res) => {
-//   const errors = {};
-//   SiteContent.findOne({ id: req.params.id })
-//     .then(siteContent => {
-//       req.body.content.forEach(
-//         pair => (siteContent.bundles[req.body.bundle][pair.key] = pair.value)
-//       );
-//       siteContent.markModified("bundles");
-//       siteContent.save().then(result => res.json(result));
-//     })
-//     .catch(err =>
-//       res.status(404).json({
-//         bundleNotFound: `No matching bundle found with id '${req.params.id}'`
-//       })
-//     );
+// @route  stats api/update
+// @desc   adds whatever we need to the pokemon object
+// @access Private
+// router.post("/update", (req, res) => {
+//   console.log(req.body.name);
+//   Pokemon.findOneAndUpdate(
+//     { "name.english": req.body.name },
+//     { $set: { "gamesAvailable.USUM": req.body.number } },
+//     { new: true }
+//   ).then(stat => res.json({ success: true }));
+// });
+
+// @route  stats api/update
+// @desc   check empty fields
+// @access Private
+// router.get("/check", (req, res) => {
+//   Pokemon.find({ gamesAvailable: null }).then(missing => res.json(missing));
 // });
 
 module.exports = router;

@@ -40,6 +40,9 @@ const PokemonSchema = new Schema({
   },
   type: {
     type: Array
+  },
+  gamesAvailable: {
+    type: Object
   }
 });
 

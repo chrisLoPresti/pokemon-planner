@@ -25,7 +25,8 @@ const PokemonList = React.memo(
     setFilteredPokemonTotal,
     totalFilteredPokemon,
     history,
-    canDropPokemon
+    canDropPokemon,
+    selectedGame
   }) => {
     if (!pokemonLoaded && !loadingPokemon) {
       loadPokemonListRequest();
@@ -201,7 +202,10 @@ const PokemonList = React.memo(
                               )}
 
                               <p className="pokemon-number">
-                                #{pokemon.nationalNumber}
+                                #
+                                {selectedGame.length
+                                  ? pokemon.gamesAvailable[selectedGame]
+                                  : pokemon.nationalNumber}
                               </p>
                             </div>
                           )}
