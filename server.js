@@ -35,8 +35,6 @@ mongoose
 const server = http.createServer(app);
 const io = socketIo.listen(server);
 
-console.log('=====', port, '====');
-
 let connectedUsers = 0;
 io.on('connection', socket => {
   console.log('=====', 'connected socket', '====');

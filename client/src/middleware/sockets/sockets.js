@@ -1,7 +1,13 @@
 import io from 'socket.io-client';
 
 export default function socketMiddleware() {
-  const socket = io();
+  let socket;
+  if (process.env.NODE_ENV !== 'development') {
+    socket = io.connect();
+  } else {
+    socket = io();
+  }
+  console.log(socket);
   return ({ dispatch }) => next => action => {
     if (typeof action === 'function') {
       return next(action);
