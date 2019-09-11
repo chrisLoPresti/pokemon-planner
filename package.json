@@ -49,14 +49,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn pretty"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
     "*.{js,jsx}": [
-      "pretty-quick --staged",
-      "eslint client/ --fix",
+      "yarn pretty",
       "git add"
     ]
   }
