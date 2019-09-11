@@ -4,7 +4,7 @@
   "description": "pokemon planner site",
   "main": "server.js",
   "scripts": {
-    "pretty": "prettier --write '*/**/*.{js,jsx}' '*.{md,json}'",
+    "pretty": "prettier --write 'client/**/*.{js,jsx}' '*.{md,json}' \"!client/build\"",
     "client-install": "npm install --prefix client",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
@@ -56,7 +56,7 @@
   "lint-staged": {
     "*.{js,jsx}": [
       "pretty-quick --staged",
-      "eslint src/ --fix",
+      "eslint client/ --fix",
       "git add"
     ]
   }

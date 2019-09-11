@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import PokemonList from "../../containers/PokemonListContainer";
-import PropTypes from "prop-types";
-import SearchBarToggles from "../../containers/SearchBarTogglesContainer";
-import SelectedTeam from "../../containers/SelectedTeamContainer";
-import Toaster from "../Toaster";
-import HTML5Backend from "react-dnd-html5-backend";
-import TouchBackend from "react-dnd-touch-backend";
-import { isBrowser, isMobile } from "react-device-detect";
-import { DndProvider } from "react-dnd";
+import React, { useState } from 'react';
+import PokemonList from '../../containers/PokemonListContainer';
+import PropTypes from 'prop-types';
+import SearchBarToggles from '../../containers/SearchBarTogglesContainer';
+import SelectedTeam from '../../containers/SelectedTeamContainer';
+import Toaster from '../Toaster';
+import HTML5Backend from 'react-dnd-html5-backend';
+import TouchBackend from 'react-dnd-touch-backend';
+import { isBrowser, isMobile } from 'react-device-detect';
+import { DndProvider } from 'react-dnd';
 
-import LoadingSite from "../LoadingSite";
-import "./SelectPokemon.css";
+import LoadingSite from '../LoadingSite';
+import './SelectPokemon.css';
 
 const backends = {
   HTML5Backend,

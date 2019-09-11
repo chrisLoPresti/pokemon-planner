@@ -1,12 +1,12 @@
-import { connect } from "react-redux";
-import SearchBarToggles from "../../components/SearchBarToggles";
+import { connect } from 'react-redux';
+import SearchBarToggles from '../../components/SearchBarToggles';
 import {
   setShowNames,
   setShowNumbers,
   updateSearchCriteria,
   updateShinySprites
-} from "../../actions/filterActions/filterActions";
-import { updateSelectedTeam } from "../../actions/pokemonListActions/pokemonListActions";
+} from '../../actions/filterActions/filterActions';
+import { updateSelectedTeam } from '../../actions/pokemonListActions/pokemonListActions';
 
 const mapStateToProps = ({
   pokemon: { totalFilteredPokemon },

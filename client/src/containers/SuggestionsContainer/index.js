@@ -1,1 +1,1 @@
-export { default } from "./SuggestionsContainer";
+export { default } from './SuggestionsContainer';

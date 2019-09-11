@@ -1,7 +1,7 @@
-import React from "react";
-import { toast, ToastContainer } from "react-toastify";
-import PropTypes from "prop-types";
-import "react-toastify/dist/ReactToastify.css";
+import React from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import PropTypes from 'prop-types';
+import 'react-toastify/dist/ReactToastify.css';
 
 let toastId = null;
 

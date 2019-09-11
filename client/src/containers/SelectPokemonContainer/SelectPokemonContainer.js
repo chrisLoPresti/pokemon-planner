@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import SelectPokemon from "../../components/SelectPokemon";
+import { connect } from 'react-redux';
+import SelectPokemon from '../../components/SelectPokemon';
 
 const mapStateToProps = ({
   filters: { filtersError },

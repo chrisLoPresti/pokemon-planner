@@ -1,4 +1,4 @@
-import { createSelector } from "reselect";
+import { createSelector } from 'reselect';
 
 const allPokemonSelector = state => state.pokemon.allPokemon;
 const filtersSelector = state => state.filters;
@@ -35,7 +35,7 @@ export const getSelectedPokemonArray = createSelector(
   selectedTeamSelector,
   team =>
     Object.keys(team)
-      .filter(key => key !== "count" && key !== "hasMega")
+      .filter(key => key !== 'count' && key !== 'hasMega')
       .map(key => team[key])
 );
 
@@ -103,7 +103,7 @@ export const getFilteredPokemon = createSelector(
         if (filterByStages.length) {
           validStage =
             filterByStages.includes(pokemon.stage) ||
-            (filterByStages.includes("Fully Evolved") && pokemon.fullyEvolved);
+            (filterByStages.includes('Fully Evolved') && pokemon.fullyEvolved);
         }
         const notExcluded = !excludedPokemon.find(
           ({ name }) => name === pokemon.name.english
@@ -131,39 +131,39 @@ export const getFilteredPokemon = createSelector(
             validGame = pokemon.gamesAvailable[selectedGame] !== undefined;
 
             const preORAS = [
-              "Beedrill",
-              "Pidgeot",
-              "Slowbro",
-              "Steelix",
-              "Sceptile",
-              "Swampert",
-              "Sableye",
-              "Sharpedo",
-              "Camerupt",
-              "Altaria",
-              "Glalie",
-              "Salamence",
-              "Metagross",
-              "Latias",
-              "Latios",
-              "Rayquaza",
-              "Lopunny",
-              "Gallade",
-              "Audino",
-              "Diancie"
+              'Beedrill',
+              'Pidgeot',
+              'Slowbro',
+              'Steelix',
+              'Sceptile',
+              'Swampert',
+              'Sableye',
+              'Sharpedo',
+              'Camerupt',
+              'Altaria',
+              'Glalie',
+              'Salamence',
+              'Metagross',
+              'Latias',
+              'Latios',
+              'Rayquaza',
+              'Lopunny',
+              'Gallade',
+              'Audino',
+              'Diancie'
             ];
             if (
-              pokemon.name.english.includes("Mega ") &&
-              selectedGame !== "XY" &&
-              selectedGame !== "ORAS" &&
-              selectedGame !== "SM" &&
-              selectedGame !== "USUM"
+              pokemon.name.english.includes('Mega ') &&
+              selectedGame !== 'XY' &&
+              selectedGame !== 'ORAS' &&
+              selectedGame !== 'SM' &&
+              selectedGame !== 'USUM'
             ) {
               validGame = false;
             }
             if (
-              preORAS.includes(pokemon.name.english.split(" ")[1]) &&
-              selectedGame === "XY"
+              preORAS.includes(pokemon.name.english.split(' ')[1]) &&
+              selectedGame === 'XY'
             ) {
               validGame = false;
             }

@@ -1,8 +1,8 @@
-import { connect } from "react-redux";
-import { getExcludedPokemon } from "../../selectors/pokemonSelectors";
+import { connect } from 'react-redux';
+import { getExcludedPokemon } from '../../selectors/pokemonSelectors';
 
-import { updateExcludedPokemon } from "../../actions/filterActions/filterActions";
-import Suggestions from "../../components/Filters/Suggestions";
+import { updateExcludedPokemon } from '../../actions/filterActions/filterActions';
+import Suggestions from '../../components/Filters/Suggestions';
 
 const mapStateToProps = state => ({
   allPokemon: state.pokemon.allPokemon,

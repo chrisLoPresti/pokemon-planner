@@ -1,15 +1,14 @@
-import io from "socket.io-client";
+import io from 'socket.io-client';
 
 export default function socketMiddleware() {
   let socket;
-  if (process.env.NODE_ENV === "production") {
-    socket = io("http://pokemon-team-planner-ani.herokuapp.com/");
+  if (process.env.NODE_ENV === 'production') {
+    socket = io('http://pokemon-team-planner-ani.herokuapp.com/');
   } else {
     socket = io();
   }
-  const socket = io();
   return ({ dispatch }) => next => action => {
-    if (typeof action === "function") {
+    if (typeof action === 'function') {
       return next(action);
     }
     const { event, leave, handle, emit, payload, ...rest } = action;
@@ -28,7 +27,7 @@ export default function socketMiddleware() {
     }
 
     let handleEvent = handle;
-    if (typeof handleEvent !== "function") {
+    if (typeof handleEvent !== 'function') {
       handleEvent = result => dispatch({ type: handle, result, ...rest });
     }
     return socket.on(event, handleEvent);

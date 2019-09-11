@@ -1,3 +1,3 @@
 export default {
-  POKEMON: "pokemon"
+  POKEMON: 'pokemon'
 };

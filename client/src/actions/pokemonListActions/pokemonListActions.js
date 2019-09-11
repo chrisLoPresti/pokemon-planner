@@ -1,19 +1,19 @@
-import { CALL_API } from "../../middleware/api";
-import { pokemonListScheme } from "../schemas/pokemonSchemas";
+import { CALL_API } from '../../middleware/api';
+import { pokemonListScheme } from '../schemas/pokemonSchemas';
 
-export const UPDATE_SELECTED_POKEMON = "UPDATE_SELECTED_POKEMON";
-export const LOAD_POKEMON_REQUEST = "LOAD_POKEMON_REQUEST";
-export const LOAD_POKEMON_SUCCESS = "LOAD_POKEMON_SUCCESS";
-export const LOAD_POKEMON_FAILURE = "LOAD_POKEMON_FAILURE";
-export const FILTER_POKEMON_SUCCESS = "FILTER_POKEMON_SUCCESS";
-export const SET_POKEMON_LIST_LOADING = "SET_POKEMON_LIST_LOADING";
-export const UPDATE_SELECTED_TEAM = "UPDATE_SELECTED_TEAM";
-export const SET_POKEMON_LIST_ERROR = "SET_POKEMON_LIST_ERROR";
-export const SET_FILTERED_POKEMON_TOTAL = "SET_FILTERED_POKEMON_TOTAL";
+export const UPDATE_SELECTED_POKEMON = 'UPDATE_SELECTED_POKEMON';
+export const LOAD_POKEMON_REQUEST = 'LOAD_POKEMON_REQUEST';
+export const LOAD_POKEMON_SUCCESS = 'LOAD_POKEMON_SUCCESS';
+export const LOAD_POKEMON_FAILURE = 'LOAD_POKEMON_FAILURE';
+export const FILTER_POKEMON_SUCCESS = 'FILTER_POKEMON_SUCCESS';
+export const SET_POKEMON_LIST_LOADING = 'SET_POKEMON_LIST_LOADING';
+export const UPDATE_SELECTED_TEAM = 'UPDATE_SELECTED_TEAM';
+export const SET_POKEMON_LIST_ERROR = 'SET_POKEMON_LIST_ERROR';
+export const SET_FILTERED_POKEMON_TOTAL = 'SET_FILTERED_POKEMON_TOTAL';
 
 const fetchPokemonList = () => ({
   [CALL_API]: {
-    endpoint: "pokemon/pokemonList",
+    endpoint: 'pokemon/pokemonList',
     types: [LOAD_POKEMON_REQUEST, LOAD_POKEMON_SUCCESS, LOAD_POKEMON_FAILURE],
     useCache: true,
     schema: pokemonListScheme

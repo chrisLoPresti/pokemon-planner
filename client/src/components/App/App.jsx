@@ -1,20 +1,20 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import SelectPokemon from "../../containers/SelectPokemonContainer";
-import Filters from "../../containers/FiltersContainer";
-import Header from "../../containers/HeaderContainer";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import { newMove } from "../../actions/adminActions/adminActions";
-import axios from "axios";
-import store from "../../store";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import SelectPokemon from '../../containers/SelectPokemonContainer';
+import Filters from '../../containers/FiltersContainer';
+import Header from '../../containers/HeaderContainer';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { newMove } from '../../actions/adminActions/adminActions';
+import axios from 'axios';
+import store from '../../store';
 // import data from "../../../../pokemon/moves/data";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: 'flex'
   },
   content: {
-    width: "100%"
+    width: '100%'
   }
 }));
 
@@ -52,11 +52,11 @@ export default function MiniDrawer() {
       <Header open={open} setOpen={setOpen} />
       <Router>
         <Route
-          path={"/"}
+          path={'/'}
           render={props => <Filters {...props} open={open} setOpen={setOpen} />}
         />
         <main className={classes.content}>
-          <Route path={"/"} render={props => <SelectPokemon {...props} />} />
+          <Route path={'/'} render={props => <SelectPokemon {...props} />} />
         </main>
       </Router>
     </div>

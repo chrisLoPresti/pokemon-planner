@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import {
   Grid,
   Button,
@@ -6,19 +6,19 @@ import {
   IconButton,
   Switch,
   withStyles
-} from "@material-ui/core";
-import PropTypes from "prop-types";
-import queryString from "query-string";
-import clearImage from "../../assets/images/misc/clear.png";
-import "./SearchBarToggles.css";
+} from '@material-ui/core';
+import PropTypes from 'prop-types';
+import queryString from 'query-string';
+import clearImage from '../../assets/images/misc/clear.png';
+import './SearchBarToggles.css';
 
 const styles = {
   root: {
-    color: "ghostwhite"
+    color: 'ghostwhite'
   },
   underline: {
-    "&:after": {
-      borderBottom: "2px solid #ef4b4b"
+    '&:after': {
+      borderBottom: '2px solid #ef4b4b'
     }
   }
 };
@@ -59,7 +59,7 @@ const SearchBarToggles = React.memo(
         search
       });
       history.push({
-        search: query.length > 7 ? query : ""
+        search: query.length > 7 ? query : ''
       });
     }, [search]);
 
@@ -74,7 +74,7 @@ const SearchBarToggles = React.memo(
             className="switch"
             checked={showNames}
             onChange={() => setShowNames(!showNames)}
-            inputProps={{ "aria-label": "secondary checkbox" }}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </Grid>
         <Grid item xs={2} md={1} className="toggle-content">
@@ -83,7 +83,7 @@ const SearchBarToggles = React.memo(
             className="switch"
             checked={showNumbers}
             onChange={() => setShowNumbers(!showNumbers)}
-            inputProps={{ "aria-label": "secondary checkbox" }}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </Grid>
         <Grid item xs={2} md={1} className="margin-container">
@@ -92,7 +92,7 @@ const SearchBarToggles = React.memo(
             className="switch"
             checked={shiny}
             onChange={() => updateShinySprites(!shiny)}
-            inputProps={{ "aria-label": "secondary checkbox" }}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         </Grid>
         <Grid item xs={10} md={9} className="margin-container">
@@ -108,11 +108,11 @@ const SearchBarToggles = React.memo(
               root: classes.root,
               underline: classes.underline
             }}
-            inputProps={{ "aria-label": "search" }}
+            inputProps={{ 'aria-label': 'search' }}
           />
           <IconButton
             className="clear-search-image-container"
-            onClick={() => updateSearchCriteria("")}
+            onClick={() => updateSearchCriteria('')}
           >
             <img
               className="clear-search-image"

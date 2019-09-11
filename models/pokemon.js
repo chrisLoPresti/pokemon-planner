@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const PokemonSchema = new Schema({
@@ -46,4 +46,4 @@ const PokemonSchema = new Schema({
   }
 });
 
-module.exports = Pokemon = mongoose.model("pokemon", PokemonSchema);
+module.exports = Pokemon = mongoose.model('pokemon', PokemonSchema);

@@ -1,52 +1,52 @@
-import React from "react";
-import classNames from "classnames";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
-import Badge from "@material-ui/core/Badge";
-import { useTheme } from "@material-ui/core/styles";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
-import users from "../../assets/images/misc/users.png";
-import Tooltip from "@material-ui/core/Tooltip";
+import React from 'react';
+import classNames from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Badge from '@material-ui/core/Badge';
+import { useTheme } from '@material-ui/core/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import users from '../../assets/images/misc/users.png';
+import Tooltip from '@material-ui/core/Tooltip';
 
-import "./Header.css";
+import './Header.css';
 
 const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: 'flex'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    fontFamily: "Pokemon Solid",
-    backgroundColor: "#313131",
-    color: "ghostwhite",
-    letterSpacing: "0.1rem"
+    fontFamily: 'Pokemon Solid',
+    backgroundColor: '#313131',
+    color: 'ghostwhite',
+    letterSpacing: '0.1rem'
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
+    transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
     })
   },
   home: {
     marginRight: 10,
-    height: "50px",
-    cursor: "pointer"
+    height: '50px',
+    cursor: 'pointer'
   },
   content: {
-    width: "100%",
-    backgroundColor: "#525252",
-    paddingTop: "60px"
+    width: '100%',
+    backgroundColor: '#525252',
+    paddingTop: '60px'
   }
 }));
 
@@ -61,7 +61,7 @@ export default function Header({
   }
   const classes = useStyles();
   const theme = useTheme();
-  const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <AppBar
@@ -85,8 +85,8 @@ export default function Header({
         </IconButton>
         <p>Pokémon Team Planner</p>
         <Badge className="badge" badgeContent={usersOnline} color="primary">
-        <Tooltip title="Users Online">
-          <img src={users} alt="users online" className="badge-icon" />
+          <Tooltip title="Users Online">
+            <img src={users} alt="users online" className="badge-icon" />
           </Tooltip>
         </Badge>
       </Toolbar>

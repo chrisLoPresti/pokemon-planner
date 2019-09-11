@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
-import Filters from "../../components/Filters";
+import { connect } from 'react-redux';
+import Filters from '../../components/Filters';
 import {
   setFilterError,
   updateFilterByTypes,
@@ -11,7 +11,7 @@ import {
   updateFilterByPseudo,
   updateExcludedPokemon,
   updateSelectedGame
-} from "../../actions/filterActions/filterActions";
+} from '../../actions/filterActions/filterActions';
 
 const mapStateToProps = ({
   filters: {

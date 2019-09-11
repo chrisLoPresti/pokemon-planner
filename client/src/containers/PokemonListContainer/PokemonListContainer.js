@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 import {
   getFilteredPokemon,
   getSelectedTeam,
@@ -7,7 +7,7 @@ import {
   getLoaded,
   getLoading,
   getTotalFilteredPokemon
-} from "../../selectors/pokemonSelectors";
+} from '../../selectors/pokemonSelectors';
 
 import {
   loadPokemonListRequest,
@@ -15,8 +15,8 @@ import {
   updateSelectedTeam,
   updateSelectedPokemon,
   setFilteredPokemonTotal
-} from "../../actions/pokemonListActions/pokemonListActions";
-import PokemonList from "../../components/PokemonList";
+} from '../../actions/pokemonListActions/pokemonListActions';
+import PokemonList from '../../components/PokemonList';
 
 const mapStateToProps = state => ({
   filteredPokemon: getFilteredPokemon(state),

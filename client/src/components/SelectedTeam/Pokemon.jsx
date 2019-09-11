@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import { Grid } from "@material-ui/core";
-import { useDrag, useDrop } from "react-dnd";
-import classNames from "classnames";
-import ItemTypes from "./ItemTypes";
-import _ from "lodash";
+import React, { useRef } from 'react';
+import { Grid } from '@material-ui/core';
+import { useDrag, useDrop } from 'react-dnd';
+import classNames from 'classnames';
+import ItemTypes from './ItemTypes';
+import _ from 'lodash';
 const style = {
-  cursor: "move"
+  cursor: 'move'
 };
 const DraggablePokemon = ({
   id,
@@ -84,7 +84,7 @@ const DraggablePokemon = ({
       item
       xs={4}
       md={2}
-      className={classNames("selected-pokemon-container", {
+      className={classNames('selected-pokemon-container', {
         dragging: isAPokemonDragging
       })}
       onDoubleClick={() => setSelectedTeam(pokemon)}

@@ -1,1 +1,1 @@
-export { default } from "./SearchBarToggles";
+export { default } from './SearchBarToggles';

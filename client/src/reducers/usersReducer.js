@@ -1,4 +1,4 @@
-import { UPDATE_CURRENT_USERS } from "../actions/socketActions/socketActions";
+import { UPDATE_CURRENT_USERS } from '../actions/socketActions/socketActions';
 
 const initialState = {
   usersOnline: -1

@@ -1,1 +1,1 @@
-export { default } from "./SelectedTeamContainer";
+export { default } from './SelectedTeamContainer';

@@ -1,1 +1,1 @@
-export { default } from "./SearchBarTogglesContainer";
+export { default } from './SearchBarTogglesContainer';

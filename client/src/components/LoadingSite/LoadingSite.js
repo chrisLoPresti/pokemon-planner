@@ -1,6 +1,6 @@
-import React from "react";
-import LoadingImage from "../../assets/images/misc/loadingPage.gif";
-import "./LoadingSite.css";
+import React from 'react';
+import LoadingImage from '../../assets/images/misc/loadingPage.gif';
+import './LoadingSite.css';
 
 const LoadingSite = () => {
   return (

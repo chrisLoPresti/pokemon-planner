@@ -1,12 +1,12 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const Pokemon = require("../../models/pokemon");
-const Stats = require("../../models/stats");
+const Pokemon = require('../../models/pokemon');
+const Stats = require('../../models/stats');
 
 // @route  Get api/Pokemon
 // @desc   Get all pokemon
 // @access Public
-router.get("/pokemonList", (req, res) => {
+router.get('/pokemonList', (req, res) => {
   const errors = {};
 
   Pokemon.find()
@@ -21,7 +21,7 @@ router.get("/pokemonList", (req, res) => {
       res.json(sortedObject);
     })
     .catch(err => {
-      errors.content = "There are no pokemon";
+      errors.content = 'There are no pokemon';
       res.status(404).json(errors);
     });
 });
@@ -29,7 +29,7 @@ router.get("/pokemonList", (req, res) => {
 // @route  pokemon api/content
 // @desc   Create pokemon
 // @access Private
-router.post("/pokemonList", (req, res) => {
+router.post('/pokemonList', (req, res) => {
   const { errors } = {};
   const newPokemon = new Pokemon({
     ...req.body
@@ -40,7 +40,7 @@ router.post("/pokemonList", (req, res) => {
 // @route  stats api/content
 // @desc   Create stats
 // @access Private
-router.post("/pokemonStats", (req, res) => {
+router.post('/pokemonStats', (req, res) => {
   const { errors } = {};
 
   const newStat = new Stats({

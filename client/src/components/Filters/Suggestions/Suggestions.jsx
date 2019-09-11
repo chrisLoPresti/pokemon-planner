@@ -1,15 +1,15 @@
-import React from "react";
-import deburr from "lodash/deburr";
-import Autosuggest from "react-autosuggest";
-import match from "autosuggest-highlight/match";
-import parse from "autosuggest-highlight/parse";
-import TextField from "@material-ui/core/TextField";
-import Checkbox from "@material-ui/core/Checkbox";
-import Paper from "@material-ui/core/Paper";
-import MenuItem from "@material-ui/core/MenuItem";
-import classNames from "classnames";
-import { makeStyles } from "@material-ui/core/styles";
-import _ from "lodash";
+import React from 'react';
+import deburr from 'lodash/deburr';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import classNames from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
+import _ from 'lodash';
 
 const determineAction = (suggestion, excludedPokemon, updateFunction) => {
   const isExcluded = excludedPokemon.find(
@@ -32,7 +32,7 @@ function renderInputComponent(inputProps) {
       id="tet"
       fullWidth
       InputLabelProps={{
-        style: { color: "ghostwhite" }
+        style: { color: 'ghostwhite' }
       }}
       InputProps={{
         inputRef: node => {
@@ -71,7 +71,7 @@ function getSuggestions(allPokemon, value, excludedPokemon) {
           }
           return keep;
         }),
-        "name.english"
+        'name.english'
       );
 }
 
@@ -84,46 +84,46 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   container: {
-    position: "relative"
+    position: 'relative'
   },
   suggestionsContainerOpen: {
-    position: "absolute",
+    position: 'absolute',
     zIndex: 1,
     marginTop: theme.spacing(1),
     left: 0,
     right: 0
   },
   suggestion: {
-    display: "block"
+    display: 'block'
   },
   suggestionsList: {
     margin: 0,
     padding: 0,
-    listStyleType: "none"
+    listStyleType: 'none'
   },
   divider: {
     height: theme.spacing(2)
   },
   underline: {
-    "&:after": {
-      borderBottom: "2px solid #ef4b4b"
+    '&:after': {
+      borderBottom: '2px solid #ef4b4b'
     }
   },
   textField: {
-    color: "ghostwhite"
+    color: 'ghostwhite'
   },
   flexDisplay: {
-    display: "flex",
-    width: "100%",
-    justifyContent: "space-between",
-    color: "ghostwhite"
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'space-between',
+    color: 'ghostwhite'
   },
   checkDisplay: {
-    justifyContent: "start"
+    justifyContent: 'start'
   },
   checkBoxContainer: {
-    overflow: "auto",
-    maxHeight: "180px"
+    overflow: 'auto',
+    maxHeight: '180px'
   }
 }));
 
@@ -133,7 +133,7 @@ export default function IntegrationAutosuggest({
   excludedPokemon
 }) {
   const classes = useStyles();
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = React.useState('');
 
   const [stateSuggestions, setSuggestions] = React.useState([]);
 
@@ -171,15 +171,15 @@ export default function IntegrationAutosuggest({
         component="div"
         style={{
           background:
-            "linear-gradient(to right bottom, #414141 40%, #5d5d5d 60%)"
+            'linear-gradient(to right bottom, #414141 40%, #5d5d5d 60%)'
         }}
       >
         <div className={classes.flexDisplay}>
           <div
             style={{
               width: 180,
-              overflow: "hidden",
-              textOverflow: "ellipsis"
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
             }}
           >
             {parts.map(part => (
@@ -194,7 +194,7 @@ export default function IntegrationAutosuggest({
             ))}
           </div>
           <img
-            style={{ alignSelf: "center" }}
+            style={{ alignSelf: 'center' }}
             alt={suggestedName}
             src={require(`../../../assets/images/sprites/pokedex/${suggestedSprite}`)}
           />
@@ -216,14 +216,14 @@ export default function IntegrationAutosuggest({
     <div className={classes.root}>
       <Autosuggest
         {...autosuggestProps}
-        onSuggestionSelected={() => setSearch("")}
+        onSuggestionSelected={() => setSearch('')}
         inputProps={{
           classes,
-          id: "react-autosuggest-simple",
-          label: "Exclude Pokemon",
-          placeholder: "Search by name (english)",
+          id: 'react-autosuggest-simple',
+          label: 'Exclude Pokemon',
+          placeholder: 'Search by name (english)',
           value: search,
-          onChange: handleChange("single")
+          onChange: handleChange('single')
         }}
         theme={{
           container: classes.container,
@@ -258,21 +258,21 @@ export default function IntegrationAutosuggest({
                 checked
                 value={name}
                 inputProps={{
-                  "aria-label": "primary checkbox"
+                  'aria-label': 'primary checkbox'
                 }}
               />
               <p
                 style={{
                   width: 120,
-                  overflow: "hidden",
-                  textOverflow: "ellipsis"
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
                 }}
               >
                 {name}
               </p>
             </div>
             <img
-              style={{ alignSelf: "center" }}
+              style={{ alignSelf: 'center' }}
               alt={name}
               src={require(`../../../assets/images/sprites/pokedex/${sprite}`)}
             />

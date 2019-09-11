@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import SelectedTeam from "../../components/SelectedTeam";
-import { updateSelectedTeam } from "../../actions/pokemonListActions/pokemonListActions";
+import { connect } from 'react-redux';
+import SelectedTeam from '../../components/SelectedTeam';
+import { updateSelectedTeam } from '../../actions/pokemonListActions/pokemonListActions';
 import {
   getSelectedPokemonArray,
   getExcludedPokemon
-} from "../../selectors/pokemonSelectors";
+} from '../../selectors/pokemonSelectors';
 
 const mapStateToProps = state => ({
   selectedTeam: getSelectedPokemonArray(state),

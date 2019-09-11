@@ -1,1 +1,1 @@
-export { default } from "./SelectPokemonContainer";
+export { default } from './SelectPokemonContainer';

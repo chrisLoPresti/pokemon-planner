@@ -1,1 +1,1 @@
-export { default } from "./Types";
+export { default } from './Types';

@@ -13,11 +13,11 @@ import {
   UPDATE_SHINY_SPRITES,
   UPDATE_EXCLUDED_POKEMON,
   UPDATE_SELECTED_GAME
-} from "../actions/filterActions/filterActions";
+} from '../actions/filterActions/filterActions';
 
 const initialState = {
   filterByTypes: [],
-  search: "",
+  search: '',
   showNames: false,
   showNumbers: true,
   showOnlyLegendary: false,
@@ -29,7 +29,7 @@ const initialState = {
   filtersError: null,
   shiny: false,
   excludedPokemon: [],
-  selectedGame: ""
+  selectedGame: ''
 };
 
 const contentReducer = (state = initialState, action) => {

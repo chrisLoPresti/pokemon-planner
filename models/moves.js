@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const MovesSchema = new Schema({
@@ -34,4 +34,4 @@ const MovesSchema = new Schema({
   }
 });
 
-module.exports = Moves = mongoose.model("moves", MovesSchema);
+module.exports = Moves = mongoose.model('moves', MovesSchema);

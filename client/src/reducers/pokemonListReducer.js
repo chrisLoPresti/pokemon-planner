@@ -6,23 +6,23 @@ import {
   UPDATE_SELECTED_TEAM,
   SET_POKEMON_LIST_ERROR,
   SET_FILTERED_POKEMON_TOTAL
-} from "../actions/pokemonListActions/pokemonListActions";
+} from '../actions/pokemonListActions/pokemonListActions';
 
-const mostRecentUpdate = "2019-09-10 01:01:00 GMT-0400";
+const mostRecentUpdate = '2019-09-10 01:01:00 GMT-0400';
 
 const allPokemonDecision = () => {
-  const lastStoredUpdate = JSON.parse(localStorage.getItem("lastStoredUpdate"));
+  const lastStoredUpdate = JSON.parse(localStorage.getItem('lastStoredUpdate'));
   var currentDate = new Date();
   if (
     !lastStoredUpdate ||
     new Date(lastStoredUpdate) < new Date(mostRecentUpdate)
   ) {
-    localStorage.removeItem("lastStoredUpdate");
-    localStorage.removeItem("lastStoredUpdate");
-    localStorage.setItem("lastStoredUpdate", JSON.stringify(currentDate));
+    localStorage.removeItem('lastStoredUpdate');
+    localStorage.removeItem('lastStoredUpdate');
+    localStorage.setItem('lastStoredUpdate', JSON.stringify(currentDate));
     return [];
   } else {
-    return JSON.parse(localStorage.getItem("allPokemon")) || [];
+    return JSON.parse(localStorage.getItem('allPokemon')) || [];
   }
 };
 
@@ -61,7 +61,7 @@ const contentReducer = (state = initialState, action) => {
       };
     }
     case LOAD_POKEMON_SUCCESS: {
-      localStorage.setItem("allPokemon", JSON.stringify(payload));
+      localStorage.setItem('allPokemon', JSON.stringify(payload));
 
       return {
         ...state,
