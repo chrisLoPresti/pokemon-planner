@@ -1,62 +1,48 @@
-// 'manager' of the server
 const express = require("express");
-// allows us to connect to mongoDB
-const mongoose = require("mongoose");
-// allows us to parse requests as json
+const http = require("http");
+const socketIo = require("socket.io");
 const bodyParser = require("body-parser");
-// used for authentication
-// const passport = require("passport");
-//path module part of node.js
 const path = require("path");
 const cors = require("cors");
-//set up routes
+const mongoose = require("mongoose");
 const pokemon = require("./routes/api/pokemon");
 const abilities = require("./routes/api/abilities");
 const moves = require("./routes/api/moves");
 
-//variable to hold new express app
+const port = process.env.PORT || 5000;
 const app = express();
 app.use(cors());
-
-// body parser middleware for parsing requests as json
-// tells the system whether you want to use a simple algorithm for shallow parsing (i.e. false) or complex algorithm for deep parsing that can deal with nested objects (i.e. true
 app.use(bodyParser.urlencoded({ extended: false }));
-// lets the 'manager' know we want json to be used
 app.use(bodyParser.json());
 
-//databse config
-const dataBase = require("./config/keys").mongoURI;
-
-//conenct to mongoDB
-mongoose
-  .connect(dataBase, { useNewUrlParser: true })
-  .then(() => console.log("MongoDB Connected..."))
-  .catch(err => console.log(err));
-
-//passport middleware - used for authentication
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-//passport config
-// require("./config/passport")(passport);
-
-//use routes => incoming requests will be appropraitely routed
 app.use("/api/pokemon", pokemon);
 app.use("/api/abilities", abilities);
 app.use("/api/moves", moves);
 
-//serve static asses it in production
 if (process.env.NODE_ENV === "production") {
-  // set static folder
   app.use(express.static("client/build"));
-  //directs all routes to the index.html file
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
-//use the env. server port or localhost:5000
-const port = process.env.PORT || 5000;
+const dataBase = require("./config/keys").mongoURI;
+mongoose
+  .connect(dataBase, { useNewUrlParser: true })
+  .then(() => console.log("MongoDB Connected..."))
+  .catch(err => console.log(err));
 
-//listen on the port for incoming requests
-app.listen(port, () => console.log(`Server running on port ${port}...`));
+const server = http.createServer(app);
+const io = socketIo(server);
+let connectedUsers = 0;
+io.on("connection", socket => {
+  ++connectedUsers;
+  io.emit("SUBSCRIBE_T0_USER_COUNT", connectedUsers);
+  socket.on("disconnect", () => {
+    --connectedUsers;
+    io.emit("SUBSCRIBE_T0_USER_COUNT", connectedUsers);
+    console.log("Client disconnected");
+  });
+});
+
+server.listen(port, () => console.log(`Listening on port ${port}`));

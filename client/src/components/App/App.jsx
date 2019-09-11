@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import SelectPokemon from "../../containers/SelectPokemonContainer";
 import Filters from "../../containers/FiltersContainer";
-import Header from "../Header";
+import Header from "../../containers/HeaderContainer";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { newMove } from "../../actions/adminActions/adminActions";
 import axios from "axios";

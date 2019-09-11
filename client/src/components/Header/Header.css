@@ -1,0 +1,8 @@
+.badge-icon {
+  height: 30px;
+}
+
+#nav .toolbar {
+  display: flex;
+  justify-content: space-between;
+}

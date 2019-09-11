@@ -5,9 +5,13 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import Badge from "@material-ui/core/Badge";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import home from "../../assets/images/home/home.png";
+import users from "../../assets/images/misc/users.png";
+import Tooltip from "@material-ui/core/Tooltip";
+
+import "./Header.css";
 
 const drawerWidth = 280;
 
@@ -46,19 +50,28 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header({ open, setOpen }) {
+export default function Header({
+  open,
+  setOpen,
+  subscribeToUserCount,
+  usersOnline
+}) {
+  if (!usersOnline >= 0) {
+    subscribeToUserCount();
+  }
   const classes = useStyles();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <AppBar
+      id="nav"
       position="fixed"
       className={classNames(classes.appBar, {
         [classes.appBarShift]: !smallScreen && open
       })}
     >
-      <Toolbar>
+      <Toolbar className="toolbar">
         <IconButton
           color="inherit"
           aria-label="open drawer"
@@ -70,8 +83,12 @@ export default function Header({ open, setOpen }) {
         >
           <MenuIcon />
         </IconButton>
-        <img alt="home" className={classes.home} src={home} />
         <p>Pokémon Team Planner</p>
+        <Badge className="badge" badgeContent={usersOnline} color="primary">
+        <Tooltip title="Users Online">
+          <img src={users} alt="users online" className="badge-icon" />
+          </Tooltip>
+        </Badge>
       </Toolbar>
     </AppBar>
   );
