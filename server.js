@@ -34,9 +34,13 @@ mongoose
 
 const server = http.createServer(app);
 const io = socketIo.listen(server);
-io.set('origins', '*:*');
+
+console.log('=====', port, '====');
+
 let connectedUsers = 0;
 io.on('connection', socket => {
+  console.log('=====', 'connected socket', '====');
+
   ++connectedUsers;
   io.emit('SUBSCRIBE_T0_USER_COUNT', connectedUsers);
 
