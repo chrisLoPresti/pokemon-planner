@@ -3,10 +3,10 @@ import io from 'socket.io-client';
 export default function socketMiddleware() {
   let socket;
   if (process.env.NODE_ENV === 'production') {
-    console.log(prod);
+    console.log('prod');
     socket = io('http://pokemon-team-planner-ani.herokuapp.com/');
   } else {
-    console.log(dev);
+    console.log('dev');
     socket = io();
   }
   return ({ dispatch }) => next => action => {
