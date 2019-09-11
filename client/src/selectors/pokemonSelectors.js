@@ -24,7 +24,7 @@ const showNames = state => state.filters.showNames;
 const showNumbers = state => state.filters.showNumbers;
 const filtersError = state => state.filters.filtersError;
 
-const usersOnline = state => state.users.getUsersOnline;
+const usersOnline = state => state.users.usersOnline;
 
 export const getUsersOnline = createSelector(
   usersOnline,
