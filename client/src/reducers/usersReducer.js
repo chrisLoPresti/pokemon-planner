@@ -1,7 +1,7 @@
 import { UPDATE_CURRENT_USERS } from '../actions/socketActions/socketActions';
 
 const initialState = {
-  usersOnline: -1
+  usersOnline: 0
 };
 
 const contentReducer = (state = initialState, action) => {

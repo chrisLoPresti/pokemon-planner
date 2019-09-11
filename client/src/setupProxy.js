@@ -1,9 +1,7 @@
 const proxy = require('http-proxy-middleware');
 
 const target =
-  process.env.NODE_ENV === 'development'
-    ? 'http://localhost:5000/'
-    : 'http://pokemon-team-planner-ani.herokuapp.com/';
+  process.env.NODE_ENV === 'development' ? 'http://localhost:5000/' : '/';
 
 module.exports = app => {
   app.use(
