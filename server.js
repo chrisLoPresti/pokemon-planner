@@ -38,6 +38,7 @@ let connectedUsers = 0;
 io.on("connection", socket => {
   ++connectedUsers;
   io.emit("SUBSCRIBE_T0_USER_COUNT", connectedUsers);
+  
   socket.on("disconnect", () => {
     --connectedUsers;
     io.emit("SUBSCRIBE_T0_USER_COUNT", connectedUsers);
