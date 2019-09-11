@@ -57,7 +57,6 @@ export default function Header({
   usersOnline
 }) {
   if (!usersOnline) {
-    console.log('start subscribing');
     subscribeToUserCount();
   }
   const classes = useStyles();

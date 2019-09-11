@@ -1,18 +1,19 @@
 const proxy = require('http-proxy-middleware');
 
+const target = 'http://localhost:5000/';
+
 module.exports = app => {
   app.use(
     proxy('/api', {
-      target: 'http://localhost:5000/',
+      target,
       changeOrigin: true
     })
   );
-  process.env.NODE_ENV === 'development' &&
-    app.use(
-      proxy('/socket.io', {
-        target: 'http://localhost:5000/',
-        changeOrigin: true,
-        ws: true
-      })
-    );
+  app.use(
+    proxy('/socket.io', {
+      target,
+      changeOrigin: true,
+      ws: true
+    })
+  );
 };

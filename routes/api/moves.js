@@ -5,7 +5,6 @@ const Moves = require('../../models/moves');
 // @desc   Create ability
 // @access Private
 router.post('/newMove', (req, res) => {
-  console.log(req);
   const { errors } = {};
   const newMove = new Moves({
     name: req.body.name,

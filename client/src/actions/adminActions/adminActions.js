@@ -60,7 +60,6 @@ export const addAbility = ability => {
 };
 
 export const newMove = move => {
-  console.log(move);
   return {
     [CALL_API]: {
       body: move,

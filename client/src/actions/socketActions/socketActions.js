@@ -2,8 +2,6 @@ export const SUBSCRIBE_T0_USER_COUNT = 'SUBSCRIBE_T0_USER_COUNT';
 export const UPDATE_CURRENT_USERS = 'SET_CURRENT_USERS';
 
 export const subscribeToUserCount = () => dispatch => {
-  console.log('subscribing');
-
   dispatch({
     type: SUBSCRIBE_T0_USER_COUNT,
     event: SUBSCRIBE_T0_USER_COUNT,
