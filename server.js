@@ -1,5 +1,5 @@
 const express = require('express');
-// const http = require('http');
+const http = require('http');
 const socketIo = require('socket.io');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -32,9 +32,7 @@ mongoose
   .then(() => console.log('MongoDB Connected...'))
   .catch(err => console.log(err));
 
-// const server = http.createServer(app);
-
-const server = app.listen(port, () => console.log(`Listening on port ${port}`));
+const server = http.createServer(app);
 const io = socketIo.listen(server);
 io.set('origins', '*:*');
 let connectedUsers = 0;
@@ -47,3 +45,5 @@ io.on('connection', socket => {
     io.emit('SUBSCRIBE_T0_USER_COUNT', connectedUsers);
   });
 });
+
+server.listen(port, () => console.log(`Listening on port ${port}`));
