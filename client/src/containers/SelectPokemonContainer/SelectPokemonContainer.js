@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import SelectPokemon from '../../components/SelectPokemon';
+import {
+  getFiltersError,
+  getListError,
+  getLoading
+} from '../../selectors/pokemonSelectors';
 
-const mapStateToProps = ({
-  filters: { filtersError },
-  pokemon: { pokemonListError, loadingPokemon }
-}) => ({
-  pokemonListError,
-  filtersError,
-  loadingPokemon
+const mapStateToProps = state => ({
+  pokemonListError: getListError(state),
+  filtersError: getFiltersError(state),
+  loadingPokemon: getLoading(state)
 });
 
 const mapDispatchToProps = {};

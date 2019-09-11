@@ -6,7 +6,10 @@ import {
   getListError,
   getLoaded,
   getLoading,
-  getTotalFilteredPokemon
+  getTotalFilteredPokemon,
+  getShowNumbers,
+  getShowNames,
+  getSelectedGame
 } from '../../selectors/pokemonSelectors';
 
 import {
@@ -26,9 +29,9 @@ const mapStateToProps = state => ({
   loadingPokemon: getLoading(state),
   pokemonLoaded: getLoaded(state),
   totalFilteredPokemon: getTotalFilteredPokemon(state),
-  showNumbers: state.filters.showNumbers,
-  showNames: state.filters.showNames,
-  selectedGame: state.filters.selectedGame
+  showNumbers: getShowNumbers(state),
+  showNames: getShowNames(state),
+  selectedGame: getSelectedGame(state)
 });
 
 const mapDispatchToProps = {

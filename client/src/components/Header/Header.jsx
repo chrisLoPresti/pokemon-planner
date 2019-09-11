@@ -85,7 +85,7 @@ export default function Header({
         </IconButton>
         <p>Pokémon Team Planner</p>
         <Badge className="badge" badgeContent={usersOnline} color="primary">
-          <Tooltip title="Users Online">
+          <Tooltip title="Users Online" enterTouchDelay={0}>
             <img src={users} alt="users online" className="badge-icon" />
           </Tooltip>
         </Badge>

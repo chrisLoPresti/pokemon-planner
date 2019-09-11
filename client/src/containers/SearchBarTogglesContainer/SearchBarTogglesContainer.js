@@ -7,16 +7,20 @@ import {
   updateShinySprites
 } from '../../actions/filterActions/filterActions';
 import { updateSelectedTeam } from '../../actions/pokemonListActions/pokemonListActions';
+import {
+  getShiny,
+  getSearch,
+  getShowNames,
+  getShowNumbers,
+  getTotalFilteredPokemon
+} from '../../selectors/pokemonSelectors';
 
-const mapStateToProps = ({
-  pokemon: { totalFilteredPokemon },
-  filters: { showNames, showNumbers, search, shiny }
-}) => ({
-  showNames,
-  showNumbers,
-  search,
-  totalFilteredPokemon,
-  shiny
+const mapStateToProps = state => ({
+  showNames: getShowNames(state),
+  showNumbers: getShowNumbers(state),
+  search: getSearch(state),
+  totalFilteredPokemon: getTotalFilteredPokemon(state),
+  shiny: getShiny(state)
 });
 
 const mapDispatchToProps = {

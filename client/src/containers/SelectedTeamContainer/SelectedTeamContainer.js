@@ -3,13 +3,14 @@ import SelectedTeam from '../../components/SelectedTeam';
 import { updateSelectedTeam } from '../../actions/pokemonListActions/pokemonListActions';
 import {
   getSelectedPokemonArray,
-  getExcludedPokemon
+  getExcludedPokemon,
+  getShiny
 } from '../../selectors/pokemonSelectors';
 
 const mapStateToProps = state => ({
   selectedTeam: getSelectedPokemonArray(state),
   excludedPokemon: getExcludedPokemon(state),
-  shiny: state.filters.shiny
+  shiny: getShiny(state)
 });
 
 const mapDispatchToProps = {

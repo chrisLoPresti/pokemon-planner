@@ -1,22 +1,96 @@
 import { createSelector } from 'reselect';
 
 const allPokemonSelector = state => state.pokemon.allPokemon;
-const filtersSelector = state => state.filters;
 const selectedPokemonSelector = state => state.pokemon.selectedPokemon;
 const selectedTeamSelector = state => state.pokemon.selectedTeam;
-
 const pokemonListErrorSelector = state => state.pokemon.pokemonListError;
 const loadingPokemonSelector = state => state.pokemon.loadingPokemon;
 const pokemonLoadedSelector = state => state.pokemon.pokemonLoaded;
 const totalFilteredPokemonSelector = state =>
   state.pokemon.totalFilteredPokemon;
+
 const excludedPokemon = state => state.filters.excludedPokemon;
+const filterByTypes = state => state.filters.filterByTypes;
+const filterByStages = state => state.filters.filterByStages;
+const filterByRegions = state => state.filters.filterByRegions;
+const search = state => state.filters.search;
+const showOnlyLegendary = state => state.filters.showOnlyLegendary;
+const showOnlyMegas = state => state.filters.showOnlyMegas;
+const showOnlyMythic = state => state.filters.showOnlyMythic;
+const showOnlyPseudo = state => state.filters.showOnlyPseudo;
+const shiny = state => state.filters.shiny;
+const selectedGame = state => state.filters.selectedGame;
+const showNames = state => state.filters.showNames;
+const showNumbers = state => state.filters.showNumbers;
+const filtersError = state => state.filters.filtersError;
+
+const usersOnline = state => state.users.getUsersOnline;
+
+export const getUsersOnline = createSelector(
+  usersOnline,
+  allUsersOnline => allUsersOnline
+);
+
+export const getFiltersError = createSelector(
+  filtersError,
+  allFiltersError => allFiltersError
+);
+
+export const getFilterByTypes = createSelector(
+  filterByTypes,
+  allFilterByTypes => allFilterByTypes
+);
+export const getFilterByStages = createSelector(
+  filterByStages,
+  allFilterByStages => allFilterByStages
+);
+export const getFilterByRegions = createSelector(
+  filterByRegions,
+  allFilterByRegions => allFilterByRegions
+);
+export const getSearch = createSelector(
+  search,
+  allSearch => allSearch
+);
+export const getShowOnlyLegendary = createSelector(
+  showOnlyLegendary,
+  allShowOnlyLegendary => allShowOnlyLegendary
+);
+export const getShowOnlyMegas = createSelector(
+  showOnlyMegas,
+  allShowOnlyMegas => allShowOnlyMegas
+);
+export const getShowOnlyMythic = createSelector(
+  showOnlyMythic,
+  allShowOnlyMythic => allShowOnlyMythic
+);
+export const getShowOnlyPseudo = createSelector(
+  showOnlyPseudo,
+  allShowOnlyPseudo => allShowOnlyPseudo
+);
+export const getShiny = createSelector(
+  shiny,
+  allShiny => allShiny
+);
+export const getSelectedGame = createSelector(
+  selectedGame,
+  allSelectedGame => allSelectedGame
+);
+export const getShowNames = createSelector(
+  showNames,
+  allShowNames => allShowNames
+);
+export const getShowNumbers = createSelector(
+  showNumbers,
+  allShowNumbers => allShowNumbers
+);
 
 export const getExcludedPokemon = createSelector(
   excludedPokemon,
   allExcludedPokemon => allExcludedPokemon
 );
-const getAllPokemon = createSelector(
+
+export const getAllPokemon = createSelector(
   allPokemonSelector,
   pokemon => pokemon
 );
@@ -60,21 +134,32 @@ export const getLoaded = createSelector(
 );
 
 export const getFilteredPokemon = createSelector(
-  [getAllPokemon, filtersSelector],
-  (allPokemon, filters) => {
-    const {
-      search,
-      showOnlyLegendary,
-      showOnlyMythic,
-      showOnlyPseudo,
-      showOnlyMegas,
-      filterByRegions,
-      filterByStages,
-      filterByTypes,
-      excludedPokemon,
-      selectedGame
-    } = filters;
-
+  [
+    getAllPokemon,
+    getSearch,
+    getShowOnlyLegendary,
+    getShowOnlyMythic,
+    getShowOnlyPseudo,
+    getShowOnlyMegas,
+    getFilterByRegions,
+    getFilterByStages,
+    getFilterByTypes,
+    getExcludedPokemon,
+    getSelectedGame
+  ],
+  (
+    allPokemon,
+    search,
+    showOnlyLegendary,
+    showOnlyMythic,
+    showOnlyPseudo,
+    showOnlyMegas,
+    filterByRegions,
+    filterByStages,
+    filterByTypes,
+    excludedPokemon,
+    selectedGame
+  ) => {
     if (
       !showOnlyLegendary &&
       !showOnlyMythic &&
