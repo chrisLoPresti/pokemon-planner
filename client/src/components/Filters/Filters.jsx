@@ -196,219 +196,107 @@ const Filters = ({
               </div>
             }
           />
-
-          {/*
-       
-       
-          
-      
-          <ListItem
-            disableGutters
-            button
-            onClick={e => setOpenFilters('stagesFilter')}
-          >
-            <ExpansionPanel
-              expanded={open && openFilters.includes('stagesFilter')}
-              className={classNames(classes.panel, {
-                [classes.activeFilter]: onlyStages.length
-              })}
-            >
-              <ExpansionPanelSummary
-                IconButtonProps={{
-                  classes: {
-                    root: classNames(classes.expandButton)
-                  }
-                }}
-                className={classes.summary}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="evolution panel"
+          <ExpansionPanelFilter
+            stopPropagation={false}
+            onHandleClick={setOpenFilters}
+            filterName="Stages Filter"
+            drawerOpen={open}
+            active={onlyStages.length}
+            included={openFilters.includes('Stages Filter')}
+            symbol={images.evolutionSymbol}
+            containsCheckList={true}
+            Child={stages.map(stage => (
+              <div
+                key={stage}
+                className={classes.checkContainer}
+                onClick={e => updateRedux(e, 'onlyStages', stage)}
               >
-                <img
-                  className={classes.icon}
-                  src={evolution}
-                  alt="evolution filter"
+                <Checkbox
+                  checked={isSelected('onlyStages', stage)}
+                  value={stage}
+                  inputProps={{
+                    'aria-label': 'primary checkbox'
+                  }}
                 />
-                <Typography
-                  className={classNames(classes.heading, {
-                    [classes.hide]: !open
-                  })}
-                >
-                  Filter by stages
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails className={classes.details}>
-                {stages.map(stage => (
-                  <div
-                    key={stage}
-                    className={classes.checkContainer}
-                    onClick={e => updateStageFilter(e, stage)}
-                  >
-                    <Checkbox
-                      checked={isSelectedStage(stage)}
-                      value={stage}
-                      inputProps={{
-                        'aria-label': 'primary checkbox'
-                      }}
-                    />
-                    <p className={classes.filterText}>{stage}</p>
-                  </div>
-                ))}
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </ListItem>
-          <ListItem
-            disableGutters
-            button
-            onClick={e => setOpenFilters('legendaryFilter')}
-          >
-            <ExpansionPanel
-              expanded={open && openFilters.includes('legendaryFilter')}
-              className={classNames(classes.panel, {
-                [classes.activeFilter]: onlyLegendary
-              })}
-            >
-              <ExpansionPanelSummary
-                IconButtonProps={{
-                  classes: {
-                    root: classNames(classes.expandButton)
-                  }
-                }}
-                className={classes.summary}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="legendary panel"
+                <p className={classes.filterText}>{stage}</p>
+              </div>
+            ))}
+          />
+          <ExpansionPanelFilter
+            stopPropagation={false}
+            onHandleClick={setOpenFilters}
+            filterName="Legendary Filter"
+            drawerOpen={open}
+            active={onlyLegendary}
+            included={openFilters.includes('Legendary Filter')}
+            symbol={images.legendarySymbol}
+            containsCheckList={true}
+            Child={
+              <div
+                className={classes.checkContainer}
+                onClick={e => updateRedux(e, 'onlyLegendary', !onlyLegendary)}
               >
-                <img
-                  className={classes.icon}
-                  src={legendary}
-                  alt="legendary filter"
+                <Checkbox
+                  checked={onlyLegendary}
+                  value={onlyLegendary}
+                  inputProps={{
+                    'aria-label': 'primary checkbox'
+                  }}
                 />
-                <Typography
-                  className={classNames(classes.heading, {
-                    [classes.hide]: !open
-                  })}
-                >
-                  Filter by legendary
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div
-                  className={classes.checkContainer}
-                  onClick={e => updateShowOnlyLegendary(e, !onlyLegendary)}
-                >
-                  <Checkbox
-                    checked={onlyLegendary}
-                    value={onlyLegendary}
-                    inputProps={{
-                      'aria-label': 'primary checkbox'
-                    }}
-                  />
-                  <p>Is a legendary</p>
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </ListItem>
-          <ListItem
-            disableGutters
-            button
-            onClick={e => setOpenFilters('mythicFilter')}
-          >
-            <ExpansionPanel
-              expanded={open && openFilters.includes('mythicFilter')}
-              className={classNames(classes.panel, {
-                [classes.activeFilter]: onlyMythic
-              })}
-            >
-              <ExpansionPanelSummary
-                IconButtonProps={{
-                  classes: {
-                    root: classNames(classes.expandButton)
-                  }
-                }}
-                className={classes.summary}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="mythic panel"
+                <p>Is a legendary</p>
+              </div>
+            }
+          />
+          <ExpansionPanelFilter
+            stopPropagation={false}
+            onHandleClick={setOpenFilters}
+            filterName="Mythic Filter"
+            drawerOpen={open}
+            active={onlyMythic}
+            included={openFilters.includes('Mythic Filter')}
+            symbol={images.mythicSymbol}
+            containsCheckList={true}
+            Child={
+              <div
+                className={classes.checkContainer}
+                onClick={e => updateRedux(e, 'onlyMythic', !onlyMythic)}
               >
-                <img
-                  className={classes.icon}
-                  src={mythic}
-                  alt="mythic filter"
+                <Checkbox
+                  checked={onlyMythic}
+                  value={onlyMythic}
+                  inputProps={{
+                    'aria-label': 'primary checkbox'
+                  }}
                 />
-                <Typography
-                  className={classNames(classes.heading, {
-                    [classes.hide]: !open
-                  })}
-                >
-                  Filter by mythic
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div
-                  className={classes.checkContainer}
-                  onClick={e => updateShowOnlyMythic(e, !onlyMythic)}
-                >
-                  <Checkbox
-                    checked={onlyMythic}
-                    value={onlyMythic}
-                    inputProps={{
-                      'aria-label': 'primary checkbox'
-                    }}
-                  />
-                  <p>Is a mythic</p>
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </ListItem>
-          <ListItem
-            disableGutters
-            button
-            onClick={e => setOpenFilters('pseudoFilter')}
-          >
-            <ExpansionPanel
-              expanded={open && openFilters.includes('pseudoFilter')}
-              className={classNames(classes.panel, {
-                [classes.activeFilter]: onlyPseudo
-              })}
-            >
-              <ExpansionPanelSummary
-                IconButtonProps={{
-                  classes: {
-                    root: classNames(classes.expandButton)
-                  }
-                }}
-                className={classes.summary}
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="pseudo panel"
+                <p>Is Mythic</p>
+              </div>
+            }
+          />
+          <ExpansionPanelFilter
+            stopPropagation={false}
+            onHandleClick={setOpenFilters}
+            filterName="Pseudo Filter"
+            drawerOpen={open}
+            active={onlyPseudo}
+            included={openFilters.includes('Pseudo Filter')}
+            symbol={images.pseudoSymbol}
+            containsCheckList={true}
+            Child={
+              <div
+                className={classes.checkContainer}
+                onClick={e => updateRedux(e, 'onlyPseudo', !onlyPseudo)}
               >
-                <img
-                  className={classes.icon}
-                  src={pseudo}
-                  alt="pseudo filter"
+                <Checkbox
+                  checked={onlyPseudo}
+                  value={onlyPseudo}
+                  inputProps={{
+                    'aria-label': 'primary checkbox'
+                  }}
                 />
-                <Typography
-                  className={classNames(classes.heading, {
-                    [classes.hide]: !open
-                  })}
-                >
-                  Filter by pseudos
-                </Typography>
-              </ExpansionPanelSummary>
-              <ExpansionPanelDetails>
-                <div
-                  className={classes.checkContainer}
-                  onClick={e => updateShowOnlyPseudo(e, !onlyPseudo)}
-                >
-                  <Checkbox
-                    checked={onlyPseudo}
-                    value={onlyPseudo}
-                    inputProps={{
-                      'aria-label': 'primary checkbox'
-                    }}
-                  />
-                  <p>Is a pseudos leg.</p>
-                </div>
-              </ExpansionPanelDetails>
-            </ExpansionPanel>
-          </ListItem> */}
+                <p>Is a Pseudo</p>
+              </div>
+            }
+          />
         </List>
       </SideMenu>
     </div>
