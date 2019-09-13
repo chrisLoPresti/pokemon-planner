@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   Grid,
   Button,
@@ -8,8 +8,8 @@ import {
   withStyles
 } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import clearImage from '../../assets/images/misc/clear.png';
+import { setQueryString } from '../../utils/queryStringAccess/queryStringAccess';
 import './SearchBarToggles.css';
 
 const styles = {
@@ -38,31 +38,10 @@ const SearchBarToggles = React.memo(
     history,
     updateSelectedTeam
   }) => {
-    useEffect(() => {
-      const querySearch = queryString.parse(history.location.search);
-      if (!Object.keys(querySearch).length) {
-        return;
-      }
-      if (querySearch.search) {
-        updateSearchCriteria(querySearch.search);
-      }
-    }, []);
-
-    useEffect(() => {
-      const querySearch = queryString.parse(history.location.search);
-
-      const filters = querySearch.filters
-        ? JSON.parse(querySearch.filters)
-        : {};
-      const query = queryString.stringify({
-        filters: JSON.stringify(filters),
-        search
-      });
-      history.push({
-        search: query.length > 7 ? query : ''
-      });
-    }, [search]);
-
+    const updateSearch = e => {
+      updateSearchCriteria(e.currentTarget.value);
+      setQueryString();
+    };
     return (
       <Grid container className="toggles-container">
         <Grid item xs={12} className="margin-container">
@@ -99,9 +78,7 @@ const SearchBarToggles = React.memo(
           <p className="toggle-title">Search</p>
           <Input
             value={search}
-            onChange={e => {
-              updateSearchCriteria(e.currentTarget.value);
-            }}
+            onChange={e => updateSearch(e)}
             className="search-bar"
             placeholder="Search by name"
             classes={{

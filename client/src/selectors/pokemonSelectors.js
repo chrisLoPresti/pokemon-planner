@@ -10,16 +10,16 @@ const totalFilteredPokemonSelector = state =>
   state.pokemon.totalFilteredPokemon;
 
 const excludedPokemon = state => state.filters.excludedPokemon;
-const filterByTypes = state => state.filters.filterByTypes;
-const filterByStages = state => state.filters.filterByStages;
-const filterByRegions = state => state.filters.filterByRegions;
+const onlyTypes = state => state.filters.onlyTypes;
+const onlyStages = state => state.filters.onlyStages;
+const onlyRegions = state => state.filters.onlyRegions;
 const search = state => state.filters.search;
-const showOnlyLegendary = state => state.filters.showOnlyLegendary;
-const showOnlyMegas = state => state.filters.showOnlyMegas;
-const showOnlyMythic = state => state.filters.showOnlyMythic;
-const showOnlyPseudo = state => state.filters.showOnlyPseudo;
+const onlyLegendary = state => state.filters.onlyLegendary;
+const onlyMegas = state => state.filters.onlyMegas;
+const onlyMythic = state => state.filters.onlyMythic;
+const onlyPseudo = state => state.filters.onlyPseudo;
 const shiny = state => state.filters.shiny;
-const selectedGame = state => state.filters.selectedGame;
+const onlyGame = state => state.filters.onlyGame;
 const showNames = state => state.filters.showNames;
 const showNumbers = state => state.filters.showNumbers;
 const filtersError = state => state.filters.filtersError;
@@ -37,15 +37,15 @@ export const getFiltersError = createSelector(
 );
 
 export const getFilterByTypes = createSelector(
-  filterByTypes,
+  onlyTypes,
   allFilterByTypes => allFilterByTypes
 );
 export const getFilterByStages = createSelector(
-  filterByStages,
+  onlyStages,
   allFilterByStages => allFilterByStages
 );
 export const getFilterByRegions = createSelector(
-  filterByRegions,
+  onlyRegions,
   allFilterByRegions => allFilterByRegions
 );
 export const getSearch = createSelector(
@@ -53,19 +53,19 @@ export const getSearch = createSelector(
   allSearch => allSearch
 );
 export const getShowOnlyLegendary = createSelector(
-  showOnlyLegendary,
+  onlyLegendary,
   allShowOnlyLegendary => allShowOnlyLegendary
 );
 export const getShowOnlyMegas = createSelector(
-  showOnlyMegas,
+  onlyMegas,
   allShowOnlyMegas => allShowOnlyMegas
 );
 export const getShowOnlyMythic = createSelector(
-  showOnlyMythic,
+  onlyMythic,
   allShowOnlyMythic => allShowOnlyMythic
 );
 export const getShowOnlyPseudo = createSelector(
-  showOnlyPseudo,
+  onlyPseudo,
   allShowOnlyPseudo => allShowOnlyPseudo
 );
 export const getShiny = createSelector(
@@ -73,7 +73,7 @@ export const getShiny = createSelector(
   allShiny => allShiny
 );
 export const getSelectedGame = createSelector(
-  selectedGame,
+  onlyGame,
   allSelectedGame => allSelectedGame
 );
 export const getShowNames = createSelector(
@@ -150,59 +150,59 @@ export const getFilteredPokemon = createSelector(
   (
     allPokemon,
     search,
-    showOnlyLegendary,
-    showOnlyMythic,
-    showOnlyPseudo,
-    showOnlyMegas,
-    filterByRegions,
-    filterByStages,
-    filterByTypes,
+    onlyLegendary,
+    onlyMythic,
+    onlyPseudo,
+    onlyMegas,
+    onlyRegions,
+    onlyStages,
+    onlyTypes,
     excludedPokemon,
-    selectedGame
+    onlyGame
   ) => {
     if (
-      !showOnlyLegendary &&
-      !showOnlyMythic &&
-      !showOnlyPseudo &&
-      !showOnlyMegas &&
+      !onlyLegendary &&
+      !onlyMythic &&
+      !onlyPseudo &&
+      !onlyMegas &&
       !search.length &&
-      !filterByTypes.length &&
-      !filterByRegions.length &&
-      !filterByStages.length &&
+      !onlyTypes.length &&
+      !onlyRegions.length &&
+      !onlyStages.length &&
       !excludedPokemon.length &&
-      !selectedGame.length
+      !onlyGame.length
     ) {
       return allPokemon;
     }
 
     return allPokemon
       .filter(pokemon => {
-        const validLegendary = showOnlyLegendary ? pokemon.isLegendary : true;
-        const validMythic = showOnlyMythic ? pokemon.isMythic : true;
-        const validPseudo = showOnlyPseudo ? pokemon.isPseudo : true;
-        const validMega = showOnlyMegas ? pokemon.isMega : true;
-        const validRegion = filterByRegions.length
-          ? filterByRegions.includes(pokemon.region)
+        const validLegendary = onlyLegendary ? pokemon.isLegendary : true;
+        const validMythic = onlyMythic ? pokemon.isMythic : true;
+        const validPseudo = onlyPseudo ? pokemon.isPseudo : true;
+        const validMega = onlyMegas ? pokemon.isMega : true;
+        const validRegion = onlyRegions.length
+          ? onlyRegions.includes(pokemon.region)
           : true;
         let validStage = true;
-        if (filterByStages.length) {
+        if (onlyStages.length) {
           validStage =
-            filterByStages.includes(pokemon.stage) ||
-            (filterByStages.includes('Fully Evolved') && pokemon.fullyEvolved);
+            onlyStages.includes(pokemon.stage) ||
+            (onlyStages.includes('Fully Evolved') && pokemon.fullyEvolved);
         }
         const notExcluded = !excludedPokemon.find(
           ({ name }) => name === pokemon.name.english
         );
         let validTypes = true;
 
-        if (filterByTypes.length === 1) {
+        if (onlyTypes.length === 1) {
           validTypes =
-            filterByTypes.includes(pokemon.type[0]) ||
-            filterByTypes.includes(pokemon.type[1]);
-        } else if (filterByTypes.length === 2) {
+            onlyTypes.includes(pokemon.type[0]) ||
+            onlyTypes.includes(pokemon.type[1]);
+        } else if (onlyTypes.length === 2) {
           validTypes =
-            filterByTypes.includes(pokemon.type[0]) &&
-            filterByTypes.includes(pokemon.type[1]);
+            onlyTypes.includes(pokemon.type[0]) &&
+            onlyTypes.includes(pokemon.type[1]);
         }
 
         const validSearch = search.length
@@ -211,9 +211,9 @@ export const getFilteredPokemon = createSelector(
               .indexOf(search.toLowerCase().trim()) >= 0
           : true;
         let validGame = true;
-        if (selectedGame.length > 0) {
+        if (onlyGame.length > 0) {
           if (pokemon.gamesAvailable) {
-            validGame = pokemon.gamesAvailable[selectedGame] !== undefined;
+            validGame = pokemon.gamesAvailable[onlyGame] !== undefined;
 
             const preORAS = [
               'Beedrill',
@@ -239,16 +239,16 @@ export const getFilteredPokemon = createSelector(
             ];
             if (
               pokemon.name.english.includes('Mega ') &&
-              selectedGame !== 'XY' &&
-              selectedGame !== 'ORAS' &&
-              selectedGame !== 'SM' &&
-              selectedGame !== 'USUM'
+              onlyGame !== 'XY' &&
+              onlyGame !== 'ORAS' &&
+              onlyGame !== 'SM' &&
+              onlyGame !== 'USUM'
             ) {
               validGame = false;
             }
             if (
               preORAS.includes(pokemon.name.english.split(' ')[1]) &&
-              selectedGame === 'XY'
+              onlyGame === 'XY'
             ) {
               validGame = false;
             }
@@ -271,10 +271,10 @@ export const getFilteredPokemon = createSelector(
         );
       })
       .sort((pokemon1, pokemon2) => {
-        if (selectedGame.length) {
+        if (onlyGame.length) {
           return (
-            +pokemon1.gamesAvailable[selectedGame] -
-            +pokemon2.gamesAvailable[selectedGame]
+            +pokemon1.gamesAvailable[onlyGame] -
+            +pokemon2.gamesAvailable[onlyGame]
           );
         }
       });

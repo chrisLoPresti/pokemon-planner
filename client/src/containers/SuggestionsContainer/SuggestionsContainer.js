@@ -4,7 +4,7 @@ import {
   getExcludedPokemon
 } from '../../selectors/pokemonSelectors';
 
-import { updateExcludedPokemon } from '../../actions/filterActions/filterActions';
+import { updateFilterByExcluded } from '../../actions/filterActions/filterActions';
 import Suggestions from '../../components/Filters/Suggestions';
 
 const mapStateToProps = state => ({
@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  updateExcludedPokemon
+  updateFilterByExcluded
 };
 
 export default connect(

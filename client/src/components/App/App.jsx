@@ -4,9 +4,16 @@ import SelectPokemon from '../../containers/SelectPokemonContainer';
 import Filters from '../../containers/FiltersContainer';
 import Header from '../../containers/HeaderContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { MuiThemeProvider, useTheme } from '@material-ui/core';
 import { newMove } from '../../actions/adminActions/adminActions';
 import axios from 'axios';
 import store from '../../store';
+import { subscribeToUserCount } from '../../actions/socketActions/socketActions';
+import { parseQueryString } from '../../utils/queryStringAccess/queryStringAccess';
+
+store.dispatch(subscribeToUserCount());
+parseQueryString();
+
 // import data from "../../../../pokemon/moves/data";
 
 const useStyles = makeStyles(theme => ({
@@ -48,17 +55,21 @@ export default function MiniDrawer() {
   // });
 
   return (
-    <div className={classes.root}>
-      <Header open={open} setOpen={setOpen} />
-      <Router>
-        <Route
-          path={'/'}
-          render={props => <Filters {...props} open={open} setOpen={setOpen} />}
-        />
-        <main className={classes.content}>
-          <Route path={'/'} render={props => <SelectPokemon {...props} />} />
-        </main>
-      </Router>
-    </div>
+    <MuiThemeProvider theme={useTheme()}>
+      <div className={classes.root}>
+        <Header open={open} setOpen={setOpen} />
+        <Router>
+          <Route
+            path={'/'}
+            render={props => (
+              <Filters {...props} open={open} setOpen={setOpen} />
+            )}
+          />
+          <main className={classes.content}>
+            <Route path={'/'} render={props => <SelectPokemon {...props} />} />
+          </main>
+        </Router>
+      </div>
+    </MuiThemeProvider>
   );
 }

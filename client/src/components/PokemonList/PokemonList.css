@@ -1,6 +1,6 @@
 #dex-pokemon-container {
   margin: 0 20px;
-  height: 100vh;
+  height: 600px;
   background-color: dimgray;
   border-radius: 10px;
 }
@@ -35,7 +35,7 @@
 .selected {
   background-size: cover;
   border: 2px solid white;
-  background-image: url("../../assets/images/misc/pokeball.png"),
+  background-image: url('../../assets/images/misc/pokeball.png'),
     linear-gradient(to right, white, white);
 }
 

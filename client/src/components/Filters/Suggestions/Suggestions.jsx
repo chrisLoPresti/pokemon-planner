@@ -128,7 +128,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function IntegrationAutosuggest({
-  updateExcludedPokemon,
+  updateFilterByExcluded,
   allPokemon,
   excludedPokemon
 }) {
@@ -164,7 +164,7 @@ export default function IntegrationAutosuggest({
               nationalNumber: suggestion.nationalNumber
             },
             excludedPokemon,
-            updateExcludedPokemon
+            updateFilterByExcluded
           )
         }
         selected={isHighlighted}
@@ -247,7 +247,7 @@ export default function IntegrationAutosuggest({
               determineAction(
                 { name, sprite, nationalNumber },
                 excludedPokemon,
-                updateExcludedPokemon
+                updateFilterByExcluded
               )
             }
           >

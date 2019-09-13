@@ -50,15 +50,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header({
-  open,
-  setOpen,
-  subscribeToUserCount,
-  usersOnline
-}) {
-  if (!usersOnline) {
-    subscribeToUserCount();
-  }
+export default function Header({ open, setOpen, usersOnline }) {
   const classes = useStyles();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));

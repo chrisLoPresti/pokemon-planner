@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { setQueryString } from '../../utils/queryStringAccess/queryStringAccess';
 import { Grid, IconButton } from '@material-ui/core';
 import Pokemon from './Pokemon';
 import PropTypes from 'prop-types';
@@ -37,7 +38,7 @@ const SelectedTeam = ({
         newTeamObject[selectedPokemon.nationalNumber] = selectedPokemon;
       }
     });
-    return updateSelectedTeam(newTeamObject);
+    updateSelectedTeam(newTeamObject);
   };
 
   useEffect(() => {
@@ -120,6 +121,9 @@ const SelectedTeam = ({
     return `${name[0]}${extension}`;
   };
   useEffect(() => {
+    if (!excludedPokemon.length) {
+      return;
+    }
     const excludedNames = excludedPokemon.map(excluded => excluded.name);
     setSelectedTeam(
       _.remove(selectedTeam, pokemon =>
@@ -127,6 +131,10 @@ const SelectedTeam = ({
       )
     );
   }, [excludedPokemon]);
+
+  useEffect(() => {
+    setQueryString();
+  }, [selectedTeam]);
 
   return (
     <>

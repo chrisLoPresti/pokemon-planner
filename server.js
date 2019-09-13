@@ -26,11 +26,11 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const dataBase = require('./config/keys').mongoURI;
-mongoose
-  .connect(dataBase, { useNewUrlParser: true })
-  .then(() => console.log('MongoDB Connected...'))
-  .catch(err => console.log(err));
+// const dataBase = require('./config/keys').mongoURI;
+// mongoose
+//   .connect(dataBase, { useNewUrlParser: true })
+//   .then(() => console.log('MongoDB Connected...'))
+//   .catch(err => console.log(err));
 
 const server = http.createServer(app);
 const io = socketIo.listen(server);

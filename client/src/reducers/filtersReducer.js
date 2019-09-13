@@ -12,40 +12,48 @@ import {
   UPDATE_FILTER_ERROR,
   UPDATE_SHINY_SPRITES,
   UPDATE_EXCLUDED_POKEMON,
-  UPDATE_SELECTED_GAME
+  UPDATE_SELECTED_GAME,
+  UPDATE_ALL_FILTERS
 } from '../actions/filterActions/filterActions';
+import { stages } from '../constants/filters';
 
 const initialState = {
-  filterByTypes: [],
+  onlyTypes: [],
   search: '',
   showNames: false,
   showNumbers: true,
-  showOnlyLegendary: false,
-  showOnlyMythic: false,
-  showOnlyPseudo: false,
-  showOnlyMegas: false,
-  filterByRegions: [],
-  filterByStages: [],
+  onlyLegendary: false,
+  onlyMythic: false,
+  onlyPseudo: false,
+  onlyMegas: false,
+  onlyRegions: [],
+  onlyStages: [],
   filtersError: null,
   shiny: false,
   excludedPokemon: [],
-  selectedGame: ''
+  onlyGame: ''
 };
 
 const contentReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case UPDATE_ALL_FILTERS: {
+      return {
+        ...state,
+        ...payload
+      };
+    }
     case UPDATE_FILTER_BY_TYPES: {
       return {
         ...state,
-        filterByTypes: payload,
+        onlyTypes: payload,
         filtersError: null
       };
     }
     case UPDATE_SELECTED_GAME: {
       return {
         ...state,
-        selectedGame: payload,
+        onlyGame: payload,
         filtersError: null
       };
     }
@@ -80,35 +88,35 @@ const contentReducer = (state = initialState, action) => {
     case UPDATE_FILTER_BY_MEGAS: {
       return {
         ...state,
-        showOnlyMegas: payload,
+        onlyMegas: payload,
         filtersError: null
       };
     }
     case UPDATE_FILTER_BY_LEGENDARY: {
       return {
         ...state,
-        showOnlyLegendary: payload,
+        onlyLegendary: payload,
         filtersError: null
       };
     }
     case UPDATE_FILTER_BY_MYTHIC: {
       return {
         ...state,
-        showOnlyMythic: payload,
+        onlyMythic: payload,
         filtersError: null
       };
     }
     case UPDATE_FILTER_BY_PSEUDO: {
       return {
         ...state,
-        showOnlyPseudo: payload,
+        onlyPseudo: payload,
         filtersError: null
       };
     }
     case UPDATE_FILTER_BY_GENERATION: {
       return {
         ...state,
-        filterByRegions: payload,
+        onlyRegions: payload,
         filtersError: null
       };
     }
@@ -122,7 +130,7 @@ const contentReducer = (state = initialState, action) => {
     case UPDATE_FILTER_BY_STAGE: {
       return {
         ...state,
-        filterByStages: payload,
+        onlyStages: payload,
         filtersError: null
       };
     }

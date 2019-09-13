@@ -1,55 +1,39 @@
 import { connect } from 'react-redux';
 import Filters from '../../components/Filters';
 import {
-  setFilterError,
-  updateFilterByTypes,
-  updateFilterByMegas,
-  updateFilterByRegions,
-  updateFilterByStages,
-  updateFilterByLegendary,
-  updateFilterByMythic,
-  updateFilterByPseudo,
-  updateExcludedPokemon,
-  updateSelectedGame
+  updateFilterError,
+  updateFilterValue
 } from '../../actions/filterActions/filterActions';
 
 const mapStateToProps = ({
   filters: {
-    filterByTypes,
-    showOnlyMegas,
-    showOnlyLegendary,
-    showOnlyMythic,
-    showOnlyPseudo,
-    filterByRegions,
-    filterByStages,
+    onlyTypes,
+    onlyMegas,
+    onlyLegendary,
+    onlyMythic,
+    onlyPseudo,
+    onlyRegions,
+    onlyStages,
     filtersError,
     excludedPokemon,
-    selectedGame
+    onlyGame
   }
 }) => ({
-  filterByTypes,
-  showOnlyMegas,
-  showOnlyLegendary,
-  showOnlyMythic,
-  showOnlyPseudo,
-  filterByRegions,
-  filterByStages,
+  onlyTypes,
+  onlyMegas,
+  onlyLegendary,
+  onlyMythic,
+  onlyPseudo,
+  onlyRegions,
+  onlyStages,
   filtersError,
   excludedPokemon,
-  selectedGame
+  onlyGame
 });
 
 const mapDispatchToProps = {
-  setFilterError,
-  updateFilterByTypes,
-  updateFilterByMegas,
-  updateFilterByRegions,
-  updateFilterByStages,
-  updateFilterByLegendary,
-  updateFilterByMythic,
-  updateFilterByPseudo,
-  updateExcludedPokemon,
-  updateSelectedGame
+  updateFilterError,
+  updateFilterValue
 };
 
 export default connect(

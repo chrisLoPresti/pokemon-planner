@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import List from 'react-virtualized/dist/commonjs/List';
 import ItemTypes from '../SelectedTeam/ItemTypes';
+import _ from 'lodash';
 import './PokemonList.css';
 
 const PokemonList = React.memo(
@@ -26,7 +27,7 @@ const PokemonList = React.memo(
     totalFilteredPokemon,
     history,
     canDropPokemon,
-    selectedGame
+    onlyGame
   }) => {
     if (!pokemonLoaded && !loadingPokemon) {
       loadPokemonListRequest();
@@ -56,9 +57,7 @@ const PokemonList = React.memo(
     }
     const dispatchError = error => {
       setPokemonListError(error);
-      setTimeout(() => {
-        setPokemonListError('');
-      }, 1500);
+      _.debounce(() => setPokemonListError(''), 1500)();
     };
 
     const setSelectedTeam = pokemon => {
@@ -90,7 +89,7 @@ const PokemonList = React.memo(
         dispatchError('You can not have more than one mega evolution.');
         return;
       }
-      return updateSelectedTeam({
+      updateSelectedTeam({
         ...selectedTeam,
         [pokemonNumber]: pokemon,
         hasMega: plucked.hasMega || pokemon.isMega,
@@ -203,8 +202,8 @@ const PokemonList = React.memo(
 
                               <p className="pokemon-number">
                                 #
-                                {selectedGame.length
-                                  ? pokemon.gamesAvailable[selectedGame]
+                                {onlyGame.length
+                                  ? pokemon.gamesAvailable[onlyGame]
                                   : pokemon.nationalNumber}
                               </p>
                             </div>
@@ -246,7 +245,7 @@ const PokemonList = React.memo(
               <img
                 className="no-results-image"
                 alt="no results"
-                src={require('../../assets/images/misc/no-results.png')}
+                src={require('../../assets/images/misc/noResults.png')}
               />
             </div>
           )}

@@ -12,23 +12,35 @@ export const UPDATE_FILTER_BY_PSEUDO = 'UPDATE_FILTER_BY_PSEUDO';
 export const UPDATE_SHINY_SPRITES = 'UPDATE_SHINY_SPRITES';
 export const UPDATE_EXCLUDED_POKEMON = 'UPDATE_EXCLUDED_POKEMON';
 export const UPDATE_SELECTED_GAME = 'UPDATE_SELECTED_GAME';
+export const UPDATE_ALL_FILTERS = 'UPDATE_ALL_FILTERS';
 
-export const setFilterError = error => dispatch => {
+const mapping = {
+  onlyTypes: UPDATE_FILTER_BY_TYPES,
+  onlyMegas: UPDATE_FILTER_BY_MEGAS,
+  onlyRegions: UPDATE_FILTER_BY_GENERATION,
+  onlyStages: UPDATE_FILTER_BY_STAGE,
+  onlyLegendary: UPDATE_FILTER_BY_LEGENDARY,
+  onlyMythic: UPDATE_FILTER_BY_MYTHIC,
+  onlyPseudo: UPDATE_FILTER_BY_PSEUDO,
+  excludedPokemon: UPDATE_EXCLUDED_POKEMON,
+  onlyGame: UPDATE_SELECTED_GAME
+};
+
+export const updateAllFilters = newFilters => dispatch => {
+  dispatch({ type: UPDATE_ALL_FILTERS, payload: newFilters });
+};
+
+export const updateFilterValue = (type, value) => dispatch => {
+  dispatch({ type: mapping[type], payload: value });
+};
+
+export const updateFilterError = error => dispatch => {
   dispatch({ type: UPDATE_FILTER_ERROR, payload: error });
 };
 
-export const updateFilterByTypes = types => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_TYPES, payload: types });
-};
-
-export const updateExcludedPokemon = excludedPokemon => dispatch => {
+export const updateFilterByExcluded = excludedPokemon => dispatch => {
   dispatch({ type: UPDATE_EXCLUDED_POKEMON, payload: excludedPokemon });
 };
-
-export const updateSelectedGame = selectedGame => dispatch => {
-  dispatch({ type: UPDATE_SELECTED_GAME, payload: selectedGame });
-};
-
 export const setShowNames = showNames => dispatch => {
   dispatch({ type: UPDATE_SHOW_NAMES, payload: showNames });
 };
@@ -37,31 +49,10 @@ export const setShowNumbers = showNumbers => dispatch => {
   dispatch({ type: UPDATE_SHOW_NUMBERS, payload: showNumbers });
 };
 
-export const updateFilterByMegas = showOnlyMegas => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_MEGAS, payload: showOnlyMegas });
-};
-
 export const updateShinySprites = showShiny => dispatch => {
   dispatch({ type: UPDATE_SHINY_SPRITES, payload: showShiny });
 };
 
-export const updateFilterByRegions = generations => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_GENERATION, payload: generations });
-};
-
-export const updateFilterByStages = stages => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_STAGE, payload: stages });
-};
-
 export const updateSearchCriteria = search => dispatch => {
   dispatch({ type: UPDATE_SEARCH_CRITERIA, payload: search });
-};
-export const updateFilterByLegendary = showOnlyLegendary => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_LEGENDARY, payload: showOnlyLegendary });
-};
-export const updateFilterByMythic = showOnlyMythic => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_MYTHIC, payload: showOnlyMythic });
-};
-export const updateFilterByPseudo = showOnlyPseudo => dispatch => {
-  dispatch({ type: UPDATE_FILTER_BY_PSEUDO, payload: showOnlyPseudo });
 };

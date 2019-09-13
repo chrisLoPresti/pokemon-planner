@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
   totalFilteredPokemon: getTotalFilteredPokemon(state),
   showNumbers: getShowNumbers(state),
   showNames: getShowNames(state),
-  selectedGame: getSelectedGame(state)
+  onlyGame: getSelectedGame(state)
 });
 
 const mapDispatchToProps = {
