@@ -1,3 +1,6 @@
+.types-drawer {
+}
+
 .chart-content {
   padding: 20px;
   width: 400px;
@@ -6,13 +9,12 @@
 
 @media screen and (max-width: 500px) {
   .chart-content {
-    width: 280px;
+    width: 250px;
   }
 }
 
 .types-scroller {
   color: ghostwhite;
-  height: 140vh;
   padding: 0 20px;
   overflow-x: auto;
 }

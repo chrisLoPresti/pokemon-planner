@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+import Drawer from '@material-ui/core/Drawer';
 import { types } from '../../constants/filters';
 import typeStats from '../../constants/typeStats';
 import './TypesDrawer.css';
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   }
 });
 
-const SwipeableTemporaryDrawer = ({ open, onHandleOpen }) => {
+const TypesDrawer = ({ open, onHandleOpen }) => {
   const classes = useStyles();
 
   const generateBlockData = (t1, t2) => {
@@ -39,11 +39,12 @@ const SwipeableTemporaryDrawer = ({ open, onHandleOpen }) => {
     ));
 
   return (
-    <SwipeableDrawer
+    <Drawer
       style={{ width: '100%' }}
       anchor="right"
       open={open}
       onClose={() => onHandleOpen(!open)}
+      className="types-drawer"
     >
       <div className="chart-content">
         <div className="types-scroller">
@@ -72,7 +73,7 @@ const SwipeableTemporaryDrawer = ({ open, onHandleOpen }) => {
           ))}
         </div>
       </div>
-    </SwipeableDrawer>
+    </Drawer>
   );
 };
-export default SwipeableTemporaryDrawer;
+export default TypesDrawer;

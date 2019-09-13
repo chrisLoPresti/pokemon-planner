@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
   useTheme,
-  SwipeableDrawer,
+  Drawer,
   Divider,
   IconButton,
   withStyles
@@ -19,7 +19,7 @@ const SideMenu = ({ classes, setOpen, open, history, children }) => {
 
   return (
     <div className={classes.root}>
-      <SwipeableDrawer
+      <Drawer
         onOpen={() => {}}
         anchor="left"
         onClose={() => setOpen(false)}
@@ -53,7 +53,7 @@ const SideMenu = ({ classes, setOpen, open, history, children }) => {
         </div>
         <Divider />
         {children}
-      </SwipeableDrawer>
+      </Drawer>
     </div>
   );
 };
