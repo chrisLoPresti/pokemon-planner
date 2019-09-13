@@ -20,7 +20,6 @@ const SideMenu = ({ classes, setOpen, open, history, children }) => {
   return (
     <div className={classes.root}>
       <Drawer
-        onOpen={() => {}}
         anchor="left"
         onClose={() => setOpen(false)}
         variant={smallScreen ? 'temporary' : 'permanent'}

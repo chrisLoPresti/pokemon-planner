@@ -1,22 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import { types } from '../../constants/filters';
 import typeStats from '../../constants/typeStats';
 import './TypesDrawer.css';
 
-const useStyles = makeStyles({
-  list: {
-    width: 250
-  },
-  fullList: {
-    width: 'auto'
-  }
-});
-
 const TypesDrawer = ({ open, onHandleOpen }) => {
-  const classes = useStyles();
-
   const generateBlockData = (t1, t2) => {
     if (typeStats[t1].ddt.includes(t2)) {
       return <p className="data-block double">2</p>;
@@ -31,9 +19,11 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
 
   const generateTypeChart = () =>
     types.map(outerType => (
-      <div className="data-row">
+      <div className="data-row" key={`${outerType}-outer`}>
         {types.map(innerType => (
-          <div>{generateBlockData(outerType, innerType)}</div>
+          <div key={`${innerType}-inner`}>
+            {generateBlockData(outerType, innerType)}
+          </div>
         ))}
       </div>
     ));
@@ -45,13 +35,15 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
       open={open}
       onClose={() => onHandleOpen(!open)}
       className="types-drawer"
-      PaperProps={{ classes: { root: { backgroundColor: '#525252' } } }}
+      PaperProps={{
+        style: { backgroundColor: '#525252' }
+      }}
     >
       <div className="chart-content">
         <div className="types-scroller">
           <div className="types-chart-top-row">
             {types.map(type => (
-              <div className="data-block">
+              <div className="data-block" ke={`${type}-top`}>
                 <img
                   className="type-chart-symbol"
                   alt={type}
@@ -64,7 +56,7 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
         </div>
         <div className="types-chart-left-row">
           {types.map(type => (
-            <div className="left-symbol-container">
+            <div className="left-symbol-container" key={`${type}-left`}>
               <img
                 className="type-chart-symbol-left"
                 alt={type}

@@ -103,7 +103,7 @@ const DraggablePokemon = ({
 };
 
 DraggablePokemon.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   movePokemon: PropTypes.func.isRequired,
   generateExtension: PropTypes.func.isRequired,
