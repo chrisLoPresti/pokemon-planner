@@ -45,6 +45,7 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
       open={open}
       onClose={() => onHandleOpen(!open)}
       className="types-drawer"
+      PaperProps={{ classes: { root: { backgroundColor: '#525252' } } }}
     >
       <div className="chart-content">
         <div className="types-scroller">
