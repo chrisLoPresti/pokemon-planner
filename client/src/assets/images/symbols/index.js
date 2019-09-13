@@ -17,7 +17,7 @@ import Dragon from './Dragon.png';
 import Steel from './Steel.png';
 import Fairy from './Fairy.png';
 
-export default {
+const symbols = {
   Normal,
   Fire,
   Water,
@@ -37,3 +37,5 @@ export default {
   Steel,
   Fairy
 };
+
+export default symbols;
