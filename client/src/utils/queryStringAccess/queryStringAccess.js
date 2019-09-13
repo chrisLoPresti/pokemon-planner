@@ -27,7 +27,10 @@ export const setQueryString = () => {
   const team = [];
   Object.keys(selectedTeam).forEach(key => {
     if (key !== 'count' && key !== 'hasMega') {
-      team.push(selectedTeam[key].name.english);
+      team.push({
+        name: selectedTeam[key].name.english,
+        sprite: selectedTeam[key].sprite
+      });
     }
   });
 
@@ -67,12 +70,15 @@ export const parseQueryString = () => {
 };
 
 const parseQueryTeam = (allPokemon, team) => {
+  const teamObj = {};
+  team.forEach(pokemon => (teamObj[pokemon.name] = pokemon.sprite));
+
   const selectedTeam = {
     count: 0,
     hasMega: false
   };
   allPokemon.forEach(pokemon => {
-    if (team.includes(pokemon.name.english)) {
+    if (teamObj[pokemon.name.english] === pokemon.sprite) {
       if (pokemon.hasMega) {
         selectedTeam.hasMega = true;
       }

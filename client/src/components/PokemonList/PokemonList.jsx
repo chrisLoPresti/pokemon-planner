@@ -258,6 +258,7 @@ PokemonList.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
   selectedTeam: PropTypes.shape({}).isRequired,
+  setPokemonListError: PropTypes.func.isRequired,
   updateSelectedPokemon: PropTypes.func.isRequired,
   loadPokemonListRequest: PropTypes.func.isRequired,
   filteredPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

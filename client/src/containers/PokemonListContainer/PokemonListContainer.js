@@ -12,6 +12,7 @@ import {
 } from '../../selectors/pokemonSelectors';
 
 import {
+  setPokemonListError,
   loadPokemonListRequest,
   updateSelectedTeam,
   updateSelectedPokemon,
@@ -32,6 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
+  setPokemonListError,
   loadPokemonListRequest,
   updateSelectedPokemon,
   updateSelectedTeam,
