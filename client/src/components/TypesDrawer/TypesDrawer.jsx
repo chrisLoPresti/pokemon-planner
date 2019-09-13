@@ -44,7 +44,7 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
         <div className="types-scroller">
           <div className="types-chart-top-row">
             {types.map(type => (
-              <div className="data-block" ke={`${type}-top`}>
+              <div className="data-block" key={`${type}-top`}>
                 <img
                   className="type-chart-symbol"
                   alt={type}
