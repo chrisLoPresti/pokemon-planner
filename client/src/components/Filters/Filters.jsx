@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { List, Checkbox, withStyles } from '@material-ui/core';
+import symbols from '../../assets/images/symbols';
 import images from '../../assets/images/misc';
 import Suggestions from '../../containers/SuggestionsContainer';
 import { types, regions, games, stages } from '../../constants/filters';
@@ -163,7 +164,7 @@ const Filters = ({
                     <img
                       alt={type}
                       className={classes.typeSymbol}
-                      src={require(`../../assets/images/symbols/${type.toLowerCase()}.png`)}
+                      src={symbols[type]}
                     />
                   }
                 />
