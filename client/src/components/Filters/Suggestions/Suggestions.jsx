@@ -8,8 +8,10 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import classNames from 'classnames';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import _ from 'lodash';
+import styles from './styles';
 
 const determineAction = (suggestion, excludedPokemon, updateFunction) => {
   const isExcluded = excludedPokemon.find(
@@ -79,60 +81,12 @@ function getSuggestionValue(suggestion) {
   return suggestion.name.english;
 }
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  container: {
-    position: 'relative'
-  },
-  suggestionsContainerOpen: {
-    position: 'absolute',
-    zIndex: 1,
-    marginTop: theme.spacing(1),
-    left: 0,
-    right: 0
-  },
-  suggestion: {
-    display: 'block'
-  },
-  suggestionsList: {
-    margin: 0,
-    padding: 0,
-    listStyleType: 'none'
-  },
-  divider: {
-    height: theme.spacing(2)
-  },
-  underline: {
-    '&:after': {
-      borderBottom: '2px solid #ef4b4b'
-    }
-  },
-  textField: {
-    color: 'ghostwhite'
-  },
-  flexDisplay: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-    color: 'ghostwhite'
-  },
-  checkDisplay: {
-    justifyContent: 'start'
-  },
-  checkBoxContainer: {
-    overflow: 'auto',
-    maxHeight: '180px'
-  }
-}));
-
-export default function IntegrationAutosuggest({
+const IntegrationAutosuggest = ({
   updateFilterByExcluded,
   allPokemon,
-  excludedPokemon
-}) {
-  const classes = useStyles();
+  excludedPokemon,
+  classes
+}) => {
   const [search, setSearch] = React.useState('');
 
   const [stateSuggestions, setSuggestions] = React.useState([]);
@@ -281,4 +235,17 @@ export default function IntegrationAutosuggest({
       </div>
     </div>
   );
-}
+};
+
+IntegrationAutosuggest.defaultProps = {
+  classes: {}
+};
+
+IntegrationAutosuggest.propTypes = {
+  classes: PropTypes.shape({}),
+  updateFilterByExcluded: PropTypes.func.isRequired,
+  allPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  excludedPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
+
+export default withStyles(styles)(IntegrationAutosuggest);

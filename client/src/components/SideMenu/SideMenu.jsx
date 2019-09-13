@@ -58,9 +58,15 @@ const SideMenu = ({ classes, setOpen, open, history, children }) => {
   );
 };
 
+SideMenu.defaultProps = {
+  classes: {}
+};
+
 SideMenu.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  history: PropTypes.shape({}).isRequired,
+  children: PropTypes.PropTypes.shape({}).isRequired
 };
 
 export default withStyles(styles)(SideMenu);

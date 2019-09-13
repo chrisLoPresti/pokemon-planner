@@ -16,16 +16,14 @@ const PokemonList = React.memo(
     selectedTeam,
     showNumbers,
     showNames,
-    pokemonListError,
     loadingPokemon,
     pokemonLoaded,
     loadPokemonListRequest,
-    updateSelectedPokemon,
+    // updateSelectedPokemon,
     setPokemonListError,
     updateSelectedTeam,
     setFilteredPokemonTotal,
     totalFilteredPokemon,
-    history,
     canDropPokemon,
     onlyGame
   }) => {
@@ -129,6 +127,7 @@ const PokemonList = React.memo(
 
     const BOX_WIDTH = showNames ? 150 : 70;
     const BOX_HEIGHT = showNames ? 200 : 120;
+
     return (
       <>
         <div className="random-button-container">
@@ -258,9 +257,23 @@ const PokemonList = React.memo(
 PokemonList.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
-  selectedTeam: PropTypes.PropTypes.shape({}).isRequired,
+  selectedTeam: PropTypes.shape({}).isRequired,
   updateSelectedPokemon: PropTypes.func.isRequired,
-  loadPokemonListRequest: PropTypes.func.isRequired
+  loadPokemonListRequest: PropTypes.func.isRequired,
+  filteredPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  selectedPokemon: PropTypes.shape({}).isRequired,
+  selectedTeam: PropTypes.shape({}).isRequired,
+  showNumbers: PropTypes.bool.isRequired,
+  showNames: PropTypes.bool.isRequired,
+  loadingPokemon: PropTypes.bool.isRequired,
+  pokemonLoaded: PropTypes.bool.isRequired,
+  loadPokemonListRequest: PropTypes.func.isRequired,
+  // updateSelectedPokemon,
+  updateSelectedTeam: PropTypes.func.isRequired,
+  setFilteredPokemonTotal: PropTypes.func.isRequired,
+  totalFilteredPokemon: PropTypes.number.isRequired,
+  canDropPokemon: PropTypes.bool.isRequired,
+  onlyGame: PropTypes.string.isRequired
 };
 
 export default PokemonList;

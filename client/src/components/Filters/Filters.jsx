@@ -303,9 +303,16 @@ const Filters = ({
   );
 };
 
+Filters.defaultProps = {
+  classes: {}
+};
+
 Filters.propTypes = {
   setOpen: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired
+  open: PropTypes.bool.isRequired,
+  classes: PropTypes.shape({}),
+  history: PropTypes.shape({}).isRequired,
+  updateFilterValue: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Filters);

@@ -10,6 +10,7 @@ import {
   withStyles
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PropTypes from 'prop-types';
 import styles from './styles';
 
 const ExpansionPanelFilter = ({
@@ -63,5 +64,25 @@ const ExpansionPanelFilter = ({
     </ExpansionPanel>
   </ListItem>
 );
+
+ExpansionPanelFilter.defaultProps = {
+  classes: {}
+};
+
+ExpansionPanelFilter.propTypes = {
+  classes: PropTypes.shape({}),
+  onHandleClick: PropTypes.func.isRequired,
+  filterName: PropTypes.string.isRequired,
+  included: PropTypes.bool.isRequired,
+  active: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]).isRequired,
+  drawerOpen: PropTypes.bool.isRequired,
+  symbol: PropTypes.string.isRequired,
+  Child: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.shape({}))
+  ]).isRequired,
+  containsCheckList: PropTypes.bool.isRequired,
+  stopPropagation: PropTypes.bool.isRequired
+};
 
 export default withStyles(styles)(ExpansionPanelFilter);

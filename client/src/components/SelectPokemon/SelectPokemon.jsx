@@ -45,9 +45,16 @@ const SelectPokemon = ({
   );
 };
 
+SelectPokemon.defaultProps = {
+  pokemonListError: '',
+  filtersError: ''
+};
+
 SelectPokemon.propTypes = {
   pokemonListError: PropTypes.string,
-  filtersError: PropTypes.string
+  filtersError: PropTypes.string,
+  loadingPokemon: PropTypes.bool.isRequired,
+  history: PropTypes.shape({}).isRequired
 };
 
 export default SelectPokemon;

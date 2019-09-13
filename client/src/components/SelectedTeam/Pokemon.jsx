@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Grid } from '@material-ui/core';
 import { useDrag, useDrop } from 'react-dnd';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 import ItemTypes from './ItemTypes';
 import _ from 'lodash';
 const style = {
@@ -100,4 +101,19 @@ const DraggablePokemon = ({
     </Grid>
   );
 };
+
+DraggablePokemon.propTypes = {
+  id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+  movePokemon: PropTypes.func.isRequired,
+  generateExtension: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired,
+  pokemon: PropTypes.shape({}).isRequired,
+  setSelectedTeam: PropTypes.func.isRequired,
+  isAPokemonDragging: PropTypes.bool.isRequired,
+  setIsAPokemonDragging: PropTypes.func.isRequired,
+  setCanDropPokemon: PropTypes.func.isRequired,
+  canDropPokemon: PropTypes.bool.isRequired
+};
+
 export default DraggablePokemon;

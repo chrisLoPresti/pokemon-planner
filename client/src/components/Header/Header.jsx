@@ -10,7 +10,7 @@ import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import users from '../../assets/images/misc/users.png';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import PropTypes from 'prop-types';
 import './Header.css';
 
 const drawerWidth = 280;
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Header({ open, setOpen, usersOnline }) {
+const Header = ({ open, setOpen, usersOnline }) => {
   const classes = useStyles();
   const theme = useTheme();
   const smallScreen = useMediaQuery(theme.breakpoints.down('sm'));
@@ -84,4 +84,12 @@ export default function Header({ open, setOpen, usersOnline }) {
       </Toolbar>
     </AppBar>
   );
-}
+};
+
+Header.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  usersOnline: PropTypes.number.isRequired
+};
+
+export default Header;

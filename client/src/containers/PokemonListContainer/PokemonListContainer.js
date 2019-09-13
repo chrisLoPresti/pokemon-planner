@@ -3,7 +3,6 @@ import {
   getFilteredPokemon,
   getSelectedTeam,
   getSelectedPokemon,
-  getListError,
   getLoaded,
   getLoading,
   getTotalFilteredPokemon,
@@ -14,7 +13,6 @@ import {
 
 import {
   loadPokemonListRequest,
-  setPokemonListError,
   updateSelectedTeam,
   updateSelectedPokemon,
   setFilteredPokemonTotal
@@ -25,7 +23,6 @@ const mapStateToProps = state => ({
   filteredPokemon: getFilteredPokemon(state),
   selectedPokemon: getSelectedPokemon(state),
   selectedTeam: getSelectedTeam(state),
-  pokemonListError: getListError(state),
   loadingPokemon: getLoading(state),
   pokemonLoaded: getLoaded(state),
   totalFilteredPokemon: getTotalFilteredPokemon(state),
@@ -37,7 +34,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   loadPokemonListRequest,
   updateSelectedPokemon,
-  setPokemonListError,
   updateSelectedTeam,
   setFilteredPokemonTotal
 };

@@ -172,7 +172,12 @@ SelectedTeam.defaultProps = {
 };
 
 SelectedTeam.propTypes = {
-  selectedTeam: PropTypes.arrayOf(PropTypes.shape({}))
+  selectedTeam: PropTypes.arrayOf(PropTypes.shape({})),
+  shiny: PropTypes.bool.isRequired,
+  updateSelectedTeam: PropTypes.func.isRequired,
+  setCanDropPokemon: PropTypes.func.isRequired,
+  canDropPokemon: PropTypes.bool.isRequired,
+  excludedPokemon: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 export default SelectedTeam;

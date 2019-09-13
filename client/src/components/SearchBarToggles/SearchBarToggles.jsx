@@ -35,7 +35,6 @@ const SearchBarToggles = React.memo(
     search,
     shiny,
     updateShinySprites,
-    history,
     updateSelectedTeam
   }) => {
     const updateSearch = e => {
@@ -113,11 +112,14 @@ const SearchBarToggles = React.memo(
     );
   }
 );
+SearchBarToggles.defaultProps = {
+  classes: {}
+};
 
 SearchBarToggles.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
-  classes: PropTypes.shape({}).isRequired,
+  classes: PropTypes.shape({}),
   search: PropTypes.string.isRequired,
   shiny: PropTypes.bool.isRequired,
   updateSelectedTeam: PropTypes.func.isRequired,

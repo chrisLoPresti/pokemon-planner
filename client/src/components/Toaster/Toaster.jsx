@@ -43,6 +43,10 @@ const Toaster = ({ message }) => {
   );
 };
 
+Toaster.defualtProps = {
+  message: ''
+};
+
 Toaster.propTypes = {
   message: PropTypes.string
 };
