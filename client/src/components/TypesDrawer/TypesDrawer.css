@@ -1,0 +1,76 @@
+.chart-content {
+  padding: 20px;
+  width: 400px;
+  background-color: #525252;
+}
+
+@media screen and (max-width: 500px) {
+  .chart-content {
+    width: 280px;
+  }
+}
+
+.types-scroller {
+  color: ghostwhite;
+  height: 140vh;
+  padding: 0 20px;
+  overflow-x: auto;
+}
+
+.types-chart-left-row {
+  position: absolute;
+  top: 85px;
+  display: grid;
+  background-color: #525252;
+}
+
+.types-chart-top-row {
+  display: flex;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.type-chart-symbol {
+  height: 30px;
+  margin: 12px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.type-chart-symbol-left {
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+.left-symbol-container {
+  height: 50px;
+  border: 1px solid transparent;
+}
+
+.data-row {
+  display: flex;
+  height: 50px;
+  border: 1px solid transparent;
+  margin-left: 20px;
+}
+
+.data-block {
+  text-align: center;
+  width: 50px;
+  margin: 5px;
+}
+
+.double {
+  background-color: #4caf50;
+}
+
+.half {
+  background-color: #e53935;
+}
+
+.zero {
+  background-color: #2e3436;
+}

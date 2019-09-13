@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import List from 'react-virtualized/dist/commonjs/List';
+import TypesDrawer from '../TypesDrawer';
 import ItemTypes from '../SelectedTeam/ItemTypes';
 import _ from 'lodash';
 import './PokemonList.css';
@@ -125,16 +127,28 @@ const PokemonList = React.memo(
       updateSelectedTeam(currentTeam);
     };
 
+    const [openTypes, setOpenTypes] = useState(false);
+
     const BOX_WIDTH = showNames ? 150 : 70;
     const BOX_HEIGHT = showNames ? 200 : 120;
 
     return (
       <>
-        <div className="random-button-container">
-          <Button className="random-button" onClick={() => randomTeam()}>
-            Randomize
-          </Button>
-        </div>
+        <Grid container className="list-button-container">
+          <Grid item xs={6}>
+            <Button className="random-button" onClick={() => randomTeam()}>
+              Randomize
+            </Button>
+          </Grid>
+          <Grid item xs={6}>
+            <Button
+              className="types-button"
+              onClick={() => setOpenTypes(!openTypes)}
+            >
+              Check Types
+            </Button>
+          </Grid>
+        </Grid>
         <div id="dex-pokemon-container" ref={drop}>
           <AutoSizer>
             {({ height, width }) => {
@@ -249,6 +263,7 @@ const PokemonList = React.memo(
             </div>
           )}
         </div>
+        <TypesDrawer open={openTypes} onHandleOpen={setOpenTypes} />
       </>
     );
   }

@@ -17,7 +17,7 @@
   width: 100%;
   color: ghostwhite;
   font-size: 20px;
-  font-family: "Pokemon Solid";
+  font-family: 'Pokemon Solid';
   padding: 20px;
 }
 
@@ -39,18 +39,4 @@
 .dragging {
   background-color: #57b795;
   border: 1px solid ghostwhite;
-}
-
-.random-button-container {
-  text-align: center;
-}
-.random-button-container .random-button {
-  margin: 20px;
-  width: 200px;
-  color: ghostwhite;
-  background-color: #419cee;
-}
-
-.random-button-container .random-button:hover {
-  background-color: #629ccd;
 }

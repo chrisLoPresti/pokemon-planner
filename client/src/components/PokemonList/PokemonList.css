@@ -274,3 +274,29 @@
 .name-container {
   height: 100px;
 }
+
+.list-button-container {
+  text-align: center;
+  padding: 0 20px;
+}
+.list-button-container .random-button {
+  margin: 20px;
+  width: 80%;
+  color: ghostwhite;
+  background-color: #419cee;
+}
+
+.list-button-container .random-button:hover {
+  background-color: #629ccd;
+}
+
+.list-button-container .types-button {
+  margin: 20px;
+  width: 80%;
+  color: ghostwhite;
+  background-color: #ee8329;
+}
+
+.list-button-container .types-button:hover {
+  background-color: #e9934c;
+}
