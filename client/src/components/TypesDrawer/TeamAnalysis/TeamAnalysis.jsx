@@ -4,6 +4,7 @@ import { types } from '../../../constants/filters';
 import typeStats from '../../../constants/typeStats';
 import symbols from '../../../assets/images/symbols';
 import Tooltip from '@material-ui/core/Tooltip';
+import classNames from 'classnames';
 
 const generateBlockDataAnalysis = (pokemonTypes, typeToCheck) => {
   if (
@@ -31,7 +32,7 @@ const generateBlockDataAnalysis = (pokemonTypes, typeToCheck) => {
 
 const generateTypeAnalysis = selectedTeam =>
   selectedTeam.map(({ name: { english }, type: pokemonTypes }) => (
-    <div className="data-row" key={`${english}-outer`}>
+    <div className="data-row analysis-row" key={`${english}-outer`}>
       {types.map(innerType => (
         <div key={`${innerType}-inner`}>
           {generateBlockDataAnalysis(pokemonTypes, innerType)}
@@ -51,7 +52,7 @@ const TeamAnalysis = ({ selectedTeam }) => (
               <div className="data-block" key={`${type}-top-analysis`}>
                 <Tooltip title={type} enterTouchDelay={0}>
                   <img
-                    className="type-chart-symbol"
+                    className={`type-chart-symbol ${type}-border`}
                     alt={type}
                     src={symbols[type]}
                   />
@@ -68,7 +69,18 @@ const TeamAnalysis = ({ selectedTeam }) => (
               enterTouchDelay={0}
               key={`${pokemon.name.english}-left-analysis`}
             >
-              <div className="left-pokemon-container">
+              <div
+                className={classNames(
+                  'left-pokemon-container',
+                  `${pokemon.type[0]}`,
+                  {
+                    'null-border': pokemon.type.length === 1
+                  },
+                  {
+                    [`${pokemon.type[1]}-border`]: pokemon.type.length === 2
+                  }
+                )}
+              >
                 <img
                   className="type-chart-pokemon-left"
                   alt={pokemon.name.english}

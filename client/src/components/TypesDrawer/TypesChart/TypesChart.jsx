@@ -19,7 +19,7 @@ const generateBlockData = (t1, t2) => {
 
 const generateTypeChart = () =>
   types.map(outerType => (
-    <div className="data-row" key={`${outerType}-outer`}>
+    <div className="data-row chart-row" key={`${outerType}-outer`}>
       {types.map(innerType => (
         <div key={`${innerType}-inner`}>
           {generateBlockData(outerType, innerType)}
@@ -37,7 +37,7 @@ const TypesChart = () => (
             <div className="data-block" key={`${type}-top`}>
               <Tooltip title={type} enterTouchDelay={0}>
                 <img
-                  className="type-chart-symbol"
+                  className={`type-chart-symbol ${type}-border`}
                   alt={type}
                   src={symbols[type]}
                 />
@@ -52,7 +52,7 @@ const TypesChart = () => (
           <div className="left-symbol-container" key={`${type}-left`}>
             <Tooltip title={type} enterTouchDelay={0}>
               <img
-                className="type-chart-symbol-left"
+                className={`type-chart-symbol-left ${type}-border`}
                 alt={type}
                 src={symbols[type]}
               />

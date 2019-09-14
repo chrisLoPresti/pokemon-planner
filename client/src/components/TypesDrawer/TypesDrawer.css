@@ -12,30 +12,21 @@
   margin: 40px 20px 0 20px;
 }
 
-@media screen and (max-width: 500px) {
-  .chart-content {
-    width: 250px;
-  }
-  .team-strengths {
-    width: 250px;
-  }
-}
-
 .types-scroller {
   color: ghostwhite;
-  padding: 0 30px;
+  padding: 0 35px;
   overflow-x: auto;
 }
 
 .types-chart-left-row {
   position: absolute;
-  top: 133px;
+  top: 135px;
   background-color: #525252;
 }
 
 .types-chart-left-row-analysis {
   position: absolute;
-  top: 190px;
+  top: 195px;
   background-color: #525252;
 }
 
@@ -82,9 +73,16 @@
 
 .data-row {
   display: flex;
-  height: 50px;
   border: 1px solid transparent;
   margin-left: 20px;
+}
+
+.analysis-row {
+  height: 56.5px;
+}
+
+.chart-row {
+  height: 50px;
 }
 
 .data-block {
@@ -103,4 +101,170 @@
 
 .zero {
   background-color: #2e3436;
+}
+
+.types-drawer .types-drawer-tab {
+  color: ghostwhite;
+  width: 200px;
+}
+
+null {
+  background-color: lightgray;
+}
+
+.null-border {
+  border: 3px solid ghostwhite;
+}
+
+.Psychic {
+  background-color: #f95587;
+}
+
+.Psychic-border {
+  border: 3px solid #f95587;
+}
+.Bug {
+  background-color: #a6b91a;
+}
+
+.Bug-border {
+  border: 3px solid #a6b91a;
+}
+.Rock {
+  background-color: #b6a136;
+}
+
+.Rock-border {
+  border: 3px solid #b6a136;
+}
+.Ghost {
+  background-color: #735797;
+}
+
+.Ghost-border {
+  border: 3px solid #735797;
+}
+.Dragon {
+  background-color: #6f35fc;
+}
+
+.Dragon-border {
+  border: 3px solid #6f35fc;
+}
+.Dark {
+  background-color: #705746;
+}
+
+.Dark-border {
+  border: 3px solid #705746;
+}
+.Steel {
+  background-color: #b7b7ce;
+}
+
+.Steel-border {
+  border: 3px solid #b7b7ce;
+}
+
+.Fairy {
+  background-color: #d685ad;
+}
+
+.Fairy-border {
+  border: 3px solid #d685ad;
+}
+
+.Normal {
+  background-color: #a8a77a;
+}
+
+.Normal-border {
+  border: 3px solid #a8a77a;
+}
+
+.Flying {
+  background-color: #a98ff3;
+}
+
+.Flying-border {
+  border: 3px solid #a98ff3;
+}
+
+.Ground {
+  background-color: #e2bf65;
+}
+
+.Ground-border {
+  border: 3px solid #e2bf65;
+}
+
+.Poison {
+  background-color: #a33ea1;
+}
+
+.Poison-border {
+  border: 3px solid #a33ea1;
+}
+
+.Fighting {
+  background-color: #c22e28;
+}
+
+.Fighting-border {
+  border: 3px solid #c22e28;
+}
+
+.Ice {
+  background-color: #96d9d6;
+}
+
+.Ice-border {
+  border: 3px solid #96d9d6;
+}
+
+.Grass {
+  background-color: #7ac74c;
+}
+
+.Grass-border {
+  border: 3px solid #7ac74c;
+}
+
+.Electric {
+  background-color: #f7d02c;
+}
+
+.Electric-border {
+  border: 3px solid #f7d02c;
+}
+
+.Water {
+  background-color: #6390f0;
+}
+
+.Water-border {
+  border: 3px solid #6390f0;
+}
+
+.Fire {
+  background-color: #ee8130;
+}
+
+.Fire-border {
+  border: 3px solid #ee8130;
+}
+
+.create-a-team-container{
+  width: 100%;
+  text-align: center;
+  margin-top: 150px;
+}
+
+.create-a-team-title{
+  font-family: "Pokemon Solid";
+  color: ghostwhite;
+}
+
+.create-a-team{
+  height: 100px
 }

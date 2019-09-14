@@ -15,7 +15,6 @@ import {
   UPDATE_SELECTED_GAME,
   UPDATE_ALL_FILTERS
 } from '../actions/filterActions/filterActions';
-import { stages } from '../constants/filters';
 
 const initialState = {
   onlyTypes: [],

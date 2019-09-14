@@ -1,5 +1,4 @@
 import queryString from 'query-string';
-import _ from 'lodash';
 import { createBrowserHistory } from 'history';
 import { updateSelectedTeam } from '../../actions/pokemonListActions/pokemonListActions';
 import { updateAllFilters } from '../../actions/filterActions/filterActions';

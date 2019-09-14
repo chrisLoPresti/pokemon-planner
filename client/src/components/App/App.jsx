@@ -5,8 +5,8 @@ import Filters from '../../containers/FiltersContainer';
 import Header from '../../containers/HeaderContainer';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { MuiThemeProvider, useTheme } from '@material-ui/core';
-import { newMove } from '../../actions/adminActions/adminActions';
-import axios from 'axios';
+// import { newMove } from '../../actions/adminActions/adminActions';
+// import axios from 'axios';
 import store from '../../store';
 import { subscribeToUserCount } from '../../actions/socketActions/socketActions';
 import { parseQueryString } from '../../utils/queryStringAccess/queryStringAccess';
@@ -25,25 +25,25 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const func = () => {
-  // const array = [];
-  // data.forEach(obj => {
-  //   axios
-  //     .get(obj.url)
-  //     .then(response => {
-  //       array.push({
-  //         ...response.data
-  //       });
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //     });
-  // });
-  // setTimeout(() => {
-  //   console.log(array);
-  //   localStorage.setItem("moves", JSON.stringify(array));
-  // }, 5000);
-};
+// const func = () => {
+// const array = [];
+// data.forEach(obj => {
+//   axios
+//     .get(obj.url)
+//     .then(response => {
+//       array.push({
+//         ...response.data
+//       });
+//     })
+//     .catch(error => {
+//       console.error(error);
+//     });
+// });
+// setTimeout(() => {
+//   console.log(array);
+//   localStorage.setItem("moves", JSON.stringify(array));
+// }, 5000);
+// };
 
 export default function MiniDrawer() {
   const classes = useStyles();

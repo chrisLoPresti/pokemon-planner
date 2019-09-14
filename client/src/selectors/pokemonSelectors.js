@@ -175,108 +175,108 @@ export const getFilteredPokemon = createSelector(
       return allPokemon;
     }
 
-    return allPokemon
-      .filter(pokemon => {
-        const validLegendary = onlyLegendary ? pokemon.isLegendary : true;
-        const validMythic = onlyMythic ? pokemon.isMythic : true;
-        const validPseudo = onlyPseudo ? pokemon.isPseudo : true;
-        const validMega = onlyMegas ? pokemon.isMega : true;
-        const validRegion = onlyRegions.length
-          ? onlyRegions.includes(pokemon.region)
-          : true;
-        let validStage = true;
-        if (onlyStages.length) {
-          validStage =
-            onlyStages.includes(pokemon.stage) ||
-            (onlyStages.includes('Fully Evolved') && pokemon.fullyEvolved);
-        }
-        const notExcluded = !excludedPokemon.find(
-          ({ name }) => name === pokemon.name.english
-        );
-        let validTypes = true;
+    let returnList = allPokemon.filter(pokemon => {
+      const validLegendary = onlyLegendary ? pokemon.isLegendary : true;
+      const validMythic = onlyMythic ? pokemon.isMythic : true;
+      const validPseudo = onlyPseudo ? pokemon.isPseudo : true;
+      const validMega = onlyMegas ? pokemon.isMega : true;
+      const validRegion = onlyRegions.length
+        ? onlyRegions.includes(pokemon.region)
+        : true;
+      let validStage = true;
+      if (onlyStages.length) {
+        validStage =
+          onlyStages.includes(pokemon.stage) ||
+          (onlyStages.includes('Fully Evolved') && pokemon.fullyEvolved);
+      }
+      const notExcluded = !excludedPokemon.find(
+        ({ name }) => name === pokemon.name.english
+      );
+      let validTypes = true;
 
-        if (onlyTypes.length === 1) {
-          validTypes =
-            onlyTypes.includes(pokemon.type[0]) ||
-            onlyTypes.includes(pokemon.type[1]);
-        } else if (onlyTypes.length === 2) {
-          validTypes =
-            onlyTypes.includes(pokemon.type[0]) &&
-            onlyTypes.includes(pokemon.type[1]);
-        }
+      if (onlyTypes.length === 1) {
+        validTypes =
+          onlyTypes.includes(pokemon.type[0]) ||
+          onlyTypes.includes(pokemon.type[1]);
+      } else if (onlyTypes.length === 2) {
+        validTypes =
+          onlyTypes.includes(pokemon.type[0]) &&
+          onlyTypes.includes(pokemon.type[1]);
+      }
 
-        const validSearch = search.length
-          ? pokemon.name.english
-              .toLowerCase()
-              .indexOf(search.toLowerCase().trim()) >= 0
-          : true;
-        let validGame = true;
-        if (onlyGame.length > 0) {
-          if (pokemon.gamesAvailable) {
-            validGame = pokemon.gamesAvailable[onlyGame] !== undefined;
+      const validSearch = search.length
+        ? pokemon.name.english
+            .toLowerCase()
+            .indexOf(search.toLowerCase().trim()) >= 0
+        : true;
+      let validGame = true;
+      if (onlyGame.length > 0) {
+        if (pokemon.gamesAvailable) {
+          validGame = pokemon.gamesAvailable[onlyGame] !== undefined;
 
-            const preORAS = [
-              'Beedrill',
-              'Pidgeot',
-              'Slowbro',
-              'Steelix',
-              'Sceptile',
-              'Swampert',
-              'Sableye',
-              'Sharpedo',
-              'Camerupt',
-              'Altaria',
-              'Glalie',
-              'Salamence',
-              'Metagross',
-              'Latias',
-              'Latios',
-              'Rayquaza',
-              'Lopunny',
-              'Gallade',
-              'Audino',
-              'Diancie'
-            ];
-            if (
-              pokemon.name.english.includes('Mega ') &&
-              onlyGame !== 'XY' &&
-              onlyGame !== 'ORAS' &&
-              onlyGame !== 'SM' &&
-              onlyGame !== 'USUM'
-            ) {
-              validGame = false;
-            }
-            if (
-              preORAS.includes(pokemon.name.english.split(' ')[1]) &&
-              onlyGame === 'XY'
-            ) {
-              validGame = false;
-            }
-          } else {
+          const preORAS = [
+            'Beedrill',
+            'Pidgeot',
+            'Slowbro',
+            'Steelix',
+            'Sceptile',
+            'Swampert',
+            'Sableye',
+            'Sharpedo',
+            'Camerupt',
+            'Altaria',
+            'Glalie',
+            'Salamence',
+            'Metagross',
+            'Latias',
+            'Latios',
+            'Rayquaza',
+            'Lopunny',
+            'Gallade',
+            'Audino',
+            'Diancie'
+          ];
+          if (
+            pokemon.name.english.includes('Mega ') &&
+            onlyGame !== 'XY' &&
+            onlyGame !== 'ORAS' &&
+            onlyGame !== 'SM' &&
+            onlyGame !== 'USUM'
+          ) {
             validGame = false;
           }
+          if (
+            preORAS.includes(pokemon.name.english.split(' ')[1]) &&
+            onlyGame === 'XY'
+          ) {
+            validGame = false;
+          }
+        } else {
+          validGame = false;
         }
+      }
+      return (
+        validTypes &&
+        validLegendary &&
+        validMythic &&
+        validPseudo &&
+        validMega &&
+        validRegion &&
+        validStage &&
+        validSearch &&
+        notExcluded &&
+        validGame &&
+        pokemon
+      );
+    });
+    if (onlyGame.length) {
+      returnList = returnList.sort((pokemon1, pokemon2) => {
         return (
-          validTypes &&
-          validLegendary &&
-          validMythic &&
-          validPseudo &&
-          validMega &&
-          validRegion &&
-          validStage &&
-          validSearch &&
-          notExcluded &&
-          validGame &&
-          pokemon
+          +pokemon1.gamesAvailable[onlyGame] -
+          +pokemon2.gamesAvailable[onlyGame]
         );
-      })
-      .sort((pokemon1, pokemon2) => {
-        if (onlyGame.length) {
-          return (
-            +pokemon1.gamesAvailable[onlyGame] -
-            +pokemon2.gamesAvailable[onlyGame]
-          );
-        }
       });
+    }
+    return returnList;
   }
 );

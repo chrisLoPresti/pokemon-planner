@@ -187,7 +187,6 @@ const PokemonList = React.memo(
                         selectedPokemon[pokemon.nationalNumber] === pokemon ||
                         selectedTeam[pokemon.nationalNumber] === pokemon;
 
-                      const pokemonIsAlolan = pokemon.region === 'Alola';
                       const type1 = pokemon.type[0];
                       const type2 =
                         pokemon.type.length === 2 ? pokemon.type[1] : null;
@@ -272,7 +271,6 @@ const PokemonList = React.memo(
 PokemonList.propTypes = {
   showNames: PropTypes.bool.isRequired,
   showNumbers: PropTypes.bool.isRequired,
-  selectedTeam: PropTypes.shape({}).isRequired,
   setPokemonListError: PropTypes.func.isRequired,
   updateSelectedPokemon: PropTypes.func.isRequired,
   loadPokemonListRequest: PropTypes.func.isRequired,
