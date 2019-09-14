@@ -254,17 +254,26 @@ null {
   border: 3px solid #ee8130;
 }
 
-.create-a-team-container{
-  width: 100%;
+.create-a-team-container {
   text-align: center;
   margin-top: 150px;
 }
 
-.create-a-team-title{
-  font-family: "Pokemon Solid";
+.create-a-team-title {
+  font-family: 'Pokemon Solid';
   color: ghostwhite;
 }
 
-.create-a-team{
-  height: 100px
+.create-a-team {
+  height: 100px;
+}
+
+@media screen and (max-width: 500px) {
+  .chart-content {
+    width: 250px;
+  }
+
+  .team-strengths {
+    width: 250px;
+  }
 }
