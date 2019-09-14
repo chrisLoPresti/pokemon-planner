@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import List from 'react-virtualized/dist/commonjs/List';
-import TypesDrawer from '../TypesDrawer';
+import TypesDrawer from '../../containers/TypesDrawerContainer';
 import Img from 'react-image';
 import ItemTypes from '../SelectedTeam/ItemTypes';
 import _ from 'lodash';
@@ -226,7 +226,6 @@ const PokemonList = React.memo(
                           <div
                             className={classNames(
                               `pokemon-bubble `,
-                              { 'alolan-line-height': pokemonIsAlolan },
                               { [type1]: !pokemonIsSelected },
                               { [`${type2}-border`]: !pokemonIsSelected },
                               { selected: pokemonIsSelected }

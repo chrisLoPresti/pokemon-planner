@@ -21,11 +21,8 @@
   height: 40px;
   width: 40px;
   margin: auto;
-  line-height: 30px;
-}
-
-.alolan-line-height {
-  line-height: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .pokemon-bubble:hover {
@@ -44,7 +41,7 @@
 }
 
 .sprite {
-  vertical-align: middle;
+  align-self: center;
 }
 
 .large {

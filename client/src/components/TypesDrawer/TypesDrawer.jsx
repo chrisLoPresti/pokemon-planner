@@ -1,72 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Drawer from '@material-ui/core/Drawer';
-import Img from 'react-image';
-import { types } from '../../constants/filters';
-import typeStats from '../../constants/typeStats';
-import symbols from '../../assets/images/symbols';
+import TypesChart from './TypesChart';
+import TeamAnalysis from './TeamAnalysis';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 import './TypesDrawer.css';
 
-const TypesDrawer = ({ open, onHandleOpen }) => {
-  const generateBlockData = (t1, t2) => {
-    if (typeStats[t1].ddt.includes(t2)) {
-      return <p className="data-block double">2</p>;
-    } else if (typeStats[t1].hdt.includes(t2)) {
-      return <p className="data-block half">.5</p>;
-    } else if (typeStats[t1].ndt.includes(t2)) {
-      return <p className="data-block zero">0</p>;
-    } else {
-      return <p className="data-block">1</p>;
-    }
-  };
+const TypesDrawer = ({ open, onHandleOpen, selectedTeam }) => {
+  const [value, setValue] = React.useState(0);
 
-  const generateTypeChart = () =>
-    types.map(outerType => (
-      <div className="data-row" key={`${outerType}-outer`}>
-        {types.map(innerType => (
-          <div key={`${innerType}-inner`}>
-            {generateBlockData(outerType, innerType)}
-          </div>
-        ))}
-      </div>
-    ));
+  function handleChange(event, newValue) {
+    setValue(newValue);
+  }
 
   return (
     <Drawer
       style={{ width: '100%' }}
       anchor="right"
       open={open}
-      onClose={() => onHandleOpen(!open)}
+      onClose={onHandleOpen}
       className="types-drawer"
       PaperProps={{
         style: { backgroundColor: '#525252' }
       }}
     >
-      <div className="chart-content">
-        <div className="types-scroller">
-          <div className="types-chart-top-row">
-            {types.map(type => (
-              <div className="data-block" key={`${type}-top`}>
-                <Img
-                  className="type-chart-symbol"
-                  alt={type}
-                  src={symbols[type]}
-                />
-              </div>
-            ))}
-          </div>
-          {generateTypeChart()}
+      <Tabs
+        value={value}
+        onChange={handleChange}
+        aria-label="simple tabs example"
+      >
+        <Tab label="Team Analysis" />
+        <Tab label="Type Chart" />
+      </Tabs>
+      {selectedTeam.length > 0 && (
+        <div hidden={value !== 0} value={value} index={0}>
+          <TeamAnalysis selectedTeam={selectedTeam} />
         </div>
-        <div className="types-chart-left-row">
-          {types.map(type => (
-            <div className="left-symbol-container" key={`${type}-left`}>
-              <Img
-                className="type-chart-symbol-left"
-                alt={type}
-                src={symbols[type]}
-              />
-            </div>
-          ))}
-        </div>
+      )}
+      <div hidden={value !== 1} value={value} index={1}>
+        <TypesChart />
       </div>
     </Drawer>
   );

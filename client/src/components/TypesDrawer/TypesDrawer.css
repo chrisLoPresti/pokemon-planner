@@ -4,22 +4,38 @@
   background-color: #525252;
 }
 
+.team-strengths {
+  font-family: 'Pokemon Solid';
+  color: ghostwhite;
+  width: 400px;
+  text-align: center;
+  margin: 40px 20px 0 20px;
+}
+
 @media screen and (max-width: 500px) {
   .chart-content {
+    width: 250px;
+  }
+  .team-strengths {
     width: 250px;
   }
 }
 
 .types-scroller {
   color: ghostwhite;
-  padding: 0 20px;
+  padding: 0 30px;
   overflow-x: auto;
 }
 
 .types-chart-left-row {
   position: absolute;
-  top: 85px;
-  display: grid;
+  top: 133px;
+  background-color: #525252;
+}
+
+.types-chart-left-row-analysis {
+  position: absolute;
+  top: 190px;
   background-color: #525252;
 }
 
@@ -47,6 +63,21 @@
 .left-symbol-container {
   height: 50px;
   border: 1px solid transparent;
+}
+
+.type-chart-pokemon-left {
+  align-self: center;
+}
+
+.left-pokemon-container {
+  margin-bottom: 12px;
+  justify-content: center;
+  display: flex;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .data-row {
