@@ -18,7 +18,7 @@ const TypesDrawer = ({ open, onHandleOpen, selectedTeam }) => {
       style={{ width: '100%' }}
       anchor="right"
       open={open}
-      onClose={onHandleOpen}
+      onClose={() => onHandleOpen(!open)}
       className="types-drawer"
       PaperProps={{
         style: { backgroundColor: '#525252' }
