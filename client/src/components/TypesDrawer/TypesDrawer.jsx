@@ -1,5 +1,6 @@
 import React from 'react';
 import Drawer from '@material-ui/core/Drawer';
+import Img from 'react-image';
 import { types } from '../../constants/filters';
 import typeStats from '../../constants/typeStats';
 import symbols from '../../assets/images/symbols';
@@ -45,7 +46,7 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
           <div className="types-chart-top-row">
             {types.map(type => (
               <div className="data-block" key={`${type}-top`}>
-                <img
+                <Img
                   className="type-chart-symbol"
                   alt={type}
                   src={symbols[type]}
@@ -58,7 +59,7 @@ const TypesDrawer = ({ open, onHandleOpen }) => {
         <div className="types-chart-left-row">
           {types.map(type => (
             <div className="left-symbol-container" key={`${type}-left`}>
-              <img
+              <Img
                 className="type-chart-symbol-left"
                 alt={type}
                 src={symbols[type]}

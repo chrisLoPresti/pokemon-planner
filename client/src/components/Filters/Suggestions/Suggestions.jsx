@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Paper from '@material-ui/core/Paper';
 import MenuItem from '@material-ui/core/MenuItem';
 import classNames from 'classnames';
+import Img from 'react-image';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -147,7 +148,7 @@ const IntegrationAutosuggest = ({
               </span>
             ))}
           </div>
-          <img
+          <Img
             style={{ alignSelf: 'center' }}
             alt={suggestedName}
             src={require(`../../../assets/images/sprites/pokedex/${suggestedSprite}`)}
@@ -225,7 +226,7 @@ const IntegrationAutosuggest = ({
                 {name}
               </p>
             </div>
-            <img
+            <Img
               style={{ alignSelf: 'center' }}
               alt={name}
               src={require(`../../../assets/images/sprites/pokedex/${sprite}`)}

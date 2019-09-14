@@ -9,6 +9,7 @@ import {
   ExpansionPanelDetails,
   withStyles
 } from '@material-ui/core';
+import Img from 'react-image';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import PropTypes from 'prop-types';
 import styles from './styles';
@@ -42,7 +43,7 @@ const ExpansionPanelFilter = ({
         expandIcon={<ExpandMoreIcon />}
         aria-controls={`${kebabCase(filterName)}-panel`}
       >
-        <img
+        <Img
           className={classes.icon}
           src={symbol}
           alt={`${kebabCase(filterName)}-filter`}

@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Img from 'react-image';
 import Badge from '@material-ui/core/Badge';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -78,7 +79,7 @@ const Header = ({ open, setOpen, usersOnline }) => {
         <p>Pokémon Team Planner</p>
         <Badge className="badge" badgeContent={usersOnline} color="primary">
           <Tooltip title="Users Online" enterTouchDelay={0}>
-            <img src={users} alt="users online" className="badge-icon" />
+            <Img src={users} alt="users online" className="badge-icon" />
           </Tooltip>
         </Badge>
       </Toolbar>

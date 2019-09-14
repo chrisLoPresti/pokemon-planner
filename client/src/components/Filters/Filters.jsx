@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { List, Checkbox, withStyles } from '@material-ui/core';
 import symbols from '../../assets/images/symbols';
 import images from '../../assets/images/misc';
+import Img from 'react-image';
 import Suggestions from '../../containers/SuggestionsContainer';
 import { types, regions, games, stages } from '../../constants/filters';
 import { setQueryString } from '../../utils/queryStringAccess/queryStringAccess';
@@ -161,7 +162,7 @@ const Filters = ({
                     'aria-label': 'primary checkbox'
                   }}
                   checkedIcon={
-                    <img
+                    <Img
                       alt={type}
                       className={classes.typeSymbol}
                       src={symbols[type]}

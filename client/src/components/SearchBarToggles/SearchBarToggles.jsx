@@ -7,6 +7,7 @@ import {
   Switch,
   withStyles
 } from '@material-ui/core';
+import Img from 'react-image';
 import PropTypes from 'prop-types';
 import clearImage from '../../assets/images/misc/clear.png';
 import { setQueryString } from '../../utils/queryStringAccess/queryStringAccess';
@@ -90,7 +91,7 @@ const SearchBarToggles = React.memo(
             className="clear-search-image-container"
             onClick={() => updateSearchCriteria('')}
           >
-            <img
+            <Img
               className="clear-search-image"
               src={clearImage}
               alt="clear search"

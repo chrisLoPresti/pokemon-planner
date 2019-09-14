@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 import TeamPreviewInfo from './TeamPreviewInfo';
 import _ from 'lodash';
+import Img from 'react-image';
 import './SelectedTeam.css';
 
 const baseUrl = 'http://play.pokemonshowdown.com/sprites/xyani/';
@@ -145,7 +146,7 @@ const SelectedTeam = ({
             className="team-preview-icon-container"
             onClick={() => handleOpenInfo(true)}
           >
-            <img
+            <Img
               className="team-preview-icon"
               alt="information about the team preview"
               src={

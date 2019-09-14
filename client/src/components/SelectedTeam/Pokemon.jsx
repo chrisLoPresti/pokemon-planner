@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import ItemTypes from './ItemTypes';
 import _ from 'lodash';
+import Img from 'react-image';
 const style = {
   cursor: 'move'
 };
@@ -90,7 +91,7 @@ const DraggablePokemon = ({
       })}
       onDoubleClick={() => setSelectedTeam(pokemon)}
     >
-      <img
+      <Img
         alt={`${pokemon.name.english}`}
         draggable={true}
         ref={ref}

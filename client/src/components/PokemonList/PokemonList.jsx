@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import List from 'react-virtualized/dist/commonjs/List';
 import TypesDrawer from '../TypesDrawer';
+import Img from 'react-image';
 import ItemTypes from '../SelectedTeam/ItemTypes';
 import _ from 'lodash';
 import './PokemonList.css';
@@ -231,7 +232,7 @@ const PokemonList = React.memo(
                               { selected: pokemonIsSelected }
                             )}
                           >
-                            <img
+                            <Img
                               className="sprite"
                               src={require(`../../assets/images/sprites/pokedex/${pokemon.sprite}`)}
                               alt={pokemon.name.english}
@@ -255,7 +256,7 @@ const PokemonList = React.memo(
           {!totalFilteredPokemon && (
             <div className="no-results">
               <h1 className="no-results">Your filters yielded no results!</h1>
-              <img
+              <Img
                 className="no-results-image"
                 alt="no results"
                 src={require('../../assets/images/misc/noResults.png')}
