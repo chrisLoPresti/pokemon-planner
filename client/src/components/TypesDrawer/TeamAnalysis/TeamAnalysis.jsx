@@ -49,7 +49,7 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
     (pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
   ) {
-    return <p className="data-block quadruple">4</p>;
+    return <p className="data-block half">4</p>;
   } else if (
     (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
       (pokemonTypes.length === 1 ||
@@ -59,7 +59,7 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
       pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
   ) {
-    return <p className="data-block double">2</p>;
+    return <p className="data-block bad">2</p>;
   } else if (
     (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
       (pokemonTypes.length === 1 ||
@@ -69,7 +69,7 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
       pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
   ) {
-    return <p className="data-block half">.5</p>;
+    return <p className="data-block great">.5</p>;
   } else {
     return <p className="data-block">1</p>;
   }
