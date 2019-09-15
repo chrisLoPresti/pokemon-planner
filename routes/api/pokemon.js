@@ -59,20 +59,13 @@ router.post('/pokemonStats', (req, res) => {
 // @route  stats api/update
 // @desc   adds whatever we need to the pokemon object
 // @access Private
-// router.post("/update", (req, res) => {
+// router.post('/update', (req, res) => {
 //   console.log(req.body.name);
 //   Pokemon.findOneAndUpdate(
-//     { "name.english": req.body.name },
-//     { $set: { "gamesAvailable.USUM": req.body.number } },
+//     { 'name.english': req.body.name },
+//     { $set: { 'gamesAvailable.POLGO': req.body.number } },
 //     { new: true }
 //   ).then(stat => res.json({ success: true }));
-// });
-
-// @route  stats api/update
-// @desc   check empty fields
-// @access Private
-// router.get("/check", (req, res) => {
-//   Pokemon.find({ gamesAvailable: null }).then(missing => res.json(missing));
 // });
 
 module.exports = router;

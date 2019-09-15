@@ -316,6 +316,7 @@
 
 .pokemon-analysis-image {
   align-self: center;
+  margin: auto;
 }
 .threats-container {
   justify-content: center;

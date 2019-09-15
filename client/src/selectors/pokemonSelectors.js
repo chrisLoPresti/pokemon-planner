@@ -241,7 +241,8 @@ export const getFilteredPokemon = createSelector(
             onlyGame !== 'XY' &&
             onlyGame !== 'ORAS' &&
             onlyGame !== 'SM' &&
-            onlyGame !== 'USUM'
+            onlyGame !== 'USUM' &&
+            onlyGame !== 'POLGO'
           ) {
             validGame = false;
           }

@@ -11,5 +11,6 @@ export default [
   { name: 'X & Y', abbreviation: 'XY' },
   { name: 'Omega Ruby & Alpha Sapphire', abbreviation: 'ORAS' },
   { name: 'Sun & Moon', abbreviation: 'SM' },
-  { name: 'Ultra Sun & Ultra Moon', abbreviation: 'USUM' }
+  { name: 'Ultra Sun & Ultra Moon', abbreviation: 'USUM' },
+  { name: 'Pokemon Lets Go!', abbreviation: 'POLGO' }
 ];

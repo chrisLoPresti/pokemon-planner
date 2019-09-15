@@ -85,7 +85,7 @@ const generateThreats = selectedTeam => {
   });
   const returnList = {};
 
-  Object.keys(threats).map(key => {
+  Object.keys(threats).forEach(key => {
     if (threats[key].strength < threats[key].threat) {
       returnList[key] = threats[key];
     }

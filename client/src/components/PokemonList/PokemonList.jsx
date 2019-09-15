@@ -11,7 +11,6 @@ import Img from 'react-image';
 import ItemTypes from '../SelectedTeam/ItemTypes';
 import _ from 'lodash';
 import './PokemonList.css';
-
 const PokemonList = React.memo(
   ({
     filteredPokemon,
