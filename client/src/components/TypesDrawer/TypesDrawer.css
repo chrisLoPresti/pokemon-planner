@@ -299,6 +299,7 @@
 .types-drawer-header .types-drawer-title {
   color: ghostwhite;
   font-family: 'Pokemon Solid';
+  text-align: center;
 }
 
 .types-drawer .types-drawer-divider {
@@ -313,10 +314,10 @@
   margin: 5px;
 }
 
-.pokemon-analysis-image{
+.pokemon-analysis-image {
   align-self: center;
 }
-.threats-container{
+.threats-container {
   justify-content: center;
   display: flex;
   flex-wrap: wrap;
