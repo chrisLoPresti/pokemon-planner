@@ -32,14 +32,14 @@ export default {
     ndt: [gh]
   },
   Fire: {
-    ddf: [w, gr, r],
+    ddf: [w, gd, r],
     ddt: [b, gr, i, s],
     hdt: [fi, w, r, dr],
     ndt: []
   },
   Water: {
     ddf: [e, gr],
-    ddt: [fi, gr, r],
+    ddt: [fi, gd, r],
     hdt: [w, gr, dr],
     ndt: []
   },
@@ -51,7 +51,7 @@ export default {
   },
   Grass: {
     ddf: [fi, i, po, fl, b],
-    ddt: [w, gr, r],
+    ddt: [w, gd, r],
     hdt: [fi, gr, po, fl, b, dr, s],
     ndt: []
   },

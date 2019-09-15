@@ -1,15 +1,13 @@
 .chart-content {
-  padding: 20px;
-  width: 400px;
+  padding: 20px 20px 0 20px;
   background-color: #525252;
 }
 
 .team-strengths {
   font-family: 'Pokemon Solid';
   color: ghostwhite;
-  width: 400px;
   text-align: center;
-  margin: 40px 20px 0 20px;
+  margin: 50px 0;
 }
 
 .types-scroller {
@@ -20,13 +18,13 @@
 
 .types-chart-left-row {
   position: absolute;
-  top: 135px;
+  top: 191px;
   background-color: #525252;
 }
 
 .types-chart-left-row-analysis {
   position: absolute;
-  top: 195px;
+  top: 309px;
   background-color: #525252;
 }
 
@@ -91,6 +89,13 @@
   margin: 5px;
 }
 
+.quadruple {
+  color: #313131;
+  background: linear-gradient(to right bottom, #e9dfb7 30%, #f7d02c 60%);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
 .double {
   background-color: #4caf50;
 }
@@ -105,10 +110,18 @@
 
 .types-drawer .types-drawer-tab {
   color: ghostwhite;
-  width: 200px;
+  border-bottom: 1px solid lightgrey;
 }
 
-null {
+.types-drawer .types-drawer-tab:first-child {
+  border-right: 2px solid ghostwhite;
+}
+
+.types-drawer .types-drawer-tab-active {
+  background-color: #414141;
+}
+
+.null {
   background-color: lightgray;
 }
 
@@ -257,6 +270,7 @@ null {
 .create-a-team-container {
   text-align: center;
   margin-top: 150px;
+  cursor: pointer;
 }
 
 .create-a-team-title {
@@ -268,12 +282,43 @@ null {
   height: 100px;
 }
 
-@media screen and (max-width: 500px) {
-  .chart-content {
-    width: 250px;
-  }
+.types-drawer-header {
+  background-color: #313131;
+}
 
-  .team-strengths {
-    width: 250px;
-  }
+.types-drawer-header .types-drawer-return-button {
+  position: absolute;
+  color: ghostwhite;
+}
+
+.types-drawer-header .types-drawer-return-button-image {
+  border: 1px solid ghostwhite;
+  border-radius: 50%;
+}
+
+.types-drawer-header .types-drawer-title {
+  color: ghostwhite;
+  font-family: 'Pokemon Solid';
+}
+
+.types-drawer .types-drawer-divider {
+  background-color: lightgrey;
+}
+
+.analysis-pokemon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  margin: 5px;
+}
+
+.pokemon-analysis-image{
+  align-self: center;
+}
+.threats-container{
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 10px 20px 10px;
 }

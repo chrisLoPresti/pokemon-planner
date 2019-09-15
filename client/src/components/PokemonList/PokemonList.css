@@ -291,9 +291,10 @@
   margin: 20px;
   width: 80%;
   color: ghostwhite;
-  background-color: #ee8329;
+  background-color: #7ac74c;
 }
 
 .list-button-container .types-button:hover {
-  background-color: #e9934c;
+  background-color: #6ca849;
 }
+
