@@ -28,6 +28,12 @@
   background-color: #525252;
 }
 
+.types-chart-left-row-analysis-weaknesses {
+  position: absolute;
+  top: 876px;
+  background-color: #525252;
+}
+
 .types-chart-top-row {
   display: flex;
   margin-left: 20px;

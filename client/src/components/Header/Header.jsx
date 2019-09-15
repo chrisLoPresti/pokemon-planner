@@ -77,11 +77,11 @@ const Header = ({ open, setOpen, usersOnline }) => {
           <MenuIcon />
         </IconButton>
         <p>Pokémon Team Planner</p>
-        <Badge className="badge" badgeContent={usersOnline} color="primary">
-          <Tooltip title="Users Online" enterTouchDelay={0}>
+        <Tooltip title="Users Online" enterTouchDelay={0}>
+          <Badge className="badge" badgeContent={usersOnline} color="primary">
             <Img src={users} alt="users online" className="badge-icon" />
-          </Tooltip>
-        </Badge>
+          </Badge>
+        </Tooltip>
       </Toolbar>
     </AppBar>
   );

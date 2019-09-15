@@ -61,7 +61,6 @@ export const parseQueryString = () => {
   if (!Object.keys(querySearch).length) {
     return;
   }
-  console.log(querySearch);
   const { search, filters, selectedTeam } = querySearch;
   store.dispatch(
     updateSelectedTeam(parseQueryTeam(allPokemon, JSON.parse(selectedTeam)))

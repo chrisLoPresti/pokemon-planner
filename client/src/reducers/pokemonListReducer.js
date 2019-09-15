@@ -12,12 +12,11 @@ const mostRecentUpdate = '2019-09-15 14:32:19 GMT-0400';
 
 const allPokemonDecision = () => {
   const lastStoredUpdate = JSON.parse(localStorage.getItem('lastStoredUpdate'));
-  var currentDate = new Date();
+  const currentDate = new Date();
   if (
     !lastStoredUpdate ||
     new Date(lastStoredUpdate) < new Date(mostRecentUpdate)
   ) {
-    localStorage.removeItem('lastStoredUpdate');
     localStorage.removeItem('lastStoredUpdate');
     localStorage.setItem('lastStoredUpdate', JSON.stringify(currentDate));
     return [];

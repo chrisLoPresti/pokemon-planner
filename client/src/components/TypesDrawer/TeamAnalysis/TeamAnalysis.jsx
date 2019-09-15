@@ -37,12 +37,53 @@ const generateBlockDataAnalysis = (pokemonTypes, typeToCheck) => {
   }
 };
 
-const generateTypeAnalysis = selectedTeam =>
+const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
+  if (
+    typeStats[pokemonTypes[0]].ndf.includes(typeToCheck) ||
+    (pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].ndf.includes(typeToCheck))
+  ) {
+    return <p className="data-block zero">0</p>;
+  } else if (
+    typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
+    (pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
+  ) {
+    return <p className="data-block quadruple">4</p>;
+  } else if (
+    (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
+      (pokemonTypes.length === 1 ||
+        (pokemonTypes.length > 1 &&
+          !typeStats[pokemonTypes[1]].ddf.includes(typeToCheck)))) ||
+    (!typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
+      pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
+  ) {
+    return <p className="data-block double">2</p>;
+  } else if (
+    (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+      (pokemonTypes.length === 1 ||
+        (pokemonTypes.length > 1 &&
+          !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)))) ||
+    (!typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+      pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
+  ) {
+    return <p className="data-block half">.5</p>;
+  } else {
+    return <p className="data-block">1</p>;
+  }
+};
+
+const generateTypeAnalysis = (type, selectedTeam) =>
   selectedTeam.map(({ name: { english }, type: pokemonTypes }) => (
     <div className="data-row analysis-row" key={`${english}-outer`}>
       {types.map(innerType => (
         <div key={`${innerType}-inner`}>
-          {generateBlockDataAnalysis(pokemonTypes, innerType)}
+          {type === 'strength' &&
+            generateBlockDataAnalysis(pokemonTypes, innerType)}
+          {type === 'weakness' &&
+            generateBlockDataAnalysisWeakness(pokemonTypes, innerType)}
         </div>
       ))}
     </div>
@@ -114,7 +155,7 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
                 </div>
               ))}
             </div>
-            {generateTypeAnalysis(selectedTeam)}
+            {generateTypeAnalysis('strength', selectedTeam)}
           </div>
           <div className="types-chart-left-row-analysis ">
             {selectedTeam.map(pokemon => (
@@ -122,6 +163,56 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
                 title={pokemon.name.english}
                 enterTouchDelay={0}
                 key={`${pokemon.name.english}-left-analysis`}
+              >
+                <div
+                  className={classNames(
+                    'left-pokemon-container',
+                    `${pokemon.type[0]}`,
+                    {
+                      'null-border': pokemon.type.length === 1
+                    },
+                    {
+                      [`${pokemon.type[1]}-border`]: pokemon.type.length === 2
+                    }
+                  )}
+                >
+                  <img
+                    className="type-chart-pokemon-left"
+                    alt={pokemon.name.english}
+                    src={require(`../../../assets/images/sprites/pokedex/${pokemon.sprite}`)}
+                  />
+                </div>
+              </Tooltip>
+            ))}
+          </div>
+        </div>
+        <div className="chart-content">
+          <p className="team-strengths">Combined Typing Weaknesses</p>
+          <div className="types-scroller">
+            <div className="types-chart-top-row">
+              {types.map(type => (
+                <div
+                  className="data-block"
+                  key={`${type}-top-analysis-weaknesses`}
+                >
+                  <Tooltip title={type} enterTouchDelay={0}>
+                    <img
+                      className={`type-chart-symbol ${type}-border`}
+                      alt={type}
+                      src={symbols[type]}
+                    />
+                  </Tooltip>
+                </div>
+              ))}
+            </div>
+            {generateTypeAnalysis('weakness', selectedTeam)}
+          </div>
+          <div className="types-chart-left-row-analysis-weaknesses">
+            {selectedTeam.map(pokemon => (
+              <Tooltip
+                title={pokemon.name.english}
+                enterTouchDelay={0}
+                key={`${pokemon.name.english}-left-analysis-weaknesses`}
               >
                 <div
                   className={classNames(
@@ -169,9 +260,6 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
                     : 0;
                   score2 += pokemon2.stage;
                   score2 += pokemon2.fullyEvolved ? 3 : 0;
-
-                  console.log(score1, score2);
-
                   return score2 - score1;
                 })
                 .map(pokemon => {
