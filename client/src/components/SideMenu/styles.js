@@ -26,6 +26,10 @@ export default theme => ({
     }
   },
   toolbar: {
+    position: 'sticky',
+    top: 0,
+    zIndex: '999',
+    backgroundColor: '#525252',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

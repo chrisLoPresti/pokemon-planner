@@ -303,6 +303,15 @@
 
 .types-drawer-header {
   background-color: #313131;
+  margin: 0;
+  padding: 5px;
+}
+
+.types-drawer-fixed-header {
+  top: 0;
+  position: sticky;
+  z-index: 1000;
+  background-color: #525252;
 }
 
 .types-drawer-header .types-drawer-return-button {

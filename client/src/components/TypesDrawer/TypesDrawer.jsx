@@ -39,40 +39,42 @@ const TypesDrawer = ({
         paper: classes.paper
       }}
     >
-      <div className="types-drawer-header">
-        <IconButton
-          onClick={() => handleClose()}
-          className="types-drawer-return-button"
+      <div className="types-drawer-fixed-header">
+        <div className="types-drawer-header">
+          <IconButton
+            onClick={() => handleClose()}
+            className="types-drawer-return-button"
+          >
+            <KeyboardReturnRounded className="types-drawer-return-button-image" />
+          </IconButton>
+          <p className="types-drawer-title"> Typing Breakdown</p>
+        </div>
+        <Divider className="types-drawer-divider" />
+        <Tabs
+          variant="fullWidth"
+          className="types-drawer-tabs-container"
+          value={value}
+          aria-label="simple tabs example"
+          TabIndicatorProps={{
+            style: { backgroundColor: 'ghostwhite' }
+          }}
         >
-          <KeyboardReturnRounded className="types-drawer-return-button-image" />
-        </IconButton>
-        <p className="types-drawer-title"> Typing Breakdown</p>
+          <Tab
+            className={classNames('types-drawer-tab', {
+              'types-drawer-tab-active': value === 0
+            })}
+            onClick={() => handleChange(0)}
+            label="Team Analysis"
+          />
+          <Tab
+            className={classNames('types-drawer-tab', {
+              'types-drawer-tab-active': value === 1
+            })}
+            onClick={() => handleChange(1)}
+            label="Type Chart"
+          />
+        </Tabs>
       </div>
-      <Divider className="types-drawer-divider" />
-      <Tabs
-        variant="fullWidth"
-        className="types-drawer-tabs-container"
-        value={value}
-        aria-label="simple tabs example"
-        TabIndicatorProps={{
-          style: { backgroundColor: 'ghostwhite' }
-        }}
-      >
-        <Tab
-          className={classNames('types-drawer-tab', {
-            'types-drawer-tab-active': value === 0
-          })}
-          onClick={() => handleChange(0)}
-          label="Team Analysis"
-        />
-        <Tab
-          className={classNames('types-drawer-tab', {
-            'types-drawer-tab-active': value === 1
-          })}
-          onClick={() => handleChange(1)}
-          label="Type Chart"
-        />
-      </Tabs>
       <div hidden={value !== 0}>
         {selectedTeam.length > 0 && (
           <TeamAnalysis
