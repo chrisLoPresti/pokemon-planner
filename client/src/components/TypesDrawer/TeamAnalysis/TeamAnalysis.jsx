@@ -3,6 +3,7 @@ import { Fade } from '@material-ui/core';
 import { types } from '../../../constants/filters';
 import typeStats from '../../../constants/typeStats';
 import symbols from '../../../assets/images/symbols';
+import noThreatsSymbol from '../../../assets/images/misc/noThreats.png';
 import Tooltip from '@material-ui/core/Tooltip';
 import classNames from 'classnames';
 
@@ -134,8 +135,76 @@ const generateThreats = selectedTeam => {
   return returnList;
 };
 
+const generateThreatsList = (
+  threats,
+  setHasThreats,
+  hasThreats,
+  filteredPokemon
+) => {
+  const returnValue = [...filteredPokemon]
+    .sort((pokemon1, pokemon2) => {
+      let score1 = 0;
+      let score2 = 0;
+      score1 += threats[pokemon1.type[0]]
+        ? threats[pokemon1.type[0]].threat
+        : 0;
+      score1 += threats[pokemon1.type[1]]
+        ? threats[pokemon1.type[1]].threat
+        : 0;
+      score1 += pokemon1.stage;
+      score1 += pokemon1.fullyEvolved ? 3 : 0;
+      score2 += threats[pokemon2.type[0]]
+        ? threats[pokemon2.type[0]].threat
+        : 0;
+      score2 += threats[pokemon2.type[1]]
+        ? threats[pokemon2.type[1]].threat
+        : 0;
+      score2 += pokemon2.stage;
+      score2 += pokemon2.fullyEvolved ? 3 : 0;
+      return score2 - score1;
+    })
+    .map(pokemon => {
+      if (
+        threats[pokemon.type[0]] ||
+        (pokemon.type.length > 1 && threats[pokemon.type[1]])
+      ) {
+        return (
+          <Tooltip
+            title={pokemon.name.english}
+            enterTouchDelay={0}
+            key={`${pokemon.name.english}-analysis`}
+          >
+            <div
+              className={classNames(
+                `analysis-pokemon ${pokemon.type[0]}`,
+                {
+                  [`${pokemon.type[1]}-border`]: pokemon.type.length > 1
+                },
+                { 'null-border': pokemon.type.length === 1 }
+              )}
+            >
+              <img
+                className="pokemon-analysis-image"
+                alt={pokemon.name.english}
+                src={require(`../../../assets/images/sprites/pokedex/${pokemon.sprite}`)}
+              />
+            </div>
+          </Tooltip>
+        );
+      }
+    });
+  if (returnValue.length > 0 && !hasThreats) {
+    setHasThreats(true);
+  } else if (returnValue.length === 0) {
+    setHasThreats(false);
+  }
+  return returnValue;
+};
+
 const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
   const [threats] = useState(generateThreats(selectedTeam));
+  const [hasThreats, setHasThreats] = useState(true);
+
   return (
     <Fade in timeout={500}>
       <div>
@@ -236,64 +305,29 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
             {generateTypeAnalysis('weakness', selectedTeam)}
           </div>
         </div>
-        {Object.keys(threats).length > 0 && (
+        {hasThreats && (
           <div className="threats-container">
             <p className="team-strengths">Example Threats</p>
             <div className="threats-container">
-              {[...filteredPokemon]
-                .sort((pokemon1, pokemon2) => {
-                  let score1 = 0;
-                  let score2 = 0;
-                  score1 += threats[pokemon1.type[0]]
-                    ? threats[pokemon1.type[0]].threat
-                    : 0;
-                  score1 += threats[pokemon1.type[1]]
-                    ? threats[pokemon1.type[1]].threat
-                    : 0;
-                  score1 += pokemon1.stage;
-                  score1 += pokemon1.fullyEvolved ? 3 : 0;
-                  score2 += threats[pokemon2.type[0]]
-                    ? threats[pokemon2.type[0]].threat
-                    : 0;
-                  score2 += threats[pokemon2.type[1]]
-                    ? threats[pokemon2.type[1]].threat
-                    : 0;
-                  score2 += pokemon2.stage;
-                  score2 += pokemon2.fullyEvolved ? 3 : 0;
-                  return score2 - score1;
-                })
-                .map(pokemon => {
-                  if (
-                    threats[pokemon.type[0]] ||
-                    (pokemon.type.length > 1 && threats[pokemon.type[1]])
-                  ) {
-                    return (
-                      <Tooltip
-                        title={pokemon.name.english}
-                        enterTouchDelay={0}
-                        key={`${pokemon.name.english}-analysis`}
-                      >
-                        <div
-                          className={classNames(
-                            `analysis-pokemon ${pokemon.type[0]}`,
-                            {
-                              [`${pokemon.type[1]}-border`]:
-                                pokemon.type.length > 1
-                            },
-                            { 'null-border': pokemon.type.length === 1 }
-                          )}
-                        >
-                          <img
-                            className="pokemon-analysis-image"
-                            alt={pokemon.name.english}
-                            src={require(`../../../assets/images/sprites/pokedex/${pokemon.sprite}`)}
-                          />
-                        </div>
-                      </Tooltip>
-                    );
-                  }
-                })}
+              {generateThreatsList(
+                threats,
+                setHasThreats,
+                hasThreats,
+                filteredPokemon
+              )}
             </div>
+          </div>
+        )}
+        {!hasThreats && (
+          <div className="no-threats-container">
+            <p className="no-threats-title">
+              No Threats?! Check your filters, search included!
+            </p>
+            <img
+              className="no-threats"
+              alt="no threats"
+              src={noThreatsSymbol}
+            />
           </div>
         )}
       </div>

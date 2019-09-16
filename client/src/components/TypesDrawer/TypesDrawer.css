@@ -343,3 +343,15 @@
   flex-wrap: wrap;
   padding: 10px 10px 20px 10px;
 }
+
+.no-threats-container {
+  text-align: center;
+  padding: 40px;
+}
+.no-threats-title {
+  color: ghostwhite;
+  font-family: 'Pokemon Solid';
+}
+.no-threats {
+  height: 70px;
+}

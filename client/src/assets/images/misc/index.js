@@ -11,6 +11,7 @@ import pseudoSymbol from './pseudo.png';
 import regionSymbol from './region.png';
 import typesSymbol from './typesIcon.png';
 import userSymbol from './users.png';
+import noThreatsSymbol from './noThreats.png';
 
 const images = {
   clearSymbol,
@@ -25,7 +26,8 @@ const images = {
   pseudoSymbol,
   regionSymbol,
   typesSymbol,
-  userSymbol
+  userSymbol,
+  noThreatsSymbol
 };
 
 export default images;
