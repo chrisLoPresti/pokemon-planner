@@ -237,7 +237,7 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
               </Tooltip>
             ))}
           </div>
-          <p className="team-strengths">Combined Typing Strengths</p>
+          <p className="team-strengths">Combined Typing Offensive</p>
           <div className="types-scroller">
             <div className="types-chart-top-row">
               {types.map(type => (
@@ -256,7 +256,7 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
           </div>
         </div>
         <div className="chart-content">
-          <p className="team-strengths">Combined Typing Weaknesses</p>
+          <p className="team-strengths">Combined Typing Defensive</p>
           <div className="types-chart-left-row-analysis-weaknesses">
             {selectedTeam.map(pokemon => (
               <Tooltip
