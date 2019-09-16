@@ -8,7 +8,7 @@ import {
   SET_FILTERED_POKEMON_TOTAL
 } from '../actions/pokemonListActions/pokemonListActions';
 
-const mostRecentUpdate = '2019-09-15 19:07:45 GMT-0400 ';
+const mostRecentUpdate = '2019-09-15 20:05:52 GMT-0400';
 
 const allPokemonDecision = () => {
   const lastStoredUpdate = JSON.parse(localStorage.getItem('lastStoredUpdate'));
@@ -18,6 +18,7 @@ const allPokemonDecision = () => {
     new Date(lastStoredUpdate) < new Date(mostRecentUpdate)
   ) {
     localStorage.removeItem('lastStoredUpdate');
+    localStorage.removeItem('allPokemon');
     localStorage.setItem('lastStoredUpdate', JSON.stringify(currentDate));
     return [];
   } else {

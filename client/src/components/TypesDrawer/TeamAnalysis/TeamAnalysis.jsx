@@ -140,23 +140,6 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
     <Fade in timeout={500}>
       <div>
         <div className="chart-content">
-          <p className="team-strengths">Combined Typing Strengths</p>
-          <div className="types-scroller">
-            <div className="types-chart-top-row">
-              {types.map(type => (
-                <div className="data-block" key={`${type}-top-analysis`}>
-                  <Tooltip title={type} enterTouchDelay={0}>
-                    <img
-                      className={`type-chart-symbol ${type}-border`}
-                      alt={type}
-                      src={symbols[type]}
-                    />
-                  </Tooltip>
-                </div>
-              ))}
-            </div>
-            {generateTypeAnalysis('strength', selectedTeam)}
-          </div>
           <div className="types-chart-left-row-analysis ">
             {selectedTeam.map(pokemon => (
               <Tooltip
@@ -185,16 +168,11 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
               </Tooltip>
             ))}
           </div>
-        </div>
-        <div className="chart-content">
-          <p className="team-strengths">Combined Typing Weaknesses</p>
+          <p className="team-strengths">Combined Typing Strengths</p>
           <div className="types-scroller">
             <div className="types-chart-top-row">
               {types.map(type => (
-                <div
-                  className="data-block"
-                  key={`${type}-top-analysis-weaknesses`}
-                >
+                <div className="data-block" key={`${type}-top-analysis`}>
                   <Tooltip title={type} enterTouchDelay={0}>
                     <img
                       className={`type-chart-symbol ${type}-border`}
@@ -205,8 +183,11 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
                 </div>
               ))}
             </div>
-            {generateTypeAnalysis('weakness', selectedTeam)}
+            {generateTypeAnalysis('strength', selectedTeam)}
           </div>
+        </div>
+        <div className="chart-content">
+          <p className="team-strengths">Combined Typing Weaknesses</p>
           <div className="types-chart-left-row-analysis-weaknesses">
             {selectedTeam.map(pokemon => (
               <Tooltip
@@ -234,6 +215,25 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
                 </div>
               </Tooltip>
             ))}
+          </div>
+          <div className="types-scroller">
+            <div className="types-chart-top-row">
+              {types.map(type => (
+                <div
+                  className="data-block"
+                  key={`${type}-top-analysis-weaknesses`}
+                >
+                  <Tooltip title={type} enterTouchDelay={0}>
+                    <img
+                      className={`type-chart-symbol ${type}-border`}
+                      alt={type}
+                      src={symbols[type]}
+                    />
+                  </Tooltip>
+                </div>
+              ))}
+            </div>
+            {generateTypeAnalysis('weakness', selectedTeam)}
           </div>
         </div>
         {Object.keys(threats).length > 0 && (

@@ -1,5 +1,6 @@
 .chart-content {
   padding: 20px 20px 0 20px;
+  position: relative;
   background-color: #525252;
 }
 
@@ -24,13 +25,13 @@
 
 .types-chart-left-row-analysis {
   position: absolute;
-  top: 309px;
+  top: 208px;
   background-color: #525252;
 }
 
 .types-chart-left-row-analysis-weaknesses {
   position: absolute;
-  top: 876px;
+  top: 208px;
   background-color: #525252;
 }
 
