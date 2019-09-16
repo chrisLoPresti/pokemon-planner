@@ -27,12 +27,14 @@
   position: absolute;
   top: 208px;
   background-color: #525252;
+  z-index: 999;
 }
 
 .types-chart-left-row-analysis-weaknesses {
   position: absolute;
   top: 208px;
   background-color: #525252;
+  z-index: 999;
 }
 
 .types-chart-top-row {
