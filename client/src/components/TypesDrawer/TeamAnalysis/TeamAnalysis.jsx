@@ -136,7 +136,11 @@ const generateThreats = selectedTeam => {
     ddts.forEach(ddt => ++threats[ddt].strength);
     ddfs.forEach(ddf => {
       if (!pokemon.type.includes(ddf)) {
-        ++threats[ddf].threat;
+        if (pokemon.type.length === 1) {
+          threats[ddf].threat += 2;
+        } else {
+          ++threats[ddf].threat;
+        }
       }
     });
     ++threats[pokemon.type[0]].strength;
@@ -161,6 +165,17 @@ const generateThreatsList = (
   filteredPokemon
 ) => {
   const returnValue = [...filteredPokemon]
+    .filter(
+      (ele, ind) =>
+        ind ===
+        filteredPokemon.findIndex(
+          elem =>
+            elem.name.english.split(' ')[0] ===
+              ele.name.english.split(' ')[0] &&
+            elem.nationalNumber === ele.nationalNumber &&
+            JSON.stringify(elem.type) === JSON.stringify(ele.type)
+        )
+    )
     .sort((pokemon1, pokemon2) => {
       let score1 = 0;
       let score2 = 0;
