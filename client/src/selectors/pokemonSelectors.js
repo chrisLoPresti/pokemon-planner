@@ -281,3 +281,19 @@ export const getFilteredPokemon = createSelector(
     return returnList;
   }
 );
+
+export const getRandomTeamList = createSelector(
+  [getFilteredPokemon],
+  filteredPokemon =>
+    filteredPokemon.filter(
+      (ele, ind) =>
+        ind ===
+        filteredPokemon.findIndex(
+          elem =>
+            elem.name.english.split(' ')[0] ===
+              ele.name.english.split(' ')[0] &&
+            elem.nationalNumber === ele.nationalNumber &&
+            JSON.stringify(elem.type) === JSON.stringify(ele.type)
+        )
+    )
+);

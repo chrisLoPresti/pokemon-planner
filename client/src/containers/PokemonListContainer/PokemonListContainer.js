@@ -8,7 +8,8 @@ import {
   getTotalFilteredPokemon,
   getShowNumbers,
   getShowNames,
-  getSelectedGame
+  getSelectedGame,
+  getRandomTeamList
 } from '../../selectors/pokemonSelectors';
 
 import {
@@ -22,6 +23,7 @@ import PokemonList from '../../components/PokemonList';
 
 const mapStateToProps = state => ({
   filteredPokemon: getFilteredPokemon(state),
+  randomTeamList: getRandomTeamList(state),
   selectedPokemon: getSelectedPokemon(state),
   selectedTeam: getSelectedTeam(state),
   loadingPokemon: getLoading(state),

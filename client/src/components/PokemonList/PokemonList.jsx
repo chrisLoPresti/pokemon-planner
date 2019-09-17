@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -27,6 +27,7 @@ const PokemonList = React.memo(
     setFilteredPokemonTotal,
     totalFilteredPokemon,
     canDropPokemon,
+    randomTeamList,
     onlyGame
   }) => {
     if (!pokemonLoaded && !loadingPokemon) {
@@ -100,22 +101,6 @@ const PokemonList = React.memo(
     useEffect(() => {
       setFilteredPokemonTotal(filteredPokemon.length);
     }, [filteredPokemon]);
-
-    const randomTeamList = useMemo(
-      () =>
-        filteredPokemon.filter(
-          (ele, ind) =>
-            ind ===
-            filteredPokemon.findIndex(
-              elem =>
-                elem.name.english.split(' ')[0] ===
-                  ele.name.english.split(' ')[0] &&
-                elem.nationalNumber === ele.nationalNumber &&
-                JSON.stringify(elem.type) === JSON.stringify(ele.type)
-            )
-        ),
-      [filteredPokemon]
-    );
 
     const randomTeam = () => {
       let currentTeam = { ...selectedTeam };
@@ -291,6 +276,7 @@ PokemonList.propTypes = {
   updateSelectedPokemon: PropTypes.func.isRequired,
   loadPokemonListRequest: PropTypes.func.isRequired,
   filteredPokemon: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  randomTeamList: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   selectedPokemon: PropTypes.shape({}).isRequired,
   selectedTeam: PropTypes.shape({}).isRequired,
   loadingPokemon: PropTypes.bool.isRequired,
@@ -302,5 +288,4 @@ PokemonList.propTypes = {
   canDropPokemon: PropTypes.bool.isRequired,
   onlyGame: PropTypes.string.isRequired
 };
-
 export default PokemonList;
