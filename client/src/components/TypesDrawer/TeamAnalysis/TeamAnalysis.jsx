@@ -57,7 +57,7 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
   } else if (
     typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
     (pokemonTypes.length > 1 &&
-      !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
+      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
   ) {
     return <p className="data-block quadruple">1/4</p>;
   } else if (
