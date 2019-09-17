@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -101,17 +101,34 @@ const PokemonList = React.memo(
       setFilteredPokemonTotal(filteredPokemon.length);
     }, [filteredPokemon]);
 
+    const randomTeamList = useMemo(
+      () =>
+        filteredPokemon.filter(
+          (ele, ind) =>
+            ind ===
+            filteredPokemon.findIndex(
+              elem =>
+                elem.name.english.split(' ')[0] ===
+                  ele.name.english.split(' ')[0] &&
+                elem.nationalNumber === ele.nationalNumber &&
+                JSON.stringify(elem.type) === JSON.stringify(ele.type)
+            )
+        ),
+      [filteredPokemon]
+    );
+
     const randomTeam = () => {
       let currentTeam = { ...selectedTeam };
       if (currentTeam.count === 6) {
         currentTeam = { count: 0, hasMega: false };
       }
+
       let time = 0;
       while (time < 20 && currentTeam.count !== 6) {
         const index = Math.floor(
-          Math.random() * Math.floor(filteredPokemon.length)
+          Math.random() * Math.floor(randomTeamList.length)
         );
-        const pokemon = filteredPokemon[index];
+        const pokemon = randomTeamList[index];
         if (
           currentTeam[pokemon.nationalNumber] ||
           (pokemon.isMega && currentTeam.hasMega === true)
