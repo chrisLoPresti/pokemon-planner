@@ -21,16 +21,25 @@ const generateBlockDataAnalysis = (pokemonTypes, typeToCheck) => {
   ) {
     return <p className="data-block double">2</p>;
   } else if (
-    typeStats[pokemonTypes[0]].hdt.includes(typeToCheck) ||
+    (typeStats[pokemonTypes[0]].hdt.includes(typeToCheck) &&
+      (pokemonTypes.length === 1 ||
+        (pokemonTypes.length > 1 &&
+          !typeStats[pokemonTypes[1]].hdt.includes(typeToCheck)))) ||
+    (!typeStats[pokemonTypes[0]].hdt.includes(typeToCheck) &&
+      pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].hdt.includes(typeToCheck))
+  ) {
+    return <p className="data-block half">1/2</p>;
+  } else if (
+    typeStats[pokemonTypes[0]].hdt.includes(typeToCheck) &&
     (pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].hdt.includes(typeToCheck))
   ) {
-    return <p className="data-block half">.5</p>;
+    return <p className="data-block quarter">1/4</p>;
   } else if (
     typeStats[pokemonTypes[0]].ndt.includes(typeToCheck) &&
-    (!pokemonTypes.length ||
-      (pokemonTypes.length > 1 &&
-        typeStats[pokemonTypes[1]].ndt.includes(typeToCheck)))
+    (pokemonTypes.length > 1 &&
+      typeStats[pokemonTypes[1]].ndt.includes(typeToCheck))
   ) {
     return <p className="data-block zero">0</p>;
   } else {
@@ -46,6 +55,12 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
   ) {
     return <p className="data-block zero">0</p>;
   } else if (
+    typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+    (pokemonTypes.length > 1 &&
+      !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
+  ) {
+    return <p className="data-block quadruple">1/4</p>;
+  } else if (
     (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
       (pokemonTypes.length === 1 ||
         (pokemonTypes.length > 1 &&
@@ -54,7 +69,7 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
       pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
   ) {
-    return <p className="data-block great">.5</p>;
+    return <p className="data-block half">1/2</p>;
   } else if (
     (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
       (pokemonTypes.length === 1 ||
@@ -64,13 +79,13 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
       pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
   ) {
-    return <p className="data-block bad">2</p>;
+    return <p className="data-block double">2</p>;
   } else if (
     typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
     (pokemonTypes.length > 1 &&
       typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
   ) {
-    return <p className="data-block half">4</p>;
+    return <p className="data-block quarter">4</p>;
   } else {
     return <p className="data-block">1</p>;
   }
@@ -119,7 +134,11 @@ const generateThreats = selectedTeam => {
     const ddts = [...ddts0, ...ddts1];
     const ddfs = [...ddfs0, ...ddfs1];
     ddts.forEach(ddt => ++threats[ddt].strength);
-    ddfs.forEach(ddf => ++threats[ddf].threat);
+    ddfs.forEach(ddf => {
+      if (!pokemon.type.includes(ddf)) {
+        ++threats[ddf].threat;
+      }
+    });
     ++threats[pokemon.type[0]].strength;
     if (pokemon.type.length > 1) {
       ++threats[pokemon.type[1]].strength;
@@ -151,19 +170,17 @@ const generateThreatsList = (
       score1 += threats[pokemon1.type[1]]
         ? threats[pokemon1.type[1]].threat
         : 0;
-      score1 += pokemon1.stage;
-      score1 += pokemon1.fullyEvolved ? 3 : 0;
+      score1 += pokemon1.fullyEvolved ? 3 : pokemon1.stage;
       score2 += threats[pokemon2.type[0]]
         ? threats[pokemon2.type[0]].threat
         : 0;
       score2 += threats[pokemon2.type[1]]
         ? threats[pokemon2.type[1]].threat
         : 0;
-      score2 += pokemon2.stage;
-      score2 += pokemon2.fullyEvolved ? 3 : 0;
+      score2 += pokemon2.fullyEvolved ? 3 : pokemon2.stage;
       return score2 - score1;
     })
-    .map(pokemon => {
+    .map((pokemon, index) => {
       if (
         threats[pokemon.type[0]] ||
         (pokemon.type.length > 1 && threats[pokemon.type[1]])
@@ -172,7 +189,7 @@ const generateThreatsList = (
           <Tooltip
             title={pokemon.name.english}
             enterTouchDelay={0}
-            key={`${pokemon.name.english}-analysis`}
+            key={`${pokemon.name.english}-analysis-${index}`}
           >
             <div
               className={classNames(
@@ -210,11 +227,11 @@ const TeamAnalysis = ({ selectedTeam, filteredPokemon }) => {
       <div>
         <div className="chart-content">
           <div className="types-chart-left-row-analysis ">
-            {selectedTeam.map(pokemon => (
+            {selectedTeam.map((pokemon, index) => (
               <Tooltip
                 title={pokemon.name.english}
                 enterTouchDelay={0}
-                key={`${pokemon.name.english}-left-analysis`}
+                key={`${pokemon.name.english}-left-analysis-${index}`}
               >
                 <div
                   className={classNames(

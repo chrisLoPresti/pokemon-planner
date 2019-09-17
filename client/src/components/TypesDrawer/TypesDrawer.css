@@ -100,25 +100,25 @@
 }
 
 .quadruple {
-  color: #313131;
+  color: #18509d;
   background: linear-gradient(to right bottom, #e9dfb7 30%, #f7d02c 60%);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.double {
-  background-color: #4caf50;
-}
-
 .half {
-  background-color: #e53935;
+  background-color: #ee8130;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-.bad {
-  background-color: #ee8130;
+.quarter {
+  background-color: #e53935;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
-.great {
-  background: linear-gradient(to right bottom, #92ec95 20%, #4caf50 60%);
+.double {
+  background: linear-gradient(to right bottom, #92ec95 5%, #4caf50 40%);
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }

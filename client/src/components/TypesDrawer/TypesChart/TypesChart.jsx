@@ -9,7 +9,7 @@ const generateBlockData = (t1, t2) => {
   if (typeStats[t1].ddt.includes(t2)) {
     return <p className="data-block double">2</p>;
   } else if (typeStats[t1].hdt.includes(t2)) {
-    return <p className="data-block half">.5</p>;
+    return <p className="data-block half">1/2</p>;
   } else if (typeStats[t1].ndt.includes(t2)) {
     return <p className="data-block zero">0</p>;
   } else {
