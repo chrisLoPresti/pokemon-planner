@@ -138,7 +138,7 @@ export default {
     ndt: [n]
   },
   Dragon: {
-    ddf: [i, dr],
+    ddf: [i, dr, fa],
     hdf: [fi, w, gr, e],
     ndf: [],
     ddt: [dr],

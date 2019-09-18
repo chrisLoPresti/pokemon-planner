@@ -48,44 +48,45 @@ const generateBlockDataAnalysis = (pokemonTypes, typeToCheck) => {
 };
 
 const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
-  if (
+  const hasTwoTypes = pokemonTypes.length === 2;
+  const noDamage =
     typeStats[pokemonTypes[0]].ndf.includes(typeToCheck) ||
-    (pokemonTypes.length > 1 &&
-      typeStats[pokemonTypes[1]].ndf.includes(typeToCheck))
-  ) {
-    return <p className="data-block zero">0</p>;
-  } else if (
+    (hasTwoTypes > 1 && typeStats[pokemonTypes[1]].ndf.includes(typeToCheck));
+  const quartDamage =
     typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-    (pokemonTypes.length > 1 &&
-      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
-  ) {
-    return <p className="data-block quadruple">1/4</p>;
-  } else if (
-    (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-      (pokemonTypes.length === 1 ||
-        (pokemonTypes.length > 1 &&
-          !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)))) ||
-    (!typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-      pokemonTypes.length > 1 &&
-      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))
-  ) {
-    return <p className="data-block half">1/2</p>;
-  } else if (
+    (hasTwoTypes && typeStats[pokemonTypes[1]].hdf.includes(typeToCheck));
+  const singleDamage =
+    (hasTwoTypes &&
+      (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+        typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))) ||
     (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
-      (pokemonTypes.length === 1 ||
-        (pokemonTypes.length > 1 &&
-          !typeStats[pokemonTypes[1]].ddf.includes(typeToCheck)))) ||
-    (!typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
-      pokemonTypes.length > 1 &&
-      typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
-  ) {
-    return <p className="data-block double">2</p>;
-  } else if (
+      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck));
+  const halfDamage =
+    (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) && !hasTwoTypes) ||
+    ((hasTwoTypes &&
+      (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+        !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))) ||
+      (!typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+        typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)));
+  const quadDamage =
     typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
-    (pokemonTypes.length > 1 &&
-      typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))
-  ) {
+    (hasTwoTypes && typeStats[pokemonTypes[1]].ddf.includes(typeToCheck));
+  const doubleDamage =
+    typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) ||
+    (hasTwoTypes && typeStats[pokemonTypes[1]].ddf.includes(typeToCheck));
+
+  if (noDamage) {
+    return <p className="data-block zero">0</p>;
+  } else if (quartDamage) {
+    return <p className="data-block quadruple">1/4</p>;
+  } else if (singleDamage) {
+    return <p className="data-block">1</p>;
+  } else if (halfDamage) {
+    return <p className="data-block half">1/2</p>;
+  } else if (quadDamage) {
     return <p className="data-block quarter">4</p>;
+  } else if (doubleDamage) {
+    return <p className="data-block double">2</p>;
   } else {
     return <p className="data-block">1</p>;
   }
@@ -164,7 +165,8 @@ const generateThreatsList = (
   hasThreats,
   filteredPokemon
 ) => {
-  const returnValue = [...filteredPokemon]
+  const returnValue = [];
+  [...filteredPokemon]
     .filter(
       (ele, ind) =>
         ind ===
@@ -195,12 +197,12 @@ const generateThreatsList = (
       score2 += pokemon2.fullyEvolved ? 3 : pokemon2.stage;
       return score2 - score1;
     })
-    .map((pokemon, index) => {
+    .forEach((pokemon, index) => {
       if (
         threats[pokemon.type[0]] ||
         (pokemon.type.length > 1 && threats[pokemon.type[1]])
       ) {
-        return (
+        returnValue.push(
           <Tooltip
             title={pokemon.name.english}
             enterTouchDelay={0}
