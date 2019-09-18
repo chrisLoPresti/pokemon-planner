@@ -56,18 +56,18 @@ const generateBlockDataAnalysisWeakness = (pokemonTypes, typeToCheck) => {
     typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
     (hasTwoTypes && typeStats[pokemonTypes[1]].hdf.includes(typeToCheck));
   const singleDamage =
-    (hasTwoTypes &&
-      (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-        typeStats[pokemonTypes[1]].ddf.includes(typeToCheck))) ||
-    (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
-      typeStats[pokemonTypes[1]].hdf.includes(typeToCheck));
+    hasTwoTypes &&
+    ((typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+      typeStats[pokemonTypes[1]].ddf.includes(typeToCheck)) ||
+      (typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
+        typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)));
   const halfDamage =
     (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) && !hasTwoTypes) ||
-    ((hasTwoTypes &&
-      (typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-        !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))) ||
-      (!typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
-        typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)));
+    (hasTwoTypes &&
+      ((typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+        !typeStats[pokemonTypes[1]].hdf.includes(typeToCheck)) ||
+        (!typeStats[pokemonTypes[0]].hdf.includes(typeToCheck) &&
+          typeStats[pokemonTypes[1]].hdf.includes(typeToCheck))));
   const quadDamage =
     typeStats[pokemonTypes[0]].ddf.includes(typeToCheck) &&
     (hasTwoTypes && typeStats[pokemonTypes[1]].ddf.includes(typeToCheck));

@@ -172,7 +172,7 @@ const PokemonList = React.memo(
                   height={height}
                   rowCount={rowCount}
                   rowHeight={BOX_HEIGHT}
-                  rowRenderer={({ index, isScrolling, key, style }) => {
+                  rowRenderer={({ index, key, style }) => {
                     const items = [];
                     const fromIndex = index * numberOfBoxesPerRow;
                     const toIndex = Math.min(
