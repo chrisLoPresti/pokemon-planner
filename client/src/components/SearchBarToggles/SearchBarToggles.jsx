@@ -38,8 +38,8 @@ const SearchBarToggles = React.memo(
     updateShinySprites,
     updateSelectedTeam
   }) => {
-    const updateSearch = e => {
-      updateSearchCriteria(e.currentTarget.value);
+    const updateSearch = value => {
+      updateSearchCriteria(value);
       setQueryString();
     };
     return (
@@ -78,7 +78,7 @@ const SearchBarToggles = React.memo(
           <p className="toggle-title">Search</p>
           <Input
             value={search}
-            onChange={e => updateSearch(e)}
+            onChange={e => updateSearch(e.currentTarget.value)}
             className="search-bar"
             placeholder="Search by name"
             classes={{
@@ -89,7 +89,7 @@ const SearchBarToggles = React.memo(
           />
           <IconButton
             className="clear-search-image-container"
-            onClick={() => updateSearchCriteria('')}
+            onClick={() => updateSearch('')}
           >
             <Img
               className="clear-search-image"
